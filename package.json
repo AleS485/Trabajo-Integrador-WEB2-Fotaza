@@ -1,0 +1,27 @@
+{
+  "name": "trabajo-integrador-web2-fotaza",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/AleS485/Trabajo-Integrador-WEB2-Fotaza#readme",
+  "bugs": {
+    "url": "https://github.com/AleS485/Trabajo-Integrador-WEB2-Fotaza/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AleS485/Trabajo-Integrador-WEB2-Fotaza.git"
+  },
+  "license": "ISC",
+  "author": "Alejandro Peralta",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pug": "^3.0.4"
+  }
+}

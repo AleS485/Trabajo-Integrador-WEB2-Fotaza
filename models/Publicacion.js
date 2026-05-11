@@ -12,7 +12,6 @@ Publicacion.init(
         },
         idUsuario:{
             type: DataTypes.INTEGER,
-            allowNull: false,
         },
         tituloPublicacion:{
             type: DataTypes.STRING(150),

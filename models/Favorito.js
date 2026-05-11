@@ -23,6 +23,11 @@ Favorito.init(
                 model: 'Publicacion',
                 key: 'idPublicacion',
             }
+        },
+        fechaFavorito:{
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
         }
     },
     {

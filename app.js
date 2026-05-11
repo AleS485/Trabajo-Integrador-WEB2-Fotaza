@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 // CONEXION A BD
 // alter permite sincronizar y guardar tablas acorde a modelos
 // force hace que se borre con drop table antes de crear la tabla
-sequelize.sync({ alter: true })
+sequelize.sync({ alter: true, force: true })
     .then(() => {
         // SERVIDOR
         app.listen(PORT, (err) => {

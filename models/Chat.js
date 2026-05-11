@@ -12,24 +12,12 @@ Chat.init(
         },
         idInteres:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Interes',
-                key: 'idInteres',
-            }
         },
         idAutorFoto:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Usuario',
-                key: 'idUsuario',
-            }
         },
         idInteresado:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Usuario',
-                key: 'idUsuario',
-            }
         },
         fechaCreacionChat:{
             type: DataTypes.DATE,

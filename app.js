@@ -1,7 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
-import sequelize from './models/config.js';
-import './models/sync.js'
+import { funcionSync } from './models/sync.js';
 
 const PORT = process.env.PORT;
 
@@ -27,13 +26,7 @@ app.get('/', (req, res) => {
 
 
 
-
-
-// CONEXION A BD
-// alter permite sincronizar y guardar tablas acorde a modelos
-// force hace que se borre con drop table antes de crear la tabla
-sequelize.sync({ alter: true, force: true })
-    .then(() => {
+funcionSync().then(() => {
         // SERVIDOR
         app.listen(PORT, (err) => {
             if (err) {
@@ -46,6 +39,11 @@ sequelize.sync({ alter: true, force: true })
     .catch((err) => {
         console.error('Error sincronizando con bd:', err)
     })
+
+// CONEXION A BD
+// alter permite sincronizar y guardar tablas acorde a modelos
+// force hace que se borre con drop table antes de crear la tabla
+
 
 
 

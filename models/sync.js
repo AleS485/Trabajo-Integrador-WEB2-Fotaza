@@ -17,6 +17,7 @@ import { Mensaje } from "./Mensaje.js";
 import { Seguidor } from "./Seguidor.js";
 import { Notificacion } from "./Notificacion.js";
 import { Evento } from "./Evento.js";
+import sequelize from "./config.js";
 
 // relaciones entre modelos y defino las foreign key
 
@@ -131,7 +132,16 @@ Notificacion.belongsTo(Evento, { foreignKey: 'idEvento'});
 
 
 
+export async function funcionSync(){
+    
+    try{
+        await sequelize.sync({ alter: true, force: true })
+    } catch(err){
+        console.error('Error sincronizando los modelos ' + err);
+        throw err;
+    }
 
+}
 
 
 

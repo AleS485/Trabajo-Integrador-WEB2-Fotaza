@@ -131,19 +131,24 @@ Evento.hasMany(Notificacion, { foreignKey: 'idEvento'});
 Notificacion.belongsTo(Evento, { foreignKey: 'idEvento'});
 
 
+// funcion que exporto para hacer el sync
 
 export async function funcionSync(){
     
     try{
-        await sequelize.sync({ alter: true, force: true })
+        await sequelize.authenticate() // testear la conexion
+        console.log('[+] Conexion a bd establecida')
+
+        await sequelize.sync({ alter: true })
+        console.log('[+] Sincronizado de modelos')
     } catch(err){
-        console.error('Error sincronizando los modelos ' + err);
+        console.error('[+] Error en la conexion a la bd ' + err);
         throw err;
     }
 
 }
 
-
+// force no recomienda tenerlo activado
 
 
 

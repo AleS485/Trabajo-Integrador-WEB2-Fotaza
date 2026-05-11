@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
-import { funcionSync } from './models/sync.js';
+import { funcionSync } from './models/index.js';
 
 const PORT = process.env.PORT;
 

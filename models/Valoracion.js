@@ -12,17 +12,9 @@ Valoracion.init(
         },
         idUsuario:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Usuario',
-                key: 'idUsuario',
-            }
         },
         idFotografia:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Fotografia',
-                key: 'idFotografia',
-            }
         },
         valoracionPublicacion:{
             type: DataTypes.INTEGER,

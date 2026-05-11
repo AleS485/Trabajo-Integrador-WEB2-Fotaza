@@ -12,17 +12,9 @@ ColeccionPublicacion.init(
         },
         idColeccion:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Coleccion',
-                key: 'idColeccion',
-            }
         },
         idPublicacion:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Publicacion',
-                key: 'idPublicacion',
-            }
         }
     },
     {

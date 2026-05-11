@@ -12,17 +12,9 @@ Interes.init(
         },
         idFotografia:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Fotografia',
-                key: 'idFotografia',
-            }
         },
         idInteresado:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Usuario',
-                key: 'idUsuario',
-            }
         },
         fechaInteres:{
             type: DataTypes.DATE,

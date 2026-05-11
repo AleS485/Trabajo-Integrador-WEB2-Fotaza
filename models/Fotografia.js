@@ -12,10 +12,6 @@ Fotografia.init(
         },
         idPublicacion:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Publicacion',
-                key: 'idPublicacion',
-            }
         },
         urlArchivo:{
             type: DataTypes.STRING(250),

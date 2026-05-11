@@ -12,17 +12,9 @@ Favorito.init(
         },
         idUsuario:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Usuario',
-                key: 'idUsuario',
-            }
         },
         idPublicacion:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Publicacion',
-                key: 'idPublicacion',
-            }
         },
         fechaFavorito:{
             type: DataTypes.DATE,

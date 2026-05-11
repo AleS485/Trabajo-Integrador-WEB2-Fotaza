@@ -12,17 +12,9 @@ Seguidor.init(
         },
         idUsuarioSeguido:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Usuario',
-                key: 'idUsuario',
-            }
         },
         idSeguidor:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Usuario',
-                key: 'idUsuario',
-            }
         },
         fechaSeguimiento:{
             type: DataTypes.DATE,

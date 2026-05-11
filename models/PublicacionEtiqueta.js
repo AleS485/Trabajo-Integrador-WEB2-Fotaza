@@ -7,17 +7,9 @@ PublicacionEtiqueta.init(
     {
         idPublicacion: {
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Publicacion',
-                key: 'idPublicacion',
-            }
         },
         idEtiqueta:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Etiqueta',
-                key: 'idEtiqueta',
-            }
         }
     },
     {

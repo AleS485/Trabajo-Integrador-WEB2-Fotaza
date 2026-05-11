@@ -13,10 +13,6 @@ MarcaDeAgua.init(
         idFotografia:{
             type: DataTypes.INTEGER,
             unique: true,
-            references:{
-                model: 'Fotografia',
-                key: 'idFotografia',
-            }
         },
         contenidoMarca:{
             type: DataTypes.STRING(50),

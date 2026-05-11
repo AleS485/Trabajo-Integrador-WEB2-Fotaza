@@ -12,24 +12,12 @@ Notificacion.init(
         },
         idUsuarioRecibe:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Usuario',
-                key: 'idUsuario',
-            }
         },
         idUsuarioEnvia:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Usuario',
-                key: 'idUsuario',
-            }
         },
         idEvento:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Evento',
-                key: 'idEvento',
-            }
         },
         contenidoNotificacion:{
             type: DataTypes.STRING(150),

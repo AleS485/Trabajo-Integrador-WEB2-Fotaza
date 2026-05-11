@@ -13,34 +13,18 @@ Denuncia.init(
         idComentario:{
             type: DataTypes.INTEGER,
             allowNull: true,
-            references:{
-                model: 'Comentario',
-                key: 'idComentario',
-            }
         },
         idFotografia:{
             type: DataTypes.INTEGER,
             allowNull: true,
-            references:{
-                model: 'Fotografia',
-                key: 'idFotografia',
-            }
         },
         idUsuario:{
             type: DataTypes.INTEGER,
             allowNull: false,
-            references:{
-                model: 'Usuario',
-                key: 'idUsuario',
-            }
         },
         idMotivo:{
             type: DataTypes.INTEGER,
             allowNull: false,
-            references:{
-                model: 'Motivo',
-                key: 'idMotivo',
-            }
         },
         justificacionUsuario:{
             type: DataTypes.STRING(250),

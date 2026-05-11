@@ -12,17 +12,9 @@ Mensaje.init(
         },
         idChat:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Chat',
-                key: 'idChat',
-            }
         },
         idUsuarioEmisor:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Usuario',
-                key: 'idUsuario',
-            }
         },
         contenido:{
             type: DataTypes.STRING(350),

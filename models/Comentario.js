@@ -12,17 +12,9 @@ Comentario.init(
         },
         idFotografia:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Fotografia',
-                key: 'idFotografia',
-            }
         },
         idUsuario:{
             type: DataTypes.INTEGER,
-            references:{
-                model: 'Usuario',
-                key: 'idUsuario',
-            }
         },
         comentario:{
             type: DataTypes.STRING(250),

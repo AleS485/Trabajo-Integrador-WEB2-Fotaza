@@ -65,13 +65,7 @@ li a:hover{
 
 /* estilos perfil */
 
-img{
-    height: 295px;
-    width: 295px;
-    border: 2px solid black;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 
-                0 4px 10px rgba(0, 0, 0, 0.05);
-}
+
 
 .perfil-contenedor{
 
@@ -105,6 +99,11 @@ img{
 
 .perfil-foto img{
     border-radius: 45%;
+    height: 295px;
+    width: 295px;
+    border: 2px solid black;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 
+                0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .perfil-datos-usuario {
@@ -160,3 +159,198 @@ img{
     transition: .2s;
 
 }
+
+
+/* estilos para crear publicacion */
+
+.contenedorCreador{
+
+    border: 2px solid black;
+    padding: 45px;
+    margin-top: 35px;
+    border-radius: 25px;
+    background-color: white;
+    min-height: 65vh;
+    width: 45vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorCreador h1{
+
+    text-align: center;
+    font-size: 42px;
+}
+
+.contenedorCreador form{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 35px;
+    padding: 30px;
+    border: 1px solid black;
+    width: 100%;
+}
+
+.titulo{
+
+    border: 1px solid black;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.titulo label{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.titulo input{
+
+    border: 1px solid grey;
+    width: 65%;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 25px;
+}
+
+.descripcion{
+
+    border: 1px solid black;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.descripcion label{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.descripcion input{
+
+    border: 1px solid grey;
+    width: 65%;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 25px;
+}
+
+.imagenes{
+
+    border: 1px solid black;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 28%;
+}
+
+.imagenes label{
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgb(160, 160, 160);
+    padding: 12px;
+    text-align: center;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: .2s;
+    border: 1px solid black;
+}
+
+.imagenes label:hover{
+
+    background-color: rgb(133, 132, 132);
+    border: 1px solid rgb(57, 57, 57);
+}
+
+.imagenes input{
+
+    border: 1px solid grey;
+    width: 65%;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 25px;
+    
+}
+
+.etiquetas{
+    border: 1px solid black;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.etiquetas label{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.etiquetas input{
+
+    border: 1px solid grey;
+    width: 25%;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 25px;
+}
+
+.etiquetas button{
+
+    width: 20%;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 2px solid grey;
+    cursor: pointer;
+    transition: .2s;
+    padding: 5px;
+}
+
+.etiquetas button:hover{
+    background-color: grey;
+}
+
+.etiquetas-mostrar{
+    display: flex;
+    gap: 15px;
+    height: 5vh;
+}
+
+.etiquetas-mostrar p{
+    background-color: aquamarine;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid black;
+
+}
+
+
+.miniatura-foto img{
+    height: 50px;
+    width: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,55 @@
 extends layout 
 
 block content 
-    h1 Vista crear publicacion
-    p fotos
+
+    div.contenedorCreador
+        h1 Crear una Publicacion 
+        form(action="")
+            div.titulo
+                label Titulo:
+                input(type="text", name="titulo")
+            div.descripcion
+                label Descripcion: (opcional)
+                input(type="text", name="descripcion")
+            div.imagenes
+                label(for="fotos") Subir imagenes
+                input(id= "fotos", type="file", name="fotos", multiple, style="display: none") 
+            div.etiquetas
+                label Ingrese sus etiquetas: 
+                input(type="text", name="etiquetas")
+                button Agregar
+            div.etiquetas-mostrar
+                p etiqueta 
+                p etiqueta 
+                p etiqueta 
+            div.copyright-confirmar
+                p Fotos tienen copyright?
+                input(type="checkbox", name="confirmarCopy")
+            div.marca-agua
+                label Ingrese su marca de agua: 
+                input(type="text", name="marcaAgua")
+
+            div.elegir-marcas
+                p Selecciona las fotos con copyright 
+                div.vista-fotos
+                    each val in [1, 2, 3]
+                        div.miniatura-foto
+                            img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="preview")
+                            div.marcar-foto
+                                label Copyright?
+                                    input(type="checkbox")
+            button.boton-enviar(type="submit") Crear publicacion  
+
+
+
+
+
+
+
+
+
+
+
+
+
+

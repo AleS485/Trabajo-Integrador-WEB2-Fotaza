@@ -13,9 +13,50 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'pug');
 app.set('views', './views');
 
+// endpoints
+
 app.get('/', (req, res) => {
-    res.send("Hola");
+    res.render('home');
 })
+
+app.get('/buscar', (req, res) => {
+    res.render('buscar');
+})
+
+app.get('/perfil', (req, res) => {
+    res.render('perfil');
+})
+
+app.get('/publicaciones/seguidas', (req, res) => {
+    res.render('publicaciones_seguidas');
+})
+
+app.get('/publicaciones/crear', (req, res) => {
+    res.render('crear_publicacion');
+})
+
+app.get('/chats', (req, res) => {
+    res.render('chats');
+})
+
+app.get('/colecciones/crear', (req, res) => {
+    res.render('crear_coleccion');
+})
+
+app.get('/colecciones', (req, res) => {
+    res.render('colecciones_mostrar');
+})
+
+app.get('/notificaciones', (req, res) => {
+    res.render('notificaciones');
+})
+
+app.get('/logout', (req, res) => {
+    res.send('Cerrando sesión');
+});
+
+
+
 
 
 

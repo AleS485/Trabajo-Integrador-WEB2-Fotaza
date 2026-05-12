@@ -1,0 +1,17 @@
+mixin item(path, name)
+    li
+        a(href=path) #{name}
+
+mixin nav
+    nav
+        ul
+            +item('/', 'Home')
+            +item('/buscar', 'Buscar')
+            +item('/perfil', 'Perfil')
+            +item('/publicaciones/seguidas', 'Publicaciones de usuarios que sigo')
+            +item('/publicaciones/crear', 'Crear publicacion')
+            +item('/chats', 'Chats')
+            +item('/colecciones/crear', 'Crear Coleccion')
+            +item('/colecciones', 'Mis Colecciones')
+            +item('/notificaciones', 'Notificaciones')
+            +item('/logout', 'Cerrar Sesion')

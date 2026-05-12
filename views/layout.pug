@@ -1,0 +1,19 @@
+include mixins/nav
+
+doctype html 
+html(lang="es")
+    head 
+        title Fotaza
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet', href='/styles.css')
+        block metadata 
+
+    body 
+        div.nav-contenedor 
+            h1.tituloFotaza FOTAZA
+            +nav
+
+
+        div.contenedor
+            block content

@@ -26,17 +26,16 @@ block content
                 p Fotos tienen copyright?
                 input(type="checkbox", name="confirmarCopy")
             div.marca-agua
-                label Ingrese su marca de agua: 
+                label Ingrese una marca de agua: 
                 input(type="text", name="marcaAgua")
 
             div.elegir-marcas
-                p Selecciona las fotos con copyright 
+                p Selecciona las fotos con copyright:
                 div.vista-fotos
-                    each val in [1, 2, 3]
+                    each val in [1, 2, 3, 4, 5, 6, 7, 8, 9]
                         div.miniatura-foto
                             img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="preview")
                             div.marcar-foto
-                                label Copyright?
                                     input(type="checkbox")
             button.boton-enviar(type="submit") Crear publicacion  
 

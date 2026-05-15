@@ -1,0 +1,77 @@
+extends layout 
+
+block content
+    div.contenedorPublicacion
+        div.seccionSuperior
+            
+            
+            div.divisorImagen
+                a.flechaIzquierda(href="/")  <
+                img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+                a.flechaDerecha(href="/") >
+
+
+            div.divisorInfo
+                div.infoPublicacion
+                    h1 Titulo Publicacion 
+                    div.autorPublicacion
+                        img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+                        p Nombre autor
+                    p Esto es para la descripcion de la PUBLICACION 
+                    div.etiquetasPublicacion
+                        each etitqueta in [1, 2, 3, 4]
+                            p etiqueta
+                    p fecha publicacion 
+
+                
+                
+                div.seccionComentariosPublicacion
+                    each comentario in [1, 2, 3, 4, 5, 6]
+                        div.comentario
+                            div.fotoComentario
+                                img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+                            div.contenidoComentario
+                                div.autorComentario
+                                    p autor 
+                                div.textoComentario
+                                    p aca va el comentario entero lalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalal
+                                div.fechaComentario
+                                    p fecha comentario
+                            div.accionesComentario
+                                form(action="")
+                                    button Reportar Comentario
+                                form(action="")
+                                    button Borrar Comentario 
+
+
+        div.seccionInferior
+            
+            div.seccionAcciones
+                form(action="") 
+                    button(type="submit")  Guardar Publicacion
+                form(action="") 
+                    button(type="submit")  Me interesa
+                form(action="") 
+                    button(type="submit")  Reportar publicacion 
+                form(action="") 
+                    button(type="submit")  Cerrar Comentarios
+
+
+            div.seccionValorizaciones
+                div.valorizarImagen
+                    p Valora esta imagen 
+                    form(action="")
+                        each punto in [1, 2, 3, 4, 5]
+                            label(for="") #{punto}
+                            input(type="radio")
+                            span circulo
+                div.promedioValorizacion 
+                    p Valoracion promedio: 
+                    p puntos
+                div.cantidadValorizaciones
+                    p Valoraciones totales: 
+                    p cantidad
+
+
+
+

@@ -28,7 +28,7 @@ app.get('/perfil', (req, res) => {
 })
 
 app.get('/publicaciones/seguidas', (req, res) => {
-    res.render('publicaciones_seguidas');
+    res.render('publicacion'); // cambiar render temporal
 })
 
 app.get('/publicaciones/crear', (req, res) => {

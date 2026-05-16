@@ -1,5 +1,6 @@
 extends layout 
 
+
 block content
     div.contenedorPublicacion
         div.seccionSuperior
@@ -16,8 +17,8 @@ block content
                     h1 Titulo Publicacion 
                     div.autorPublicacion
                         img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
-                        p Nombre autor
-                    p Esto es para la descripcion de la PUBLICACION 
+                        a(href="/")  Nombre autor
+                    p Esto es para la descripcion de la PUBLICACION lalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalala
                     div.etiquetasPublicacion
                         each etitqueta in [1, 2, 3, 4]
                             p etiqueta
@@ -30,19 +31,24 @@ block content
                         div.comentario
                             div.fotoComentario
                                 img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+                            
                             div.contenidoComentario
                                 div.autorComentario
-                                    p autor 
+                                    a(href="") Autor 
                                 div.textoComentario
-                                    p aca va el comentario entero lalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalal
+                                    p aca va el comentario entero lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalal
                                 div.fechaComentario
                                     p fecha comentario
+                            
                             div.accionesComentario
                                 form(action="")
                                     button Reportar Comentario
                                 form(action="")
                                     button Borrar Comentario 
-
+                div.seccionComentar
+                    form(action="")
+                        input(type="text" placeholder="comentario")
+                        button(type="submit") Comentar 
 
         div.seccionInferior
             
@@ -64,7 +70,7 @@ block content
                         each punto in [1, 2, 3, 4, 5]
                             label(for="") #{punto}
                             input(type="radio")
-                            span circulo
+                            span 
                 div.promedioValorizacion 
                     p Valoracion promedio: 
                     p puntos

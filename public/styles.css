@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     font-family: "Arimo";
+    scroll-behavior: smooth;
 }
 
 /* estilos nav */
@@ -631,7 +632,7 @@ li a:hover{
     align-items: center;
     border: 2px solid green;
     width: 75vw;
-    margin-top: 25px;
+    margin-top: 7vh;
 }
 
 .seccionSuperior{
@@ -642,6 +643,7 @@ li a:hover{
     align-items: center;
     border: 2px solid red;
     width: 85%;
+    padding: 5px;
 
 }
 
@@ -652,7 +654,18 @@ li a:hover{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 25px;
+    padding: 20px;
+
+
+}
+
+.divisorImagen a{
+
+    border: 2px solid black;
+    padding: 15px;
+    background-color: white;
+    border-radius: 45%;
+    font-size: 20px;
 
 }
 
@@ -666,10 +679,129 @@ li a:hover{
 
 .infoPublicacion{
 
-    
+    display: flex;
+    border: 2px solid maroon;
+    flex-direction: column;
+    word-wrap: break-word;     
+    word-break: break-all;
+    padding: 10px;
+}
+
+.autorPublicacion{
+    display: flex;
+    border: 2px solid green;
+    flex-direction: row;
+    align-items: center;
+}
+
+.autorPublicacion a{
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.etiquetasPublicacion{
+    display: flex;
+    gap: 10px;
+}
+
+.seccionComentariosPublicacion{
+
+    display: flex;
+    flex-direction: column;
+    border: 2px solid yellowgreen;
+    max-height: 62vh;
+    overflow: scroll;
+    padding: 5px;
+}
+
+.comentario{
+
+    display: flex;
+    border: 2px solid rgb(115, 171, 245);
+    padding: 25px;
+    gap: 10px;
 
 }
 
+.fotoComentario{
+
+    padding: 5px;
+    border: 2px solid black;
+    
+}
+
+.contenidoComentario a{
+
+    text-decoration: none;
+    font-size: 20px;
+
+}
+
+.textoComentario{
+
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    max-width: 95%;
+    /*propiedades de palabras largas*/
+    word-wrap: break-word;     
+    word-break: break-all;
+
+}
+
+.accionesComentario{
+
+    display: flex;
+    border: 2px solid black;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+
+}
+
+.accionesComentario button{
+    padding: 5px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.seccionComentar{
+
+    display: flex;
+    padding: 10px;
+    border: 2px solid purple;
+    justify-content: center;
+    align-items: center;
+}
+
+.seccionComentar form{
+
+    display: flex;
+    gap: 15px;
+    width: 100%;
+
+}
+
+.seccionComentar input{
+
+    border: 1px solid grey;
+    width: 85%;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 25px;
+
+}
+
+.seccionComentar button{
+
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
 
 .divisorImagen img{
@@ -680,11 +812,108 @@ li a:hover{
 
 .autorPublicacion img{
 
-    width: 50px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
 }
 
 .fotoComentario img{
 
+    height: 50px;
     width: 50px;
+    border-radius: 50%;
 }
+
+
+.seccionInferior{
+
+    display: flex;
+    border: 2px solid rgb(84, 12, 160);
+    width: 85%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.seccionAcciones{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+    padding: 15px;
+    gap: 5px;
+    width: 25%;
+
+}
+
+
+
+.seccionAcciones form{
+
+    width: 100%;
+
+}
+
+.seccionAcciones button{
+
+    padding: 10px;
+    width: 100%;
+    font-size: 15px;
+    cursor: pointer;
+
+}
+
+
+
+
+.seccionValorizaciones{
+
+    display: flex;
+    width: 85%;
+    height: 22.5vh;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+    padding: 15px;
+    gap: 25px;
+}
+
+.valorizarImagen{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+
+}
+
+.valorizarImagen input{
+
+    font-size: 25px;
+
+}
+
+.promedioValorizacion{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.cantidadValorizaciones{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+
 

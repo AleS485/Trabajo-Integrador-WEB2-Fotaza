@@ -917,3 +917,131 @@ li a:hover{
 
 
 
+/* estilos para panel de validador en denuncia  */
+
+
+
+
+.contenedorVistaDenuncia {
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid red; 
+    padding: 20px;
+    border-radius: 12px;
+}
+
+
+.vistaDenunciaSuperior {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid red;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.vistaDenunciaFoto {
+    width: 400px;
+    height: 400px;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.vistaDenunciaFoto img {
+    max-width: 380px;
+    max-height: 380px;
+}
+
+.vistaDetallesDenuncia {
+    width: 25vw;
+    padding-left: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.vistaDetallesDenuncia p{
+    gap: 25px;
+}
+
+
+
+.justificacionUsuarioDenuncia {
+    border: 1px solid gray;
+    background-color: white;
+    padding: 10px;
+    height: 150px;
+    width: 22vw;
+    overflow-y: scroll; 
+    margin-top: 5px;
+}
+
+.justificacionUsuarioDenuncia p{
+    font-size: 18px;
+}
+
+
+.vistaDenunciaInferior {
+    border: 2px solid purple; 
+    padding: 15px;
+    background-color: white;
+}
+
+.vistaDenunciaInferior form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.vistaDenunciaInferior input{
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #cbcbcb;
+    border-radius: 5px;
+}
+
+
+.accionesObservador {
+    display: flex;
+    gap: 20px;
+}
+
+.accionesObservador button {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+
+
+.accionesObservador button:nth-child(1) {
+    background-color: rgb(31, 160, 31); 
+    border: 1px solid green;
+}
+
+.accionesObservador button:nth-child(2){
+    background-color: rgb(203, 59, 59); 
+    border: 1px solid darkred;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -24,7 +24,7 @@ app.get('/buscar', (req, res) => {
 })
 
 app.get('/perfil', (req, res) => {
-    res.render('perfil');
+    res.render('denuncia');
 })
 
 app.get('/publicaciones/seguidas', (req, res) => {

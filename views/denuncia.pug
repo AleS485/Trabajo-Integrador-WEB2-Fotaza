@@ -1,29 +1,27 @@
 extends layout 
 
 block content 
-    
-    div.contenedorVistaDenuncia
 
-        div.vistaDenunciaSuperior
-            div.vistaDenunciaFoto
-                img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+    div.contenedorPanelDenuncia
+        h1 Panel de denuncia 
+        form(action="") 
+            p Elija el motivo de su denuncia: 
+            select(name="motivo")
+                option(value="1") motivo1
+                option(value="2") motivo2   
+                option(value="3") motivo3
+                option(value="4") motivo4
+                option(value="5") motivo5
+            p Comentarios Adicionales: 
+            textarea(name="justificacionUsuario", placeholder="Agregue aqui su justificacion para su denuncia")
+            button(type="submit") Realizar Denuncia
 
-            div.vistaDetallesDenuncia  
-                p Denuncia de: nombreusuario 
-                p Comentario(si hay)
-                p motivo: aca va el motivo
-                p justificacion: 
-                div.justificacionUsuarioDenuncia
-                    p aca va la justificacion
 
 
 
-        div.vistaDenunciaInferior
-            form
-                input(type="text", placeholder="aca observacion")
-                div.accionesObservador
-                    button(type="submit") aceptar denuncia
-                    button(type="submit") rechazar denuncia
+
+
+
 
 
 

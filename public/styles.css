@@ -1034,10 +1034,86 @@ li a:hover{
 }
 
 
+/* estilos para vista de realizar denuncia */
+
+.contenedorPanelDenuncia{
+
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 5px;
+    width: 500px;
+    height: 540px;
+    border-radius: 25px;
+}
+
+.contenedorPanelDenuncia h1{
+
+    font-size: 35px;
+    font-weight: bold;
+
+}
+
+.contenedorPanelDenuncia form{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+
+}
+
+.contenedorPanelDenuncia form p {
+
+    font-size: 25px;
+    text-align: center;
+}
+
+.contenedorPanelDenuncia form select{
+
+    width: 100%;
+    height: 5vh;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+
+.contenedorPanelDenuncia form textarea{
+
+    padding: 10px;
+    height: 16vh;
+    font-size: 15px;
+    border-radius: 10px;
+
+} 
+
+.contenedorPanelDenuncia form button{
+
+    padding: 5px;
+    height: 5vh;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    background-color: rgb(225, 82, 82);
+    color: white;
+}
+
+.contenedorPanelDenuncia form button:hover{
+
+    border: 2px solid black;
+    background-color: rgb(164, 53, 53);
+
+}
 
 
 
 
+/*   */
 
 
 

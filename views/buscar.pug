@@ -1,8 +1,40 @@
 extends layout 
 
 block content 
-    h1 Vista buscar
-    p aca cargarian las fotos
+    div.contenedorPlantillaBuscar
+
+        div.contenedorBuscar 
+
+        form(action="") 
+            div.contenedorControlesFiltros
+                div.buscarEtiquetas
+                    p Agregue etiquetas para filtrar:
+                    input(type="text")
+                    div.contenedorEtiquetasAgregadas 
+                        p etiqueta1 
+                        p etiqueta2 
+                        p etiqueta3
+                        p etiqueta4
+                        p etiqueta5
+                        p etiqueta6
+
+
+
+                div.buscarFechas
+                    p Filtrar por fecha 
+                    label(for="") Antes de: 
+                    input(type="date", name="")
+                    label(for="") Despues de: 
+                    input(type="date", name="")   
+
+
+
+            div.contenedorBuscarFiltros
+                button(type="submit") Buscar  
+
+
+
+        div.contenedorPublicacionesBuscadas
 
 
 

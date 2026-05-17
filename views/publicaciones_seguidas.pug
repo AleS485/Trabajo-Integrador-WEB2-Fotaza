@@ -1,8 +1,18 @@
 extends layout 
 
 block content 
-    h1 Vista publicaciones seguidas
-    p fotos
+    
+    div.contenedorPublicacionesSeguidas
+        h1 Publicaciones de gente que seguis 
+
+        div.contenedorParaDistintasFotos 
+            each publicacion in [1, 2, 3, 4, 5, 6, 7]
+                div.contenedorDePublicacion
+                    a(href="/")
+                        img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="foto") 
+
+        
+    
 
 
 

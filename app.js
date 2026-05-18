@@ -44,7 +44,7 @@ app.get('/colecciones/crear', (req, res) => {
 })
 
 app.get('/colecciones', (req, res) => {
-    res.render('colecciones_mostrar');
+    res.render('coleccionSeleccionada');
 })
 
 app.get('/notificaciones', (req, res) => {

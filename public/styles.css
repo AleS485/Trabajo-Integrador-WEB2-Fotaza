@@ -1742,10 +1742,71 @@ li a:hover{
 }
 
 
+/* estilos para coleccion seleccionada */
 
 
 
 
+.contenedorColeccionSeleccionada{
+
+    display: flex;
+    border: 2px solid red;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    margin-top: 2vh;
+
+}
+
+.contenedorColeccionSeleccionada h1{
+
+    font-size: 40px;
+    margin-top: 2vh;
+
+}
+
+
+
+.contenedorImagenesDeColeccion{
+    border: 2px solid blue;
+    padding: 20px; 
+    width: 90%; 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px; 
+}
+
+
+
+
+.cuadroColeccionMostrada {
+    border: 1px solid black; 
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.cuadroColeccionMostrada:hover{
+
+    background-color: rgb(155, 153, 153);
+    scale: 1.1;
+
+}
+
+
+.cuadroColeccionMostrada img {
+    width: 100%;
+    height: 450px; 
+    object-fit: cover; 
+    border-radius: 8px;
+}
 
 
 

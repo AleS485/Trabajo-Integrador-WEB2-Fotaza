@@ -1668,16 +1668,78 @@ li a:hover{
 }
 
 
+/* estilos plantilla mostrar colecciones  */
+
+
+.contenedorMostrarColecciones{
+
+    display: flex;
+    border: 2px solid red;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    margin-top: 2vh;
+
+}
+
+.contenedorMostrarColecciones h1{
+
+    font-size: 40px;
+    margin-top: 2vh;
+
+}
+
+
+
+.coleccionesCreadas{
+    border: 2px solid blue;
+    padding: 20px; 
+    width: 90%; 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px; 
+}
 
 
 
 
+.cuadroColeccion {
+    border: 1px solid black; 
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.cuadroColeccion:hover{
+
+    background-color: rgb(155, 153, 153);
+    scale: 1.1;
+
+}
 
 
+.cuadroColeccion img {
+    width: 100%;
+    height: 250px; 
+    object-fit: cover; 
+    border-radius: 8px;
+}
 
 
-
-
+.cuadroColeccion h1 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    text-align: center;
+}
 
 
 

@@ -5,36 +5,44 @@ block content
 
         div.contenedorBuscar 
 
-        form(action="") 
-            div.contenedorControlesFiltros
-                div.buscarEtiquetas
-                    p Agregue etiquetas para filtrar:
-                    input(type="text")
-                    div.contenedorEtiquetasAgregadas 
-                        p etiqueta1 
-                        p etiqueta2 
-                        p etiqueta3
-                        p etiqueta4
-                        p etiqueta5
-                        p etiqueta6
+            form(action="") 
+                div.contenedorControlesFiltros
+                    div.buscarEtiquetas
+                        h2 Agregue etiquetas para filtrar:
+                        input(type="text")
+                        div.contenedorEtiquetasAgregadas 
+                            p etiqueta1 
+                            p etiqueta2 
+                            p etiqueta3
+                            p etiqueta4
+                            p etiqueta5
+                            p etiqueta6
+                            p etiqueta7
+                            p etiqueta8
+                            p etiqueta9 
 
 
 
-                div.buscarFechas
-                    p Filtrar por fecha 
-                    label(for="") Antes de: 
-                    input(type="date", name="")
-                    label(for="") Despues de: 
-                    input(type="date", name="")   
+                    div.buscarFechas
+                        h2 Filtrar por fecha 
+                        label(for="") Antes de: 
+                        input(type="date", name="")
+                        label(for="") Despues de: 
+                        input(type="date", name="")   
 
 
 
-            div.contenedorBuscarFiltros
-                button(type="submit") Buscar  
+                div.contenedorBuscarFiltros
+                    button(type="submit") Buscar  
 
 
 
         div.contenedorPublicacionesBuscadas
+            each publicacion in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                div.contenedorDePublicacionBuscada
+                    a(href="/")
+                        img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="foto") 
+
 
 
 

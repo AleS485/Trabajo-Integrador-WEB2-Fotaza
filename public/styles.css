@@ -1550,6 +1550,130 @@ li a:hover{
 
 
 
+/* estilos para seguidores */
+
+
+.contenedorSeguidoresPerfil{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+    width: 70%;
+    margin-top: 5vh;
+    gap: 25px;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.contenedorSeguidoresPerfil h1{
+
+    text-align: center;
+    margin-top: 2vh;
+
+}
+
+.seguidorPerfil{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid blue;
+    padding: 15px;
+    gap: 20px;
+    border-radius: 15px;
+    width: 50%;
+
+}
+
+.seguidorPerfil a{
+
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+
+.seguidorPerfil img{
+
+    
+    width: 120px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid white;
+
+}
+
+
+
+/* vistas para plantilla seguidos perfil */
+
+
+
+.contenedorSeguidosPerfil{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+    width: 70%;
+    margin-top: 5vh;
+    gap: 25px;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.contenedorSeguidosPerfil h1{
+
+    text-align: center;
+    margin-top: 2vh;
+
+}
+
+.seguidoPerfil{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid blue;
+    padding: 15px;
+    gap: 20px;
+    border-radius: 15px;
+    width: 50%;
+
+}
+
+.seguidoPerfil a{
+
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+
+.seguidoPerfil img{
+
+    
+    width: 120px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid white;
+
+}
+
+
+
+
+
+
+
+
 
 
 

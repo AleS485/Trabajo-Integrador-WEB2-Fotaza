@@ -1,8 +1,52 @@
 extends layout 
 
 block content 
-    h1 Vista chats
-    p aca van los chats
+    div.contenedorChats 
+        div.contenedorChatsCargados 
+            each chat in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+                div.contenedorChatExistente
+                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+                    a(href="") Usuario  
+
+
+
+        div.contenedorMensajesChats 
+
+
+            div.contenedorSuperiorMensajes 
+                div.mensajeChat.recibido
+                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+                    p hola si, estoy interesado en esto
+                div.mensajeChat.enviado
+                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+                    p dale nos ponemos en contacto
+                div.mensajeChat.recibido
+                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+                    p dale nos ponemos en contacto    
+                div.mensajeChat.recibido
+                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+                    p dale nos ponemos en contacto
+                div.mensajeChat.enviado
+                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+                    p dale nos ponemos en contacto
+                div.mensajeChat.recibido
+                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+                    p dale nos ponemos en contacto
+                div.mensajeChat.enviado
+                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+                    p dale nos ponemos en contacto
+                div.mensajeChat.recibido
+                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+                    p dale nos ponemos en contacto
+                div.mensajeChat.recibido
+                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+                    p dale nos ponemos en contacto
+
+            div.campoEscribirChat
+                form(action="")
+                    input(type="text", name="", placeholder="Escriba un mensaje")
+                    button(type="submit") Enviar
+
 
 
 

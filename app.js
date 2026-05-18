@@ -48,7 +48,7 @@ app.get('/colecciones', (req, res) => {
 })
 
 app.get('/notificaciones', (req, res) => {
-    res.render('reportesValidador');
+    res.render('login');
 })
 
 app.get('/logout', (req, res) => {

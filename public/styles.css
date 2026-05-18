@@ -1879,18 +1879,83 @@ li a:hover{
 
 
 
+/* estilos para vistar logear usuario */
 
+.loginUsuario{
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    border: 2px solid red;
+    height: 550px;
+    border-radius: 20px;
+    gap: 15px;
 
+}
 
+.loginUsuario h1{
 
+    font-size: 50px;
 
+}
 
+.loginUsuario form{
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    border: 2px solid red;
+    padding: 25px;
+    width: 85%;
 
+}
 
+.loginUsuario form label{
 
+    font-size: 30px;
+    font-weight: bold;
 
+}
+
+.loginUsuario form input{
+
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #cbcbcb;
+    border-radius: 5px;
+    text-align: center;
+
+}
+
+.loginUsuario form input:focus{
+
+    text-align: center;
+
+}
+
+.loginUsuario form button{
+
+    width: 100%;
+    padding: 15px;
+    font-size: 22px;
+    background-color: #4886dd;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: .2s;
+    border: 2px solid grey;
+
+}
+
+.loginUsuario form button:hover{
+
+    background-color: #7e9dca;
+
+}
 
 
 

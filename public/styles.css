@@ -1484,6 +1484,89 @@ li a:hover{
 
 
 
+/* estilos para plantilla de notificaciones  */ 
+
+.contenedorNotificaciones{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+    width: 70%;
+    margin-top: 5vh;
+    gap: 20px;
+    border-radius: 15px;
+
+}
+
+.notificacion{
+
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 15px;
+    border-radius: 15px;
+    width: 50%;
+}
+
+.notificacion img{
+
+    width: 120px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid white;
+
+}
+
+.notificacion p{
+
+    font-size: 25px;
+    font-weight: bold;
+
+}
+
+.notificacion form{
+
+    width: 40%;
+
+
+}
+
+.notificacion button{
+
+    width: 85%;
+    padding: 15px;
+    font-size: 15px; 
+    border-radius: 10px;
+    border: 1px solid gray;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

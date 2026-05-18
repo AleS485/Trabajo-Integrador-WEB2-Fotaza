@@ -28,7 +28,7 @@ Usuario.init(
             unique: true,
         },
         avatarUsuario:{
-            type: DataTypes.STRING(250),
+            type: DataTypes.BLOB('long'),
             allowNull: false
         },
         isValidador:{

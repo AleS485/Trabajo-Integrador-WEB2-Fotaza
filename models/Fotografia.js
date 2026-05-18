@@ -14,7 +14,7 @@ Fotografia.init(
             type: DataTypes.INTEGER,
         },
         urlArchivo:{
-            type: DataTypes.STRING(250),
+            type: DataTypes.BLOB('long'),
             allowNull: false,
         },
         isCopyright:{

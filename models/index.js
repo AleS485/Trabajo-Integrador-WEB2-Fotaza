@@ -139,7 +139,7 @@ export async function funcionSync(){
         await sequelize.authenticate() // testear la conexion
         console.log('[+] Conexion a bd establecida')
 
-        await sequelize.sync({ alter: true })
+        await sequelize.sync({ alter: true})
         console.log('[+] Sincronizado de modelos')
     } catch(err){
         console.error('[+] Error en la conexion a la bd ' + err);

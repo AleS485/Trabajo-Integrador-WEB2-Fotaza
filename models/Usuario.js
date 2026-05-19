@@ -57,19 +57,6 @@ Usuario.init(
 
 
 
-// usuario
-// id_usuario not null autoincremental
-// nombre_usuario not null varchar(50)
-// apellido_usuario not null varchar(50)
-// password_usuario not null varchar(250)
-// email not null varchar(100)
-// avatar_usuario null varchar(250)
-// isvalidador boolean not null
-// estadoUsuario not null boolean (para ver si esta activo o no)
-// fecha_desactivacion null date?
-// -- auditoria
-// createdAt fecha creacion en mi bd
-// deletedAt => null / Date
 
 
 

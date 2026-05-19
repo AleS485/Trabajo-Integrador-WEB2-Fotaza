@@ -1,6 +1,11 @@
 import 'dotenv/config';
 import express from 'express';
+import perfilRouter from './routes/perfil.js';
+import buscarRouter from './routes/buscar.js'
+import publicacionesRouter from './routes/publicaciones.js'
 import { funcionSync } from './models/index.js';
+
+
 
 const PORT = process.env.PORT;
 
@@ -19,17 +24,11 @@ app.get('/', (req, res) => {
     res.render('home');
 })
 
-app.get('/buscar', (req, res) => {
-    res.render('buscar');
-})
+app.use('/buscar', buscarRouter);
 
-app.get('/perfil', (req, res) => {
-    res.render('denuncia');
-})
+app.use('/perfil', perfilRouter);
 
-app.get('/publicaciones/seguidas', (req, res) => {
-    res.render('publicaciones_seguidas'); // cambiar render temporal
-})
+app.use('/publicaciones', publicacionesRouter);
 
 app.get('/publicaciones/crear', (req, res) => {
     res.render('crear_publicacion');

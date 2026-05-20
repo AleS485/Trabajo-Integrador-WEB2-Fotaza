@@ -1,8 +1,11 @@
 import 'dotenv/config';
 import express from 'express';
 import perfilRouter from './routes/perfil.js';
-import buscarRouter from './routes/buscar.js'
-import publicacionesRouter from './routes/publicaciones.js'
+import buscarRouter from './routes/buscar.js';
+import publicacionesRouter from './routes/publicaciones.js';
+import chatsRouter from './routes/chat.js';
+import coleccionesRouter from './routes/coleccion.js';
+import notificacionesRouter from './routes/notificacion.js';
 import { funcionSync } from './models/index.js';
 
 
@@ -30,25 +33,12 @@ app.use('/perfil', perfilRouter);
 
 app.use('/publicaciones', publicacionesRouter);
 
-app.get('/publicaciones/crear', (req, res) => {
-    res.render('crear_publicacion');
-})
+app.use('/chats', chatsRouter);
 
-app.get('/chats', (req, res) => {
-    res.render('chats');
-})
+app.use('/colecciones', coleccionesRouter);
 
-app.get('/colecciones/crear', (req, res) => {
-    res.render('crear_coleccion');
-})
+app.use('/notificaciones', notificacionesRouter);
 
-app.get('/colecciones', (req, res) => {
-    res.render('coleccionSeleccionada');
-})
-
-app.get('/notificaciones', (req, res) => {
-    res.render('login');
-})
 
 app.get('/logout', (req, res) => {
     res.send('Cerrando sesión');

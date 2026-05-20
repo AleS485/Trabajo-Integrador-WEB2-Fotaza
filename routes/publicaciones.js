@@ -15,12 +15,29 @@ router.get('/seguidas', (req, res) => {
 
 })
 
+
+router.get('/editar/:id', (req, res) => {
+
+    res.render('editar_publicacion');
+
+})
+
+router.post('editar/:id', (req, res) => {
+
+    res.send('Publicacion Modificada con exito');
+
+})
+
+router.post('/eliminar/:id', (req, res) => {
+
+    res.send('Publicacion eliminada');
+
+})
+
 router.get('/:id', (req, res) =>{
 
     res.render('publicacion');
 
 })
-
-
 
 export default router;

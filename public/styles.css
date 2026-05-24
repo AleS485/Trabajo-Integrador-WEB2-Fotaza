@@ -465,94 +465,66 @@ li a:hover{
 
 /* Seccion inicio  */
 
-.home{
+
+
+.home {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center;
+    width: 100%;
+    min-height: 100vh; 
+    box-sizing: border-box;
+    border: 2px solid red;
+}
+
+.tituloInicio {
+    text-align: center;
+    font-size: 6vh;
+    margin-top: 25px;    
+    margin-bottom: 20px; 
+}
+
+.panelFotografias {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px;          
+    padding: 25px;      
+    width: 90%;         
+    max-width: 1600px;  
+}
+
+.fotoMostrada {
+    border: 2px solid green;
+    background-color: white;
+    padding: 25px;
+    border-radius: 25px;
+    display: flex;      
     justify-content: center;
     align-items: center;
-    border: 2px solid red;
+}
+
+
+.fotoMostrada img {
+    width: 100%;        
+    height: 420px;      
+    border-radius: 10px;
+    object-fit: cover;  
+}
+
+
+.footer {
     width: 100%;
 }
 
 
-.tituloInicio{
-
-    text-align: center;
-    font-size: 6vh;
-    margin-top: 45px;
-
-}
-
-.primerFilaTendencias{
-
-    display: flex;
-    flex-direction: row;    
-    border: 2px solid blue;
-    gap: 40px;
-    margin-top: 25px;
-    padding: 25px;
-}
-
-.segundaFilaTendencias{
-
-    display: flex;
-    flex-direction: row;
-    border: 2px solid blue;
-    gap: 40px;
-    margin-top: 40px;
-    padding: 25px;
-}
-
-.fotoTendencia{
-
-    border: 2px solid green;
-    background-color: white;
-    padding: 25px;
-    border-radius: 25px;
-}
-
-.fotoTendencia img{
-    height: 350px;
-    width: 350px;
-    border-radius: 10px;
-    object-fit: cover;
-}
-
-.fotoOtros img{
-    height: 350px;
-    width: 350px;
-    border-radius: 10px;
-}
-
-.primerFilaOtros{
-
-    display: flex;
-    flex-direction: row;    
-    border: 2px solid blue;
-    gap: 40px;
-    margin-top: 7vh;
-    padding: 25px;
-}
-
-.segundaFilaOtros{
-
-    display: flex;
-    flex-direction: row;
-    border: 2px solid blue;
-    gap: 40px;
-    margin-top: 40px;
-    padding: 25px;
-    margin-bottom: 7vh;
-}
 
 
-.fotoOtros{
 
-    border: 2px solid green;
-    background-color: white;
-    padding: 25px;
-    border-radius: 25px;
-}
+
+
+
+
 
 /* seccion crear coleccion  */
 

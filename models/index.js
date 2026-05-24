@@ -148,6 +148,29 @@ export async function funcionSync(){
 
 }
 
+// export de todos los modelos para que tome relaciones
+export {
+    Usuario,
+    Publicacion,
+    Etiqueta,
+    PublicacionEtiqueta,
+    Favorito,
+    Coleccion,
+    ColeccionPublicacion,
+    Comentario,
+    Fotografia,
+    MarcaDeAgua,
+    Motivo,
+    Denuncia,
+    Valoracion,
+    Interes,
+    Chat,
+    Mensaje,
+    Seguidor,
+    Notificacion,
+    Evento
+};
+
 // force no recomienda tenerlo activado
 
 

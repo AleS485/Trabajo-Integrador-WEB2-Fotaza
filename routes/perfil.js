@@ -1,15 +1,16 @@
 import { Router } from "express"
 import { obtenerUsuario } from '../controller/usuario.js';
-import { contadorSeguidores, contadorSeguidos } from '../controller/seguidor.js';
+import { contadorSeguidores, contadorSeguidos, obtenerSeguidores, obtenerSeguidos } from '../controller/seguidor.js';
 
 // /perfil
+
 const router = Router()
 
 router.get("/", (req, res) => {
 
     res.render('perfil');
 
-})
+});
 
 
 router.get('/:id', async (req, res) => {
@@ -37,19 +38,29 @@ router.get('/:id', async (req, res) => {
     });
 
 
-})
+});
 
-router.get('/:id/seguidores', (req, res) => {
+router.get('/:id/seguidores', async (req, res) => {
 
-    res.render('seguidores');
+    const idUsuario = req.params.id;
+    const seguidoresUsuario = await obtenerSeguidores(idUsuario);
 
-})
+    res.render('seguidores', {
+        seguidores: seguidoresUsuario
+    });
 
-router.get('/:id/seguidos', (req, res) => {
+});
 
-    res.render('seguidos');
+router.get('/:id/seguidos', async (req, res) => {
 
-})
+    const idUsuario = req.params.id;
+    const seguidosUsuario = await obtenerSeguidos(idUsuario);
+
+    res.render('seguidos', {
+        seguidos: seguidosUsuario
+    });
+
+});
 
 
 export default router;

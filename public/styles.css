@@ -1525,59 +1525,65 @@ li a:hover{
 /* estilos para seguidores */
 
 
-.contenedorSeguidoresPerfil{
 
+
+
+.contenedorSeguidoresPerfil {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    border: 2px solid red;
-    width: 70%;
-    margin-top: 5vh;
-    gap: 25px;
+    border: 2px solid red; 
+    width: 60%;
+    margin-top: 80px; 
+    margin-bottom: 80px; 
+    padding: 25px;
     border-radius: 15px;
-    padding: 10px;
+    background-color: #ffffff;
 }
 
-.contenedorSeguidoresPerfil h1{
-
+.contenedorSeguidoresPerfil h1 {
     text-align: center;
-    margin-top: 2vh;
-
+    margin-bottom: 25px;
+    font-size: 32px;
+    color: #333;
 }
 
-.seguidorPerfil{
 
+.seguidorPerfil {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start; 
     align-items: center;
-    border: 2px solid blue;
-    padding: 15px;
-    gap: 20px;
+    border: 2px solid blue;      
+    padding: 15px 30px;
+    gap: 25px;
     border-radius: 15px;
-    width: 50%;
-
+    width: 85%;                  
+    background-color: #fcfcfc;
+    margin-bottom: 15px;         
 }
 
-.seguidorPerfil a{
 
-    font-size: 30px;
+
+.seguidorPerfil a {
+    font-size: 24px;
     font-weight: bold;
     text-decoration: none;
+    color: #4b146b;              
+}
 
+.seguidorPerfil img {
+    width: 80px;                 
+    height: 80px;
+    border-radius: 50%;          
+    border: 2px solid #ddd;
+    object-fit: cover;           
 }
 
 
-.seguidorPerfil img{
 
-    
-    width: 120px;
-    height: 100px;
-    border-radius: 50%;
-    border: 1px solid white;
 
-}
+
 
 
 
@@ -1585,59 +1591,68 @@ li a:hover{
 
 
 
-.contenedorSeguidosPerfil{
 
+.contenedorSeguidosPerfil {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    border: 2px solid red;
-    width: 70%;
-    margin-top: 5vh;
-    gap: 25px;
+    border: 2px solid red; 
+    width: 60%;
+    margin-top: 80px; 
+    margin-bottom: 80px; 
+    padding: 25px;
     border-radius: 15px;
-    padding: 10px;
+    background-color: #ffffff;
 }
 
-.contenedorSeguidosPerfil h1{
-
+.contenedorSeguidosPerfil h1 {
     text-align: center;
-    margin-top: 2vh;
-
+    margin-bottom: 25px;
+    font-size: 32px;
+    color: #333;
 }
 
-.seguidoPerfil{
 
+.seguidoPerfil {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start; 
     align-items: center;
-    border: 2px solid blue;
-    padding: 15px;
-    gap: 20px;
+    border: 2px solid blue;      
+    padding: 15px 30px;
+    gap: 25px;
     border-radius: 15px;
-    width: 50%;
-
+    width: 85%;                  
+    background-color: #fcfcfc;
+    margin-bottom: 15px;         
 }
 
-.seguidoPerfil a{
 
-    font-size: 30px;
+
+.seguidoPerfil a {
+    font-size: 24px;
     font-weight: bold;
     text-decoration: none;
+    color: #4b146b;              
+}
 
+.seguidoPerfil img {
+    width: 80px;                 
+    height: 80px;
+    border-radius: 50%;          
+    border: 2px solid #ddd;
+    object-fit: cover;           
 }
 
 
-.seguidoPerfil img{
 
-    
-    width: 120px;
-    height: 100px;
-    border-radius: 50%;
-    border: 1px solid white;
 
-}
+
+
+
+
+
+
 
 
 /* estilos plantilla mostrar colecciones  */

@@ -1,4 +1,5 @@
 import { Router } from "express"
+import { obtenerDatosDePublicacion } from "../controller/publicacion.js";
 
 // /publicaciones
 const router = Router()
@@ -34,9 +35,18 @@ router.post('/eliminar/:id', (req, res) => {
 
 })
 
-router.get('/:id', (req, res) =>{
+router.get('/:id', async (req, res) =>{ // mostrar
 
-    res.render('publicacion');
+    const idPublicacion = req.params.id;
+    const datosBuscadosDePublicacion = await obtenerDatosDePublicacion(idPublicacion);
+
+    if(!datosBuscadosDePublicacion){
+        return res.status(404).send('No se lograron encontrar los datos de esta publicacion');
+    }
+
+    res.render('publicacion', {
+        publicacion: datosBuscadosDePublicacion
+    })
 
 })
 

@@ -597,296 +597,313 @@ li a:hover{
 /* Seccion para plantilla de publicacion  */
 
 
-.contenedorPublicacion{
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid green;
-    width: 75vw;
-    margin-top: 7vh;
-}
 
-.seccionSuperior{
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid red;
-    width: 85%;
-    padding: 5px;
 
-}
-
-.divisorImagen{
-
-    border: 2px solid blue;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.contenedorPublicacion {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-
-
+    color: #333;
 }
 
-.divisorImagen a{
-
-    border: 2px solid black;
-    padding: 15px;
-    background-color: white;
-    border-radius: 45%;
-    font-size: 20px;
-
+.infoPublicacionGeneral {
+    margin-bottom: 20px;
 }
 
-.divisorInfo{
-
-    border: 2px solid rgb(241, 213, 0);
+.autorPublicacion {
     display: flex;
-    flex-direction: column;
-
-}
-
-.infoPublicacion{
-
-    display: flex;
-    border: 2px solid maroon;
-    flex-direction: column;
-    word-wrap: break-word;     
-    word-break: break-all;
-    padding: 10px;
-}
-
-.autorPublicacion{
-    display: flex;
-    border: 2px solid green;
-    flex-direction: row;
     align-items: center;
+    gap: 12px;
+    margin: 15px 0;
 }
 
-.autorPublicacion a{
-    text-decoration: none;
-    font-size: 20px;
-}
-
-.etiquetasPublicacion{
-    display: flex;
-    gap: 10px;
-}
-
-.seccionComentariosPublicacion{
-
-    display: flex;
-    flex-direction: column;
-    border: 2px solid yellowgreen;
-    max-height: 62vh;
-    overflow: scroll;
-    padding: 5px;
-}
-
-.comentario{
-
-    display: flex;
-    border: 2px solid rgb(115, 171, 245);
-    padding: 25px;
-    gap: 10px;
-
-}
-
-.fotoComentario{
-
-    padding: 5px;
-    border: 2px solid black;
-    
-}
-
-.contenidoComentario a{
-
-    text-decoration: none;
-    font-size: 20px;
-
-}
-
-.textoComentario{
-
-    border: 2px solid black;
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-    max-width: 95%;
-    /*propiedades de palabras largas*/
-    word-wrap: break-word;     
-    word-break: break-all;
-
-}
-
-.accionesComentario{
-
-    display: flex;
-    border: 2px solid black;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    padding: 10px;
-
-}
-
-.accionesComentario button{
-    padding: 5px;
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-.seccionComentar{
-
-    display: flex;
-    padding: 10px;
-    border: 2px solid purple;
-    justify-content: center;
-    align-items: center;
-}
-
-.seccionComentar form{
-
-    display: flex;
-    gap: 15px;
-    width: 100%;
-
-}
-
-.seccionComentar input{
-
-    border: 1px solid grey;
-    width: 85%;
-    font-size: 18px;
-    padding: 10px;
-    border-radius: 25px;
-
-}
-
-.seccionComentar button{
-
-    font-size: 18px;
-    padding: 5px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-
-.divisorImagen img{
-
-    width: 450px;
-
-}
-
-.autorPublicacion img{
-
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-}
-
-.fotoComentario img{
-
-    height: 50px;
+.autorPublicacion img {
     width: 50px;
+    height: 50px;
     border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ccc;
 }
 
 
-.seccionInferior{
+.autorPublicacion a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
 
+.autorPublicacion a:hover {
+    color: #d71313;
+}
+
+.etiquetasPublicacion {
+    margin: 15px 0;
+}
+
+.etiquetasPublicacion span {
+    background-color: #f0f0f0;
+    padding: 6px 12px;
+    margin-right: 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.seccionAccionesGenerales {
     display: flex;
-    border: 2px solid rgb(84, 12, 160);
-    width: 85%;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-.seccionAcciones{
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid red;
-    padding: 15px;
-    gap: 5px;
-    width: 25%;
-
-}
-
-
-
-.seccionAcciones form{
-
-    width: 100%;
-
-}
-
-.seccionAcciones button{
-
-    padding: 10px;
-    width: 100%;
-    font-size: 15px;
+.seccionAccionesGenerales button {
+    padding: 8px 16px;
     cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 4px;
+}
 
+.btn-cerrar-comentarios {
+    background-color: #f8f9fa;
+    border-color: #d3d3d3;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 35px 0;
 }
 
 
+.bloque-tarjeta-foto {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
 
-
-.seccionValorizaciones{
-
+.seccionSuperior {
     display: flex;
-    width: 85%;
-    height: 22.5vh;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid red;
-    padding: 15px;
     gap: 25px;
 }
 
-.valorizarImagen{
+.divisorImagen {
+    flex: 1;
+}
 
+.divisorImagen img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: contain;
+    background-color: #fafafa;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+}
+
+.divisorInfo {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-
 }
 
-.valorizarImagen input{
-
-    font-size: 25px;
-
+.divisorInfo h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
 }
 
-.promedioValorizacion{
+.seccionComentariosPublicacion {
+    flex-grow: 1;
+    height: 280px;
+    overflow-y: scroll;
+    border: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
 
+
+.comentario {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #eee;
+}
+
+.cabeceraComentario {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    font-size: 30px;
+    margin-bottom: 6px;
 }
 
-.cantidadValorizaciones{
-
+.autorComentarioIndividual {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    font-size: 30px;
+    gap: 8px;
 }
+
+.autorComentarioIndividual img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+
+
+.autorComentarioIndividual a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.autorComentarioIndividual a:hover {
+    color: #d71313;
+}
+
+
+.accionesComentarioIndividual {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-mini {
+    padding: 3px 8px;
+    font-size: 11px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+.btn-reportar:hover {
+    background-color: #fff0f0; color: #cc0000; 
+}
+.btn-borrar:hover { 
+    background-color: #fee; color: #cc0000; border-color: #cc0000; 
+}
+
+
+.cuerpoComentario {
+    padding-left: 40px;
+}
+
+.cuerpoComentario p {
+    margin: 4px 0;
+}
+
+.cuerpoComentario p.small {
+    color: #777;
+    font-size: 12px;
+}
+
+
+.seccionComentar form {
+    display: flex;
+    gap: 10px;
+}
+
+.seccionComentar input{
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.seccionComentar button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.seccionInferior {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.seccionValorizaciones {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.seccionValorizaciones form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-votar {
+    margin-left: 10px;
+    padding: 5px 12px;
+    cursor: pointer;
+}
+
+.datos-votos {
+    display: flex;
+    gap: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.seccionReporteFoto {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.seccionReporteFoto button {
+    background-color: #fff5f5;
+    color: #cc0000;
+    border: 1px solid #cc0000;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.seccionReporteFoto button:hover {
+    background-color: #ffe5e5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

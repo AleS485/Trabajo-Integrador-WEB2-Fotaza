@@ -1,83 +1,64 @@
 extends layout 
 
-
 block content
     div.contenedorPublicacion
-        div.seccionSuperior
-            
-            
-            div.divisorImagen
-                a.flechaIzquierda(href="/")  <
-                img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
-                a.flechaDerecha(href="/") >
-
-
-            div.divisorInfo
-                div.infoPublicacion
-                    h1 Titulo Publicacion 
-                    div.autorPublicacion
-                        img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
-                        a(href="/")  Nombre autor
-                    p Esto es para la descripcion de la PUBLICACION lalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalala
-                    div.etiquetasPublicacion
-                        each etitqueta in [1, 2, 3, 4]
-                            p etiqueta
-                    p fecha publicacion 
-
-                
-                
-                div.seccionComentariosPublicacion
-                    each comentario in [1, 2, 3, 4, 5, 6]
-                        div.comentario
-                            div.fotoComentario
-                                img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
-                            
-                            div.contenidoComentario
-                                div.autorComentario
-                                    a(href="") Autor 
-                                div.textoComentario
-                                    p aca va el comentario entero lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalo lalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalal
-                                div.fechaComentario
-                                    p fecha comentario
-                            
-                            div.accionesComentario
-                                form(action="")
-                                    button Reportar Comentario
-                                form(action="")
-                                    button Borrar Comentario 
-                div.seccionComentar
-                    form(action="")
-                        input(type="text" placeholder="comentario")
-                        button(type="submit") Comentar 
-
-        div.seccionInferior
-            
-            div.seccionAcciones
+        div.infoPublicacionGeneral
+            h1= publicacion.titulo
+            div.autorPublicacion
+                img(src="data:image/png;base64," + publicacion.avatarAutor, alt="Avatar del Autor")
+                a(href="/perfil/" + publicacion.idUsuario) Autor: #{publicacion.autor}
+            p= publicacion.descripcion 
+            div.etiquetasPublicacion
+                each etiqueta in publicacion.etiquetas
+                    span= etiqueta
+            p= publicacion.fecha
+            div.seccionAccionesGenerales
+                form(action="" + publicacion.idPublicacion) 
+                    button(type="submit") Guardar Publicacion
                 form(action="") 
-                    button(type="submit")  Guardar Publicacion
-                form(action="") 
-                    button(type="submit")  Me interesa
-                form(action="") 
-                    button(type="submit")  Reportar publicacion 
-                form(action="") 
-                    button(type="submit")  Cerrar Comentarios
-
-
-            div.seccionValorizaciones
-                div.valorizarImagen
-                    p Valora esta imagen 
-                    form(action="")
-                        each punto in [1, 2, 3, 4, 5]
-                            label(for="") #{punto}
-                            input(type="radio")
-                            span 
-                div.promedioValorizacion 
-                    p Valoracion promedio: 
-                    p puntos
-                div.cantidadValorizaciones
-                    p Valoraciones totales: 
-                    p cantidad
-
-
-
-
+                    button(type="submit") Me interesa
+                form(action="" + publicacion.idPublicacion) 
+                    button.btn-cerrar-comentarios(type="submit") Cerrar Comentarios
+        hr
+        each foto in publicacion.fotos 
+            div.bloque-tarjeta-foto
+                div.seccionSuperior
+                    div.divisorImagen
+                        img(src="data:image/png;base64," + foto.urlArchivo , alt="Fotografia")
+                    div.divisorInfo
+                        h3 Comentarios de la imagen
+                        div.seccionComentariosPublicacion
+                            each comentario in foto.comentarios
+                                div.comentario
+                                    div.cabeceraComentario
+                                        div.autorComentarioIndividual
+                                            img(src="data:image/png;base64," + comentario.avatarUsuario, alt="Avatar")
+                                            a(href="/perfil/" + comentario.idUsuario)= comentario.nombreUsuario
+                                        div.accionesComentarioIndividual
+                                            form(action="" + comentario.idComentario)
+                                                button.btn-mini.btn-reportar(type="submit") Reportar
+                                            form(action="" + comentario.idComentario)
+                                                button.btn-mini.btn-borrar(type="submit") Borrar                       
+                                    div.cuerpoComentario
+                                        p= comentario.texto
+                                        p.small= comentario.fecha
+                        div.seccionComentar
+                            form(action="")
+                                input(type="hidden" name="idFotografia" value=foto.idFotografia)
+                                input(type="text" name="comentario" placeholder="Escribe un comentario")
+                                button(type="submit") Comentar 
+                div.seccionInferior
+                    div.seccionValorizaciones
+                        p Valora esta imagen 
+                        form(action="")
+                            input(type="hidden" name="idFotografia" value=foto.idFotografia)
+                            each punto in [1, 2, 3, 4, 5]
+                                label #{punto}
+                                input(type="radio" name="valoracionPublicacion" value=punto)
+                            button.btn-votar(type="submit") Votar
+                        div.datos-votos
+                            p Valoracion promedio: #{foto.promedioValoraciones}
+                            p Valoraciones totales: #{foto.cantidadValoraciones}
+                    div.seccionReporteFoto
+                        form(action="" + foto.idFotografia)
+                            button(type="submit") Reportar imagen

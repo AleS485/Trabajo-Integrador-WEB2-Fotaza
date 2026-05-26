@@ -4,40 +4,250 @@ block content
 
     div.contenedorCreador
         h1 Crear una Publicacion 
-        form(action="")
+        form(action="/publicaciones/crear", id="formularioPublicacion", method="POST")
             div.titulo
                 label Titulo:
-                input(type="text", name="titulo")
+                input(id="tituloImagen",type="text", name="titulo")
             div.descripcion
                 label Descripcion: (opcional)
-                input(type="text", name="descripcion")
+                input(id="descripcionImagen", type="text", name="descripcion")
             div.imagenes
-                label(for="fotos") Subir imagenes
-                input(id= "fotos", type="file", name="fotos", multiple, style="display: none") 
+                label(for="img") Subir imagenes
+                input(id= "img", type="file", name="fotos", multiple, style="display: none")
+            div.imagenesNombres#imagenes-nombres
+                
             div.etiquetas
                 label Ingrese sus etiquetas: 
-                input(type="text", name="etiquetas")
-                button Agregar
-            div.etiquetas-mostrar
-                p etiqueta 
-                p etiqueta 
-                p etiqueta 
+                input(id="etiquetasImagen", type="text", name="etiquetas")
+                button#botonEtiquetas(type="button")  Agregar
+            div.errores-etiquetas
+                ul#listaErroresEtiquetas
+            div.etiquetas-mostrar#mostrador-etiquetas
+
             div.copyright-confirmar
                 p Fotos tienen copyright?
-                input(type="checkbox", name="confirmarCopy")
+                input(id="confirmacionCopyright", type="checkbox", name="confirmarCopy")
             div.marca-agua
                 label Ingrese una marca de agua: 
-                input(type="text", name="marcaAgua")
+                input(id="marcaAguaImagen", type="text", name="marcaAgua")
 
             div.elegir-marcas
                 p Selecciona las fotos con copyright:
-                div.vista-fotos
-                    each val in [1, 2, 3, 4, 5, 6, 7, 8, 9]
-                        div.miniatura-foto
-                            img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="preview")
-                            div.marcar-foto
-                                    input(type="checkbox")
+                div.vista-fotos#previaFotos
+            
+            div.errores-fotos
+                ul#listaErrores
+
             button.boton-enviar(type="submit") Crear publicacion  
+    
+    
+    
+    
+    script.
+        const form = document.getElementById('formularioPublicacion');
+        const inputTitulo = document.getElementById('tituloImagen');
+        const inputDescripcion = document.getElementById('descripcionImagen');
+        const fileInput = document.getElementById('img');
+        const contenedorNombres = document.getElementById('imagenes-nombres');
+        const inputEtiquetas = document.getElementById('etiquetasImagen');
+        const botonEtiquetas = document.getElementById('botonEtiquetas');
+        const contenedorErroresEtiquetas = document.getElementById("listaErroresEtiquetas");
+        const contenedorEtiquetas = document.getElementById('mostrador-etiquetas');
+        const checkCopyright = document.getElementById('confirmacionCopyright');
+        const inputMarcaAgua = document.getElementById('marcaAguaImagen');
+        const contenedorPreviews = document.getElementById('previaFotos');
+        const contenedorErrores = document.getElementById("listaErrores");
+
+
+        const contenedorMarcaAgua = document.querySelector('.marca-agua');
+        const contenedorFotosMarcaAgua = document.querySelector('.elegir-marcas');
+        contenedorMarcaAgua.style.display = 'none';
+        contenedorFotosMarcaAgua.style.display = 'none';
+        
+        const arregloImgs = [];
+        const arregloEtiquetas = [];
+
+        fileInput.addEventListener('change', (e) => {
+            
+            contenedorErrores.innerHTML = '';
+
+            for(let i = 0; i < e.target.files.length; i++){
+                const file = e.target.files[i];
+                const resultado = validarFile(file);
+
+                if(!resultado){
+                    const li = document.createElement('li');
+                    li.innerText = `Esta imagen ${file.name} supera los 1MB`;
+                    li.style.color = "red";
+                    contenedorErrores.appendChild(li);
+                    continue;
+                }
+
+                const reader = new FileReader();
+
+                reader.onload = () => {
+                    const imagen = {
+                        src: reader.result,
+                        name: file.name
+                    }
+
+                    arregloImgs.push(imagen);
+                    cargarImagenesAgregadas();
+                }
+
+                reader.readAsDataURL(file);
+            }
+        });
+
+        botonEtiquetas.addEventListener('click', () => {
+            contenedorErroresEtiquetas.innerHTML = "";
+            
+
+            const textoDeEtiqueta = inputEtiquetas.value.trim();
+
+            if(textoDeEtiqueta === ''){
+                const li = document.createElement('li');
+                li.style.color = "red";
+                li.innerText = 'La etiqueta no puede ser vacia';
+                contenedorErroresEtiquetas.appendChild(li);
+                return;
+            }
+
+            arregloEtiquetas.push(textoDeEtiqueta);
+            inputEtiquetas.value = '';
+            cargarEtiquetasAgregadas();
+
+        })
+
+        function validarFile(file) {
+            if (!file) return false;
+
+            if(file.size > 1000000){
+                console.error('No podes subir mas de 1mb')
+                return false;
+            }
+
+            return true;
+        }      
+
+        function cargarEtiquetasAgregadas(){
+
+            contenedorEtiquetas.innerHTML = '';
+
+            arregloEtiquetas.forEach((etiqueta, index) => {
+                
+                const divDeEtiqueta = document.createElement('div');
+                divDeEtiqueta.className = 'linea-etiqueta';
+                
+                const textoDeEtiqueta = document.createElement('p');
+                textoDeEtiqueta.innerText = etiqueta;
+
+                const botonBorrarEtiqueta = document.createElement('button');
+                botonBorrarEtiqueta.type = 'button';
+                botonBorrarEtiqueta.innerText = 'Borrar';
+
+                botonBorrarEtiqueta.addEventListener('click', () => {
+                    arregloEtiquetas.splice(index, 1);
+                    cargarEtiquetasAgregadas();
+                })
+
+                divDeEtiqueta.appendChild(textoDeEtiqueta);
+                divDeEtiqueta.appendChild(botonBorrarEtiqueta);
+
+                contenedorEtiquetas.appendChild(divDeEtiqueta);
+
+
+            })
+
+
+        }
+
+
+        function cargarImagenesAgregadas(){
+
+            contenedorNombres.innerHTML = '';
+
+            arregloImgs.forEach((imagen, index) => {
+                const divLineaImagen = document.createElement('div');
+                divLineaImagen.className = 'linea-imagen';
+                
+                const textoNombre = document.createElement('p');
+                textoNombre.innerText = imagen.name;
+
+                const botonBorrarImagen = document.createElement('button');
+                botonBorrarImagen.type = 'button';
+                botonBorrarImagen.innerText = 'Borrar';
+
+                botonBorrarImagen.addEventListener('click', () => {
+                    arregloImgs.splice(index, 1);
+                    cargarImagenesAgregadas();
+                })
+
+                divLineaImagen.appendChild(textoNombre);
+                divLineaImagen.appendChild(botonBorrarImagen);
+
+                contenedorNombres.appendChild(divLineaImagen);
+            })
+
+
+        }
+
+        checkCopyright.addEventListener('change', (e) => {
+            if(e.target.checked){
+                contenedorMarcaAgua.style.display = 'block';
+                contenedorFotosMarcaAgua.style.display = "block";
+                agregarMiniaturasCopyright();
+            } else{
+                contenedorMarcaAgua.style.display = 'none';
+                contenedorFotosMarcaAgua.style.display = "none";
+
+                contenedorPreviews.innerHTML = '';
+
+            }
+        })
+
+        function agregarMiniaturasCopyright(){
+
+            contenedorPreviews.innerHTML = '';
+
+            arregloImgs.forEach((imagen, index) => {
+                const divLineaCopy = document.createElement('div');
+                divLineaCopy.className = 'linea-copy';
+
+                const imagenMiniatura = document.createElement('img');
+                imagenMiniatura.src = imagen.src;
+                imagenMiniatura.style.width = "75px";
+                imagenMiniatura.style.height = "auto";
+
+                const nombreImagenCopyright = document.createElement('p');
+                nombreImagenCopyright.innerText = imagen.name;
+
+                const checkDeImagen = document.createElement('input');
+                checkDeImagen.type = 'checkbox';
+
+                checkDeImagen.addEventListener('change', (eventoCheckIndividual) => {
+                    imagen.isCopyright = eventoCheckIndividual.target.checked;
+                });
+
+                const labelDeCheck = document.createElement('label');
+                labelDeCheck.innerText = 'Tiene copy?';
+
+                labelDeCheck.appendChild(checkDeImagen);
+                divLineaCopy.appendChild(imagenMiniatura);
+                divLineaCopy.appendChild(nombreImagenCopyright);
+                divLineaCopy.appendChild(labelDeCheck);
+
+
+
+
+                contenedorPreviews.appendChild(divLineaCopy);
+
+            })
+
+
+        }
+
+
 
 
 

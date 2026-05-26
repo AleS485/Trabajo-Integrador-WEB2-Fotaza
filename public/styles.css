@@ -177,54 +177,55 @@ li a:hover{
 
 /* estilos para crear publicacion */
 
-.contenedorCreador{
 
+
+
+
+
+
+
+.contenedorCreador {
     border: 2px solid black;
     padding: 45px;
     margin-top: 35px;
     border-radius: 25px;
     background-color: white;
-    min-height: 65vh;
     width: 45vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
-.contenedorCreador h1{
-
+.contenedorCreador h1 {
     text-align: center;
     font-size: 42px;
+    margin-bottom: 20px;
 }
 
-.contenedorCreador form{
-
+.contenedorCreador form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 35px;
     padding: 30px;
     border: 1px solid black;
     width: 100%;
 }
 
-.titulo{
-
+.titulo {
     border: 1px solid black;
-    padding: 5px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
 
-.titulo label{
+.titulo label {
     font-size: 25px;
     font-weight: bold;
 }
 
-.titulo input{
-
+.titulo input {
     border: 1px solid grey;
     width: 65%;
     font-size: 18px;
@@ -232,22 +233,21 @@ li a:hover{
     border-radius: 25px;
 }
 
-.descripcion{
-
+.descripcion {
     border: 1px solid black;
-    padding: 5px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
 
-.descripcion label{
+.descripcion label {
     font-size: 25px;
     font-weight: bold;
 }
 
-.descripcion input{
-
+.descripcion input {
     border: 1px solid grey;
     width: 65%;
     font-size: 18px;
@@ -255,16 +255,15 @@ li a:hover{
     border-radius: 25px;
 }
 
-.imagenes{
-
+.imagenes {
     border: 1px solid black;
-    padding: 5px;
+    padding: 10px;
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-.imagenes label{
+.imagenes label {
     font-size: 20px;
     font-weight: bold;
     background-color: rgb(160, 160, 160);
@@ -276,47 +275,50 @@ li a:hover{
     border: 1px solid black;
 }
 
-.imagenes label:hover{
-
+.imagenes label:hover {
     background-color: rgb(133, 132, 132);
     border: 1px solid rgb(57, 57, 57);
 }
 
-.imagenes input{
 
-    border: 2px solid rgb(233, 0, 0);
-    width: 50%;
-    font-size: 16px;
-    padding: 5px;
-    border-radius: 25px;
-    
+.imagenesNombres {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
 }
 
-.etiquetas{
+.linea-imagen {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid grey;
+}
+
+.etiquetas {
     border: 1px solid black;
     padding: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
 
-
-.etiquetas label{
+.etiquetas label {
     font-size: 25px;
     font-weight: bold;
 }
 
-.etiquetas input{
-
+.etiquetas input {
     border: 1px solid grey;
-    width: 25%;
+    width: 35%;
     font-size: 18px;
     padding: 5px;
     border-radius: 25px;
 }
 
-.etiquetas button{
-
+.etiquetas button {
     width: 20%;
     font-size: 15px;
     border-radius: 10px;
@@ -326,128 +328,128 @@ li a:hover{
     padding: 5px;
 }
 
-.etiquetas button:hover{
+.etiquetas button:hover {
     background-color: grey;
 }
 
-.etiquetas-mostrar{
+.etiquetas-mostrar {
     display: flex;
-    gap: 15px;
-    height: 5vh;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    gap: 10px;
+    width: 100%;
+    padding: 5px;
 }
 
-.etiquetas-mostrar p{
+.linea-etiqueta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     background-color: aquamarine;
-    padding: 12px;
+    padding: 8px 12px;
     border-radius: 10px;
     border: 2px solid black;
-
 }
 
-.copyright-confirmar{
-
-    width: 35%;
-    display: flex;
-    gap: 15px;
-    height: 5vh;
-    border: 2px solid black;
-    justify-content: flex-start;
-    align-items: center;
-
+.linea-etiqueta button {
+    cursor: pointer;
+    background-color: rgb(235, 60, 60);
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 2px 5px;
+    color: white;
+    transition: .2s;
 }
 
-.copyright-confirmar p {
-
-    font-size: 18px;
-    font-weight: bold;
-
+.linea-etiqueta button:hover{
+    background-color: rgb(173, 43, 43);
 }
 
-.copyright-confirmar input::content {
-
-    background: red;
-
-}
-
-
-.marca-agua{
-
+.copyright-confirmar {
     width: 100%;
     display: flex;
     gap: 15px;
-    height: 10vh;
+    padding: 10px;
     border: 2px solid black;
     justify-content: flex-start;
     align-items: center;
-
-    
 }
 
-.marca-agua label{
-
+.copyright-confirmar p {
     font-size: 18px;
     font-weight: bold;
-        
-
 }
 
-.marca-agua input{
+.marca-agua {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+    border: 2px solid black;
+    justify-content: flex-start;
+    align-items: center;
+}
 
+.marca-agua label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.marca-agua input {
     border: 1px solid grey;
     width: 38%;
     font-size: 18px;
     padding: 5px;
     border-radius: 25px;
-
 }
 
-.elegir-marcas{
-    
+
+.elegir-marcas {
     width: 100%;
     display: flex;
     gap: 10px;
-    height: 28vh;
     border: 2px solid black;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 5px;
-    
+    padding: 10px;
 }
 
-.elegir-marcas p{
+.elegir-marcas p {
     font-size: 18px;
     font-weight: bold;
 }
 
-.vista-fotos{
-    
-    /*
+
+.vista-fotos {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 15px;
-    */
-
-    /* version antigua con flex por si se rompe grid*/
-
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 15px;
-    padding: 5px;
+    padding: 10px;
     border: 1px solid black;
-    text-align: center;
 }
 
-
-.miniatura-foto img{
-    height: 65px;
-    width: 65px;
+.linea-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid black;
+    padding: 8px;
+    background-color: #f9f9f9;
 }
 
-.boton-enviar{
+.linea-copy p {
+    font-size: 12px;
+    margin: 0;
+    max-width: 90px;
+    word-break: break-all; 
+}
 
-    height: 5vh;
+.boton-enviar {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
     border-radius: 10px;
     border: 1px solid rgb(61, 61, 61);
     background-color: rgb(142, 222, 138);
@@ -456,12 +458,22 @@ li a:hover{
     transition: .2s;
 }
 
-.boton-enviar:hover{
-
+.boton-enviar:hover {
     border: 1px solid rgb(123, 122, 122);
     background-color: rgb(110, 170, 107);
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Seccion inicio  */
 
@@ -601,237 +613,218 @@ li a:hover{
 
 
 
+
 .contenedorPublicacion {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    color: #333;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 15px;
+    font-family: sans-serif;
 }
 
 .infoPublicacionGeneral {
     margin-bottom: 20px;
+    border-bottom: 2px solid black;
+    padding-bottom: 15px;
 }
 
 .autorPublicacion {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 12px;
-    margin: 15px 0;
+    gap: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .autorPublicacion img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid #ccc;
+    width: 60px;
+    height: 60px;
+    border: 2px solid black; 
 }
-
 
 .autorPublicacion a {
-    color: #333;
-    text-decoration: none;
+    color: black;
     font-weight: bold;
-    font-size: 16px;
-}
-
-.autorPublicacion a:hover {
-    color: #d71313;
+    font-size: 18px;
 }
 
 .etiquetasPublicacion {
-    margin: 15px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .etiquetasPublicacion span {
-    background-color: #f0f0f0;
-    padding: 6px 12px;
-    margin-right: 8px;
-    border-radius: 4px;
+    background-color: lightgrey;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid black;
     font-size: 14px;
-    display: inline-block;
 }
 
 .seccionAccionesGenerales {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 15px;
 }
 
 .seccionAccionesGenerales button {
-    padding: 8px 16px;
+    padding: 8px 15px;
     cursor: pointer;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    border-radius: 4px;
-}
-
-.btn-cerrar-comentarios {
-    background-color: #f8f9fa;
-    border-color: #d3d3d3;
-}
-
-hr {
-    border: 0;
-    height: 1px;
-    background: #ddd;
-    margin: 35px 0;
+    border: 2px solid black;
+    background-color: white;
+    font-weight: bold;
 }
 
 
 .bloque-tarjeta-foto {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 25px;
-    margin-bottom: 50px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border: 2px solid black;
+    padding: 20px;
+    margin-bottom: 35px;
+    background-color: white;
 }
+
 
 .seccionSuperior {
     display: flex;
-    gap: 25px;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    gap: 20px;
+    width: 100%;
 }
 
+
 .divisorImagen {
-    flex: 1;
+    width: 45%;
+    text-align: center;
 }
 
 .divisorImagen img {
     width: 100%;
-    max-height: 450px;
-    object-fit: contain;
-    background-color: #fafafa;
-    border: 1px solid #eaeaea;
-    border-radius: 4px;
+    border: 2px solid black;
 }
 
+
 .divisorInfo {
-    flex: 1;
+    width: 50%;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .divisorInfo h3 {
-    margin-top: 0;
-    margin-bottom: 15px;
+    margin: 0;
+    font-size: 24px;
 }
+
 
 .seccionComentariosPublicacion {
-    flex-grow: 1;
-    height: 280px;
+    height: 450px;
     overflow-y: scroll;
-    border: 1px solid #eee;
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: #f9f9f9;
-    border-radius: 4px;
+    border: 2px solid black;
+    padding: 10px;
+    background-color: #f0f0f0;
 }
-
 
 .comentario {
     margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed #eee;
+    padding-bottom: 5px;
+    border-bottom: 1px black;
 }
 
 .cabeceraComentario {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 6px;
 }
 
 .autorComentarioIndividual {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .autorComentarioIndividual img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid #ddd;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
 }
 
-
 .autorComentarioIndividual a {
-    color: #333;
-    text-decoration: none;
+    color: black;
     font-weight: bold;
     font-size: 14px;
 }
 
-.autorComentarioIndividual a:hover {
-    color: #d71313;
-}
-
-
 .accionesComentarioIndividual {
     display: flex;
+    flex-direction: row;
     gap: 5px;
 }
 
-.btn-mini {
-    padding: 3px 8px;
-    font-size: 11px;
+.boton-reportar, .boton-borrar {
+    padding: 2px 5px;
+    font-size: 12px;
     cursor: pointer;
-    border-radius: 3px;
-    border: 1px solid #ccc;
-    background: #fff;
+    border: 1px solid grey;
+    background-color: white; 
 }
 
-.btn-reportar:hover {
-    background-color: #fff0f0; color: #cc0000; 
-}
-.btn-borrar:hover { 
-    background-color: #fee; color: #cc0000; border-color: #cc0000; 
+.boton-reportar:hover { 
+    background-color: red; color: white; 
 }
 
+.boton-borrar:hover { 
+    background-color: red; color: white; 
+}
 
 .cuerpoComentario {
-    padding-left: 40px;
+    padding-left: 10px;
+    margin-top: 5px;
 }
 
-.cuerpoComentario p {
-    margin: 4px 0;
-}
-
-.cuerpoComentario p.small {
-    color: #777;
+.cuerpoComentario p.mini {
+    color: grey;
     font-size: 12px;
 }
 
 
 .seccionComentar form {
     display: flex;
+    flex-direction: row;
     gap: 10px;
+    width: 100%;
 }
 
-.seccionComentar input{
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.seccionComentar input {
+    width: 70%;
+    padding: 8px;
+    border: 2px solid black;
 }
 
 .seccionComentar button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
+    width: 25%;
+    padding: 8px;
+    background-color: lightblue;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
     cursor: pointer;
 }
 
 
 .seccionInferior {
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid black;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
@@ -840,49 +833,39 @@ hr {
 
 .seccionValorizaciones {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 25px;
-    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .seccionValorizaciones form {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
 }
 
-.btn-votar {
-    margin-left: 10px;
-    padding: 5px 12px;
+.boton-votar {
+    padding: 5px 10px;
     cursor: pointer;
+    border: 1px solid black;
 }
 
 .datos-votos {
     display: flex;
-    gap: 20px;
+    flex-direction: row;
+    gap: 15px;
     font-weight: bold;
-    white-space: nowrap;
-}
-
-.seccionReporteFoto {
-    display: flex;
-    justify-content: flex-end;
 }
 
 .seccionReporteFoto button {
-    background-color: #fff5f5;
-    color: #cc0000;
-    border: 1px solid #cc0000;
-    padding: 6px 14px;
-    border-radius: 4px;
+    background-color: lightcoral;
+    color: black;
+    border: 2px solid black;
+    padding: 6px 12px;
     cursor: pointer;
-    white-space: nowrap;
+    font-weight: bold;
 }
-
-.seccionReporteFoto button:hover {
-    background-color: #ffe5e5;
-}
-
 
 
 

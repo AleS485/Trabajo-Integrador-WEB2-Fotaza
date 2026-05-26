@@ -18,7 +18,7 @@ block content
                 form(action="") 
                     button(type="submit") Me interesa
                 form(action="" + publicacion.idPublicacion) 
-                    button.btn-cerrar-comentarios(type="submit") Cerrar Comentarios
+                    button.boton-cerrar-comentarios(type="submit") Cerrar Comentarios
         hr
         each foto in publicacion.fotos 
             div.bloque-tarjeta-foto
@@ -36,12 +36,12 @@ block content
                                             a(href="/perfil/" + comentario.idUsuario)= comentario.nombreUsuario
                                         div.accionesComentarioIndividual
                                             form(action="" + comentario.idComentario)
-                                                button.btn-mini.btn-reportar(type="submit") Reportar
+                                                button.boton-reportar(type="submit") Reportar
                                             form(action="" + comentario.idComentario)
-                                                button.btn-mini.btn-borrar(type="submit") Borrar                       
+                                                button.boton-borrar(type="submit") Borrar                       
                                     div.cuerpoComentario
                                         p= comentario.texto
-                                        p.small= comentario.fecha
+                                        p.mini= comentario.fecha
                         div.seccionComentar
                             form(action="")
                                 input(type="hidden" name="idFotografia" value=foto.idFotografia)
@@ -55,7 +55,7 @@ block content
                             each punto in [1, 2, 3, 4, 5]
                                 label #{punto}
                                 input(type="radio" name="valoracionPublicacion" value=punto)
-                            button.btn-votar(type="submit") Votar
+                            button.boton-votar(type="submit") Votar
                         div.datos-votos
                             p Valoracion promedio: #{foto.promedioValoraciones}
                             p Valoraciones totales: #{foto.cantidadValoraciones}

@@ -247,6 +247,118 @@ block content
 
         }
 
+        form.addEventListener('submit', (e) => {
+
+            e.preventDefault();
+            
+            contenedorErrores.innerHTML = "";
+
+            let validador = true;
+
+            const valorTitulo = inputTitulo.value.trim();
+            const valorDescripcion = inputDescripcion.value.trim();
+            const valorMarcaDeAgua = inputMarcaAgua.value.trim();
+
+
+            if(valorTitulo === ""){
+                const li = document.createElement("li");
+                li.innerText = "La publicacion tiene que tener titulo";
+                li.style.color = "red";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+
+            if (valorTitulo.length > 150) {
+                const li = document.createElement('li');
+                li.innerText = "El titulo es muy largo (hasta 150 caracteres)";
+                li.style.color = "red";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+
+            if (valorDescripcion.length > 350) {
+                const li = document.createElement('li');
+                li.innerText = 'La descripcion es muy larga (hasta 350 caracteres)';
+                li.style.color = "red";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+
+
+            if(arregloImgs.length === 0){
+                const li = document.createElement("li");
+                li.innerText = "Tiene que haber al menos una imagen";
+                li.style.color = "red";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+    
+            if(checkCopyright.checked && valorMarcaDeAgua === ""){
+                const li = document.createElement('li');
+                li.innerText = "Tenes que poner una marca de agua para el copyright";
+                li.style.color = "red";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+
+            if(validador){
+
+                const bodyToSend = {
+                    titulo: valorTitulo,
+                    descripcion: valorDescripcion,
+                    etiquetas: arregloEtiquetas,
+                    imgs: arregloImgs,
+                    marcaAgua: valorMarcaDeAgua, 
+                    confirmacionCopyright: checkCopyright.checked
+
+                }
+
+                fetch(form.action, {
+                    method: 'post',
+                    headers:{
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(bodyToSend)
+                })
+                .then(respuesta => {
+                    if(respuesta.ok){
+                        contenedorErrores.innerHTML = "";
+                        const li = document.createElement("li");
+                        li.innerText = "SE ENVIO LA PUBLICACION SIN ERRORES";
+                        li.style.color = "green";
+                        li.style.fontWeight = "bold";
+                        contenedorErrores.appendChild(li);
+
+                        form.reset();
+                        arregloImgs.length = 0;
+                        arregloEtiquetas.length = 0;
+                        contenedorNombres.innerHTML = '';
+                        contenedorPreviews.innerHTML = '';
+                        contenedorEtiquetas.innerHTML = '';
+                    
+
+                
+                    } else{
+                        const li = document.createElement("li");
+                        li.innerText = "ERROR DEL SERVIDOR AL CREAR PUBLICACION";
+                        li.style.color = "red";
+                        li.style.fontWeight = "bold";
+                        contenedorErrores.appendChild(li);
+                    }
+                })
+
+
+
+            }
+
+
+
+
+        })
+
+
+
+
 
 
 

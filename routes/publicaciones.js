@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { obtenerDatosDePublicacion } from "../controller/publicacion.js";
+import { crearPublicacion, obtenerDatosDePublicacion } from "../controller/publicacion.js";
 
 // /publicaciones
 const router = Router()
@@ -22,6 +22,9 @@ router.get('/editar/:id', (req, res) => {
     res.render('editar_publicacion');
 
 })
+
+router.post('/crear', crearPublicacion);
+
 
 router.post('editar/:id', (req, res) => {
 

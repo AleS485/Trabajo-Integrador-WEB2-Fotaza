@@ -1,4 +1,7 @@
 import { Publicacion, Fotografia, Comentario, Usuario, PublicacionEtiqueta, Etiqueta, Valoracion } from '../models/index.js'; //index por las relaciones - recordar
+import sharp from 'sharp';
+
+
 
 
 export async function obtenerDatosDePublicacion(idPublicacion){
@@ -125,8 +128,84 @@ export async function obtenerDatosDePublicacion(idPublicacion){
 }
 
 
+export async function crearPublicacion(req, res){
+    try{
+        const titulo = req.body.titulo;
+        const descripcion = req.body.descripcion;
+        const etiquetas = req.body.etiquetas;
+        const imgs = req.body.imgs;
+        const marcaAgua = req.body.marcaAgua;
+        const confirmacionCopyright = req.body.confirmacionCopyright;
+
+        const nuevaPublicacion = await Publicacion.create({
+            idUsuario: 1, // cambiar porque no tenes sesion
+            tituloPublicacion: titulo,
+            descripcionPublicacion: descripcion
+            
+        })
+
+        const idPublicacionCreada = nuevaPublicacion.idPublicacion;
+
+        if(etiquetas && etiquetas.length > 0){
+            for(let etiquetaAgregada of etiquetas){
+                const [etiqueta, etiquetaSeCreo] = await Etiqueta.findOrCreate({
+                    where: {nombreEtiqueta: etiquetaAgregada}
+                });
+
+                await PublicacionEtiqueta.create({
+                    idPublicacion: idPublicacionCreada,
+                    idEtiqueta: etiqueta.idEtiqueta
+                })
 
 
+            }
+        }
+
+        if(imgs && imgs.length > 0){
+            for(let img of imgs){
+
+                const textBase64 = img.src.split(',');
+                const codigoBase64 = textBase64[1];
+            
+                let imgBuffer = Buffer.from(codigoBase64, 'base64');
+
+                if(confirmacionCopyright && img.isCopyright){
+                    
+                    
+
+                    const textoImagen = await sharp({ text: { text: `<span foreground="white" weight="bold">${marcaAgua}</span>`, rgba: true, dpi: 450, font: 'Arial Black' } }).png().toBuffer();
+
+                    
+                    imgBuffer = await sharp(imgBuffer)
+                    .composite([{ input: textoImagen, top: 150, left: 150 }])
+                    .toBuffer();
+
+
+
+
+
+
+                }
+
+                await Fotografia.create({
+                    idPublicacion: idPublicacionCreada,
+                    urlArchivo: imgBuffer,
+                    isCopyright: img.isCopyright ? true : false
+                })
+
+            
+            }
+        }
+
+
+        return res.status(201).redirect(`/publicaciones/${idPublicacionCreada}`);
+
+    } catch(error){
+        console.error('ERROR CREANDO PUBLICACION: ', error);
+        
+    }
+
+}
 
 
 

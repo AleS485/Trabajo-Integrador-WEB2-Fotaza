@@ -13,12 +13,13 @@ block content
                     span= etiqueta
             p= publicacion.fecha
             div.seccionAccionesGenerales
-                form(action="" + publicacion.idPublicacion) 
-                    button(type="submit") Guardar Publicacion
-                form(action="") 
-                    button(type="submit") Me interesa
-                form(action="" + publicacion.idPublicacion) 
+                form(action="/publicaciones/guardar/" + publicacion.idPublicacion, method="POST") 
+                    button.boton-guardarPublicacion(type="submit") Guardar Publicacion
+                form(action="/publicaciones/comentarios/toggle/" + publicacion.idPublicacion, method="POST") 
                     button.boton-cerrar-comentarios(type="submit") Cerrar Comentarios
+                a.boton-editar-publicacion(href="/publicaciones/editar/" + publicacion.idPublicacion) Editar Publicacion
+                form(action="/publicaciones/eliminar/" + publicacion.idPublicacion, method="POST") 
+                    button.boton-borrar-publicacion(type="submit") Borrar Publicacion
         hr
         each foto in publicacion.fotos 
             div.bloque-tarjeta-foto
@@ -60,5 +61,8 @@ block content
                             p Valoracion promedio: #{foto.promedioValoraciones}
                             p Valoraciones totales: #{foto.cantidadValoraciones}
                     div.seccionReporteFoto
+                        form(action="/fotografias/interes/" + foto.idFotografia, method="POST") 
+                            button.botonInteres(type="submit") Me interesa
+
                         form(action="" + foto.idFotografia)
-                            button(type="submit") Reportar imagen
+                            button.botonReporte(type="submit") Reportar imagen

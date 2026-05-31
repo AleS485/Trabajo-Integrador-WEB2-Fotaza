@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { crearPublicacion, obtenerDatosDePublicacion } from "../controller/publicacion.js";
+import { crearPublicacion, obtenerDatosDePublicacion, obtenerDatosParaEditar, actualizarPublicacion } from "../controller/publicacion.js";
 
 // /publicaciones
 const router = Router()
@@ -17,20 +17,14 @@ router.get('/seguidas', (req, res) => {
 })
 
 
-router.get('/editar/:id', (req, res) => {
+router.get('/editar/:id', obtenerDatosParaEditar);
+router.put('/editar/:id', actualizarPublicacion);
 
-    res.render('editar_publicacion');
-
-})
 
 router.post('/crear', crearPublicacion);
 
 
-router.post('editar/:id', (req, res) => {
 
-    res.send('Publicacion Modificada con exito');
-
-})
 
 router.post('/eliminar/:id', (req, res) => {
 

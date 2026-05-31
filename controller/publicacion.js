@@ -1,7 +1,101 @@
-import { Publicacion, Fotografia, Comentario, Usuario, PublicacionEtiqueta, Etiqueta, Valoracion } from '../models/index.js'; //index por las relaciones - recordar
+import { Publicacion, Fotografia, Comentario, Usuario, PublicacionEtiqueta, Etiqueta, Valoracion, MarcaDeAgua } from '../models/index.js'; //index por las relaciones - recordar
 import sharp from 'sharp';
 
+export async function obtenerDatosParaEditar(req, res){
 
+    try{
+        const idPublicacion = req.params.id;
+
+        const publicacionBuscada = await obtenerDatosDePublicacion(idPublicacion);
+
+        if(!publicacionBuscada){
+            return res.status(404).send('No se encontro la publicacion para editar');
+        }
+
+        return res.render('editar_publicacion', {publicacion: publicacionBuscada});
+
+    }catch(error){
+        console.error("Error al cargar la vista de editar publicacion ", error);
+        return res.status(500).send('Error del servidor');
+    }
+
+
+
+}
+
+export async function actualizarPublicacion(req, res){
+    try{
+        const idPublicacion = req.params.id;
+        const {titulo, descripcion, etiquetas, imgs} = req.body;
+
+        await Publicacion.update({
+            tituloPublicacion: titulo,
+            descripcionPublicacion: descripcion
+        },
+        { where: {idPublicacion: idPublicacion}}
+        )
+
+        await PublicacionEtiqueta.destroy({
+            where: { idPublicacion: idPublicacion }
+        })
+
+        if (etiquetas && etiquetas.length > 0) {
+            for (let etiquetaReagregada of etiquetas) {
+                const [etiqueta, etiquetaSeCreo] = await Etiqueta.findOrCreate({
+                    where: { nombreEtiqueta: etiquetaReagregada }
+                });
+
+                await PublicacionEtiqueta.create({
+                    idPublicacion: idPublicacion,
+                    idEtiqueta: etiqueta.idEtiqueta
+                });
+            }
+        }
+
+        await Fotografia.destroy({
+            where: { idPublicacion: idPublicacion }
+        });
+
+        if (imgs && imgs.length > 0) {
+            for (let img of imgs) {
+                let codigoBase64 = '';
+
+                if (img.src.includes(',')) {
+                    const textBase64 = img.src.split(',');
+                    codigoBase64 = textBase64[1];
+                } else {
+                    codigoBase64 = img.src;
+                }
+
+                let imgBuffer = Buffer.from(codigoBase64, 'base64');
+
+                await Fotografia.create({
+                    idPublicacion: idPublicacion,
+                    urlArchivo: imgBuffer,
+                    isCopyright: false 
+                });
+            }
+        }
+
+        return res.status(200).send('SE MODIFICO LA PUBLICACION CORRECTAMENTE');
+
+
+
+
+
+
+
+
+    } catch(error){
+        console.error('ERROR EN LA MODIFICACION DE LA PUBLICACION: ', error);
+
+
+    }
+
+
+
+
+}
 
 
 export async function obtenerDatosDePublicacion(idPublicacion){
@@ -75,11 +169,9 @@ export async function obtenerDatosDePublicacion(idPublicacion){
             }
 
 
-
             listaFotos.push({
                 idFotografia: foto.idFotografia,
                 urlArchivo: fotoPreparada,
-                isCopyright: foto.isCopyright,
                 comentarios: listaComentariosFoto,
                 cantidadValoraciones: cantidadValoraciones,
                 promedioValoraciones: promedioTotalValoraciones
@@ -98,9 +190,8 @@ export async function obtenerDatosDePublicacion(idPublicacion){
         }
 
 
-
-
         return{
+            idPublicacion: idPublicacion,
             idUsuario: publicacion.idUsuario,
             titulo: publicacion.tituloPublicacion,
             descripcion: publicacion.descripcionPublicacion,

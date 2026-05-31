@@ -1,0 +1,323 @@
+extends layout 
+
+block content 
+
+    div.contenedorCreador
+        h1 Editar esta publicacion 
+        form(action="/publicaciones/editar/" + publicacion.idPublicacion, id="formularioPublicacion", method="POST")
+            div.titulo
+                label Titulo:
+                input(id="tituloImagen",type="text", name="titulo", value=publicacion.titulo)
+            div.descripcion
+                label Descripcion: (opcional)
+                input(id="descripcionImagen", type="text", name="descripcion", value=publicacion.descripcion)
+            div.imagenes
+                label(for="img") Subir imagenes
+                input(id= "img", type="file", name="fotos", multiple, style="display: none")
+            div.imagenesNombres#imagenes-nombres
+                
+            div.etiquetas
+                label Ingrese sus etiquetas: 
+                input(id="etiquetasImagen", type="text", name="etiquetas")
+                button#botonEtiquetas(type="button")  Agregar
+            div.errores-etiquetas
+                ul#listaErroresEtiquetas
+            div.etiquetas-mostrar#mostrador-etiquetas
+
+            
+            div.errores-fotos
+                ul#listaErrores
+
+            each etiqueta in publicacion.etiquetas
+                input(name="etiquetasViejasCargadas", type="hidden", value= etiqueta)
+
+            each foto in publicacion.fotos 
+                input(name="fotosViejasSubidas", type="hidden", value="data:image/png;base64," + foto.urlArchivo)
+
+            button.boton-enviar(type="submit") Guardar cambios
+    
+    
+    
+    
+    script.
+        const form = document.getElementById('formularioPublicacion');
+        const inputTitulo = document.getElementById('tituloImagen');
+        const inputDescripcion = document.getElementById('descripcionImagen');
+        const fileInput = document.getElementById('img');
+        const contenedorNombres = document.getElementById('imagenes-nombres');
+        const inputEtiquetas = document.getElementById('etiquetasImagen');
+        const botonEtiquetas = document.getElementById('botonEtiquetas');
+        const contenedorErroresEtiquetas = document.getElementById("listaErroresEtiquetas");
+        const contenedorEtiquetas = document.getElementById('mostrador-etiquetas');
+        const contenedorErrores = document.getElementById("listaErrores");
+
+
+        
+        
+        
+        const arregloImgs = [];
+        const arregloEtiquetas = [];
+
+        // parte de editar agregada
+
+        const inputsEtiquetasTraidas = document.getElementsByName('etiquetasViejasCargadas');
+        for(let i = 0; i < inputsEtiquetasTraidas.length; i++){
+            arregloEtiquetas.push(inputsEtiquetasTraidas[i].value);
+        }
+
+        const inputsImagenesTraidas = document.getElementsByName('fotosViejasSubidas');
+
+
+        for(let i = 0; i < inputsImagenesTraidas.length; i++){
+        
+            arregloImgs.push({
+                src: inputsImagenesTraidas[i].value,
+                name: "Foto_Guardada_" + (i + 1) + ".png",
+            });      
+
+        }
+
+        cargarEtiquetasAgregadas();
+        cargarImagenesAgregadas();
+
+        // aca termina parte editar
+
+        fileInput.addEventListener('change', (e) => {
+            
+            contenedorErrores.innerHTML = '';
+
+            for(let i = 0; i < e.target.files.length; i++){
+                const file = e.target.files[i];
+                const resultado = validarFile(file);
+
+                if(!resultado){
+                    const li = document.createElement('li');
+                    li.innerText = `Esta imagen ${file.name} supera los 1MB`;
+                    li.style.color = "red";
+                    contenedorErrores.appendChild(li);
+                    continue;
+                }
+
+                const reader = new FileReader();
+
+                reader.onload = () => {
+                    const imagen = {
+                        src: reader.result,
+                        name: file.name
+                    }
+
+                    arregloImgs.push(imagen);
+                    cargarImagenesAgregadas();
+                }
+
+                reader.readAsDataURL(file);
+            }
+        });
+
+        botonEtiquetas.addEventListener('click', () => {
+            contenedorErroresEtiquetas.innerHTML = "";
+            
+
+            const textoDeEtiqueta = inputEtiquetas.value.trim();
+
+            if(textoDeEtiqueta === ''){
+                const li = document.createElement('li');
+                li.style.color = "red";
+                li.innerText = 'La etiqueta no puede ser vacia';
+                contenedorErroresEtiquetas.appendChild(li);
+                return;
+            }
+
+            arregloEtiquetas.push(textoDeEtiqueta);
+            inputEtiquetas.value = '';
+            cargarEtiquetasAgregadas();
+
+        })
+
+        function validarFile(file) {
+            if (!file) return false;
+
+            if(file.size > 1000000){
+                console.error('No podes subir mas de 1mb')
+                return false;
+            }
+
+            return true;
+        }      
+
+        function cargarEtiquetasAgregadas(){
+
+            contenedorEtiquetas.innerHTML = '';
+
+            arregloEtiquetas.forEach((etiqueta, index) => {
+                
+                const divDeEtiqueta = document.createElement('div');
+                divDeEtiqueta.className = 'linea-etiqueta';
+                
+                const textoDeEtiqueta = document.createElement('p');
+                textoDeEtiqueta.innerText = etiqueta;
+
+                const botonBorrarEtiqueta = document.createElement('button');
+                botonBorrarEtiqueta.type = 'button';
+                botonBorrarEtiqueta.innerText = 'Borrar';
+
+                botonBorrarEtiqueta.addEventListener('click', () => {
+                    arregloEtiquetas.splice(index, 1);
+                    cargarEtiquetasAgregadas();
+                })
+
+                divDeEtiqueta.appendChild(textoDeEtiqueta);
+                divDeEtiqueta.appendChild(botonBorrarEtiqueta);
+
+                contenedorEtiquetas.appendChild(divDeEtiqueta);
+
+
+            })
+
+
+        }
+
+
+        function cargarImagenesAgregadas(){
+
+            contenedorNombres.innerHTML = '';
+
+            arregloImgs.forEach((imagen, index) => {
+                const divLineaImagen = document.createElement('div');
+                divLineaImagen.className = 'linea-imagen';
+                
+                const textoNombre = document.createElement('p');
+                textoNombre.innerText = imagen.name;
+
+                const botonBorrarImagen = document.createElement('button');
+                botonBorrarImagen.type = 'button';
+                botonBorrarImagen.innerText = 'Borrar';
+
+                botonBorrarImagen.addEventListener('click', () => {
+                    arregloImgs.splice(index, 1);
+                    cargarImagenesAgregadas();
+                })
+
+                divLineaImagen.appendChild(textoNombre);
+                divLineaImagen.appendChild(botonBorrarImagen);
+
+                contenedorNombres.appendChild(divLineaImagen);
+            })
+
+
+        }
+
+
+
+        // modificada a diferencia de crear
+        
+
+        form.addEventListener('submit', (e) => {
+
+            e.preventDefault();
+            
+            contenedorErrores.innerHTML = "";
+
+            let validador = true;
+
+            const valorTitulo = inputTitulo.value.trim();
+            const valorDescripcion = inputDescripcion.value.trim();
+
+
+            if(valorTitulo === ""){
+                const li = document.createElement("li");
+                li.innerText = "La publicacion tiene que tener titulo";
+                li.style.color = "red";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+
+            if (valorTitulo.length > 150) {
+                const li = document.createElement('li');
+                li.innerText = "El titulo es muy largo (hasta 150 caracteres)";
+                li.style.color = "red";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+
+            if (valorDescripcion.length > 350) {
+                const li = document.createElement('li');
+                li.innerText = 'La descripcion es muy larga (hasta 350 caracteres)';
+                li.style.color = "red";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+
+
+            if(arregloImgs.length === 0){
+                const li = document.createElement("li");
+                li.innerText = "Tiene que haber al menos una imagen";
+                li.style.color = "red";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+    
+            if(validador){
+
+                const bodyToSend = {
+                    titulo: valorTitulo,
+                    descripcion: valorDescripcion,
+                    etiquetas: arregloEtiquetas,
+                    imgs: arregloImgs,
+
+                }
+
+                fetch(form.action, {
+                    method: 'put',
+                    headers:{
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(bodyToSend)
+                })
+                .then(respuesta => {
+                    if(respuesta.ok){
+                        contenedorErrores.innerHTML = "";
+                        const li = document.createElement("li");
+                        li.innerText = "SE MODIFICO LA PUBLICACION SIN ERRORES";
+                        li.style.color = "green";
+                        li.style.fontWeight = "bold";
+                        contenedorErrores.appendChild(li);
+
+
+                
+                    } else{
+                        const li = document.createElement("li");
+                        li.innerText = "ERROR DEL SERVIDOR AL MODIFICAR PUBLICACION";
+                        li.style.color = "red";
+                        li.style.fontWeight = "bold";
+                        contenedorErrores.appendChild(li);
+                    }
+                })
+
+
+
+            }
+
+
+
+
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

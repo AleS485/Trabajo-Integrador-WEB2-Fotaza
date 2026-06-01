@@ -10,6 +10,8 @@ import coleccionesRouter from './routes/coleccion.js';
 import notificacionesRouter from './routes/notificacion.js';
 import { funcionSync } from './models/index.js';
 import { obtenerPublicaciones } from './controller/publicacion.js';
+import { authMiddleware } from './middleware/auth.js';
+import { navMiddleware } from './middleware/nav.js';
 
 
 const PORT = process.env.PORT;
@@ -36,7 +38,7 @@ app.set('views', './views');
 
 // endpoints
 
-app.get('/', async (req, res) => {
+app.get('/', navMiddleware, async (req, res) => {
     const publicacionesObtenidas = await obtenerPublicaciones() || [];
 
     const fotosAgregadas = [];
@@ -54,17 +56,17 @@ app.get('/', async (req, res) => {
     });
 })
 
-app.use('/buscar', buscarRouter);
+app.use('/buscar', authMiddleware, buscarRouter);
 
-app.use('/perfil', perfilRouter);
+app.use('/perfil', authMiddleware, perfilRouter);
 
-app.use('/publicaciones', publicacionesRouter);
+app.use('/publicaciones', authMiddleware, publicacionesRouter);
 
-app.use('/chats', chatsRouter);
+app.use('/chats', authMiddleware ,chatsRouter);
 
-app.use('/colecciones', coleccionesRouter);
+app.use('/colecciones', authMiddleware, coleccionesRouter);
 
-app.use('/notificaciones', notificacionesRouter);
+app.use('/notificaciones', authMiddleware, notificacionesRouter);
 
 app.use('/auth', authRouter);
 

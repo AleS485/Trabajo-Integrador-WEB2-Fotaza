@@ -27,6 +27,7 @@ export async function authMiddleware(req, res, next) {
         };
     } catch (error) {
         console.error('[!] Error al autenticar usuario:', error);
+        return res.status(500).send("ERROR DEL SERVIDOR")
     }
 
     next();

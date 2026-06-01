@@ -322,20 +322,8 @@ block content
                 })
                 .then(respuesta => {
                     if(respuesta.ok){
-                        contenedorErrores.innerHTML = "";
-                        const li = document.createElement("li");
-                        li.innerText = "SE ENVIO LA PUBLICACION SIN ERRORES";
-                        li.style.color = "green";
-                        li.style.fontWeight = "bold";
-                        contenedorErrores.appendChild(li);
-
-                        form.reset();
-                        arregloImgs.length = 0;
-                        arregloEtiquetas.length = 0;
-                        contenedorNombres.innerHTML = '';
-                        contenedorPreviews.innerHTML = '';
-                        contenedorEtiquetas.innerHTML = '';
-                    
+                        
+                        window.location.href = '/';
 
                 
                     } else{

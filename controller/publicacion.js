@@ -221,6 +221,11 @@ export async function obtenerDatosDePublicacion(idPublicacion){
 
 export async function crearPublicacion(req, res){
     try{
+
+        if (!req.session || !req.session.user) {
+            return res.status(401).send("TENES QUE INICIAR SESION");
+        }
+
         const titulo = req.body.titulo;
         const descripcion = req.body.descripcion;
         const etiquetas = req.body.etiquetas;
@@ -229,7 +234,7 @@ export async function crearPublicacion(req, res){
         const confirmacionCopyright = req.body.confirmacionCopyright;
 
         const nuevaPublicacion = await Publicacion.create({
-            idUsuario: 1, // cambiar porque no tenes sesion
+            idUsuario: req.session.user.id, 
             tituloPublicacion: titulo,
             descripcionPublicacion: descripcion
             
@@ -289,7 +294,7 @@ export async function crearPublicacion(req, res){
         }
 
 
-        return res.status(201).redirect(`/publicaciones/${idPublicacionCreada}`);
+        return res.status(201).send("PUBLICACION CREADA CORRECTAMENTE");
 
     } catch(error){
         console.error('ERROR CREANDO PUBLICACION: ', error);

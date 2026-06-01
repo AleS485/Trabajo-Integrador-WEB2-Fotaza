@@ -13,7 +13,8 @@ block content
                 div.estadisticas
                     a(href=`/perfil/${usuario.idUsuario}/seguidores`) Seguidores: #{seguidores}
                     a(href=`/perfil/${usuario.idUsuario}/seguidos`) Seguidos: #{seguidos}
-                button Seguir    
+                if currentUser.id != usuario.idUsuario
+                    button Seguir    
             
             
 

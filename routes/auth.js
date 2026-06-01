@@ -11,6 +11,6 @@ auth.get('/signup', signupForm)
 
 auth.post('/signup', signup)
 
-auth.post('/logout', logout)
+auth.get('/logout', logout)
 
 export default auth

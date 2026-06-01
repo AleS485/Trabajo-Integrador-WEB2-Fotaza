@@ -15,11 +15,12 @@ block content
             div.seccionAccionesGenerales
                 form(action="/publicaciones/guardar/" + publicacion.idPublicacion, method="POST") 
                     button.boton-guardarPublicacion(type="submit") Guardar Publicacion
-                form(action="/publicaciones/comentarios/toggle/" + publicacion.idPublicacion, method="POST") 
-                    button.boton-cerrar-comentarios(type="submit") Cerrar Comentarios
-                a.boton-editar-publicacion(href="/publicaciones/editar/" + publicacion.idPublicacion) Editar Publicacion
-                form(action="/publicaciones/eliminar/" + publicacion.idPublicacion, method="POST") 
-                    button.boton-borrar-publicacion(type="submit") Borrar Publicacion
+                if currentUser.id == publicacion.idUsuario
+                    form(action="/publicaciones/comentarios/toggle/" + publicacion.idPublicacion, method="POST") 
+                        button.boton-cerrar-comentarios(type="submit") Cerrar Comentarios
+                    a.boton-editar-publicacion(href="/publicaciones/editar/" + publicacion.idPublicacion) Editar Publicacion
+                    form(action="/publicaciones/eliminar/" + publicacion.idPublicacion, method="POST") 
+                        button.boton-borrar-publicacion(type="submit") Borrar Publicacion
         hr
         each foto in publicacion.fotos 
             div.bloque-tarjeta-foto
@@ -36,10 +37,11 @@ block content
                                             img(src="data:image/png;base64," + comentario.avatarUsuario, alt="Avatar")
                                             a(href="/perfil/" + comentario.idUsuario)= comentario.nombreUsuario
                                         div.accionesComentarioIndividual
-                                            form(action="" + comentario.idComentario)
-                                                button.boton-reportar(type="submit") Reportar
-                                            form(action="" + comentario.idComentario)
-                                                button.boton-borrar(type="submit") Borrar                       
+                                            if currentUser.id == publicacion.idUsuario
+                                                form(action="" + comentario.idComentario)
+                                                    button.boton-reportar(type="submit") Reportar
+                                                form(action="" + comentario.idComentario)
+                                                    button.boton-borrar(type="submit") Borrar                       
                                     div.cuerpoComentario
                                         p= comentario.texto
                                         p.mini= comentario.fecha
@@ -50,19 +52,21 @@ block content
                                 button(type="submit") Comentar 
                 div.seccionInferior
                     div.seccionValorizaciones
-                        p Valora esta imagen 
-                        form(action="")
-                            input(type="hidden" name="idFotografia" value=foto.idFotografia)
-                            each punto in [1, 2, 3, 4, 5]
-                                label #{punto}
-                                input(type="radio" name="valoracionPublicacion" value=punto)
-                            button.boton-votar(type="submit") Votar
+                        if currentUser.id != publicacion.idUsuario
+                            p Valora esta imagen 
+                            form(action="")
+                                input(type="hidden" name="idFotografia" value=foto.idFotografia)
+                                each punto in [1, 2, 3, 4, 5]
+                                    label #{punto}
+                                    input(type="radio" name="valoracionPublicacion" value=punto)
+                                button.boton-votar(type="submit") Votar
                         div.datos-votos
                             p Valoracion promedio: #{foto.promedioValoraciones}
                             p Valoraciones totales: #{foto.cantidadValoraciones}
                     div.seccionReporteFoto
-                        form(action="/fotografias/interes/" + foto.idFotografia, method="POST") 
-                            button.botonInteres(type="submit") Me interesa
+                        if currentUser.id != publicacion.idUsuario
+                            form(action="/fotografias/interes/" + foto.idFotografia, method="POST") 
+                                button.botonInteres(type="submit") Me interesa
 
-                        form(action="" + foto.idFotografia)
-                            button.botonReporte(type="submit") Reportar imagen
+                            form(action="" + foto.idFotografia)
+                                button.botonReporte(type="submit") Reportar imagen

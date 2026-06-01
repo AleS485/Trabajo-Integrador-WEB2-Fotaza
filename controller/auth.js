@@ -128,7 +128,7 @@ export async function signup(req, res) {
 export async function logout(req, res) {
     if (req.session) {
         await req.session.destroy();
-        res.redirect('/auth/login');
+        res.redirect('/');
         return;
     }
 }

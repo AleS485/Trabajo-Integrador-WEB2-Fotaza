@@ -2,13 +2,14 @@ import { Router } from "express"
 import { obtenerUsuario } from '../controller/usuario.js';
 import { contadorSeguidores, contadorSeguidos, obtenerSeguidores, obtenerSeguidos } from '../controller/seguidor.js';
 
+
 // /perfil
 
 const router = Router()
 
 router.get("/", (req, res) => {
 
-    res.render('perfil');
+    res.redirect(`/perfil/${req.session.user.id}`);
 
 });
 

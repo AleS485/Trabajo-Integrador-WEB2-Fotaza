@@ -2006,11 +2006,132 @@ li a:hover{
 
 }
 
+/* Estilos para vista registrar usuario   */
 
 
 
 
 
+.registro-usuario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px; 
+    margin: 40px auto;
+    border: 2px solid red;
+    border-radius: 15px;
+    padding: 25px 30px; 
+}
+
+
+.registro-usuario h1 {
+    font-size: 32px; 
+    margin-bottom: 20px;
+}
+
+
+.registro-usuario form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    width: 100%; 
+    border: 2px solid red;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+
+.registro-bloqueCampo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px; 
+    width: 100%;
+}
+
+
+.registro-bloqueCampo label {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.registro-bloqueCampo input {
+    width: 100%;
+    padding: 10px; 
+    font-size: 16px;
+    border: 1px solid #cbcbcb;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.registro-bloqueCampo input:focus{
+    text-align: center;
+}
+
+.registro-boton-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e1e1e1;
+    border: 1px solid grey;
+    padding: 10px; 
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.registro-boton-avatar:hover {
+    background-color: #d1d1d1;
+}
+
+
+.registro-usuario form button {
+    width: 100%;
+    padding: 14px; 
+    font-size: 20px;
+    background-color: #4886dd;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid grey;
+    color: white;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.registro-usuario form button:hover {
+    background-color: red;
+}
+
+
+
+/* Alertas del profe, revisar por si rompe algo */
+
+.alert{
+    position: absolute;
+    z-index: 1;
+    bottom: 20px;
+    right: 10px;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.alert p {
+    text-align: center;
+}
+
+.alert.success{
+    background-color: green;
+    color: white;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.alert.error{
+    background-color: red;
+    color: white;
+    box-shadow: 0 0 10px rgba(175, 76, 76, 0.5);
+}
 
 
 

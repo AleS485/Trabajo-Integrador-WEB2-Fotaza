@@ -1,5 +1,158 @@
 extends layout 
 
 block content 
-    
 
+    div.registro-usuario
+        h1 Registrar Nuevo Usuario 
+        form(action="/auth/signup" id="formularioRegistro" method="POST")
+            div.registro-bloqueCampo
+                label Nombre:
+                input(id="nombreUsuario" type="text" name="nombreUsuario")
+            div.registro-bloqueCampo
+                label Apellido:
+                input(id="apellidoUsuario" type="text" name="apellidoUsuario")
+            div.registro-bloqueCampo
+                label Email:
+                input(id="emailUsuario" type="email" name="email")
+            div.registro-bloqueCampo
+                label Contraseña:
+                input(id="passwordUsuario" type="password" name="passwordUsuario")
+            div.registro-bloqueCampo
+                label Confirmar Contraseña:
+                input(id="confirmarPassword" type="password" name="confirmarPassword")
+            div.registro-bloqueCampo
+                label.registro-boton-avatar(for="avatar") Subir foto de perfil (Avatar)
+                input(id="avatar" type="file" name="avatarUsuario" style="display: none")
+
+
+            div#avatar-nombre
+
+            div.errores-fotos
+                ul#listaErroresRegistro
+
+            button.registro-boton-enviar(type="submit") Registrarse  
+
+
+
+    script.
+        const form = document.getElementById('formularioRegistro');
+        const inputNombre = document.getElementById('nombreUsuario');
+        const inputApellido = document.getElementById('apellidoUsuario');
+        const inputEmail = document.getElementById('emailUsuario');
+        const inputPassword = document.getElementById('passwordUsuario');
+        const inputConfirmar = document.getElementById('confirmarPassword');
+        const fileInput = document.getElementById('avatar');
+        const contenedorNombreAvatar = document.getElementById('avatar-nombre');
+        const contenedorErrores = document.getElementById("listaErroresRegistro");
+
+        let avatarObjeto = null;
+
+        fileInput.addEventListener('change', (e) => {
+        contenedorErrores.innerHTML = '';
+        contenedorNombreAvatar.innerHTML = '';
+
+        if(e.target.files.length > 0) {
+            const file = e.target.files[0];
+
+            if(file.size > 1000000){
+                const li = document.createElement('li');
+                li.innerText = `La imagen ${file.name} supera los 1MB`;
+                li.style.color = "red";
+                li.style.fontWeight = "bold";
+                contenedorErrores.appendChild(li);
+                fileInput.value = ''; 
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = () => {
+                avatarObjeto = {
+                    src: reader.result,
+                    name: file.name
+                }
+
+                const pFotoSubida = document.createElement('p');
+                pFotoSubida.innerText = file.name;
+                contenedorNombreAvatar.appendChild(pFotoSubida);
+            }
+
+            reader.readAsDataURL(file);
+        }
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); 
+            contenedorErrores.innerHTML = "";
+
+            let validador = true;
+            const valorNombre = inputNombre.value.trim();
+            const valorApellido = inputApellido.value.trim();
+            const valorEmail = inputEmail.value.trim();
+            const valorPassword = inputPassword.value.trim();
+            const valorConfirmar = inputConfirmar.value.trim();
+
+            if (valorNombre === "" || valorApellido === "" || valorEmail === "" || valorPassword === "") {
+                const li = document.createElement("li");
+                li.innerText = "LOS CAMPOS TIENEN QUE TENER UN VALOR";
+                li.style.color = "red";
+                li.style.fontWeight = "bold";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+
+            if (valorPassword.length < 4) {
+                const li = document.createElement("li");
+                li.innerText = "LA CONTRASENA TIENE QUE TENER MAS DE 4 CARACTERES";
+                li.style.color = "red";
+                li.style.fontWeight = "bold";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+
+            if (valorPassword !== valorConfirmar) {
+                const li = document.createElement("li");
+                li.innerText = "LAS CONTRASENAS NO COINCIDEN";
+                li.style.color = "red";
+                li.style.fontWeight = "bold";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+
+            if(!avatarObjeto){
+                const li = document.createElement("li");
+                li.innerText = "TENES QUE ELEGIR UN AVATAR PARA EL PERFIL";
+                li.style.color = "red";
+                li.style.fontWeight = "bold";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+
+            if(validador){
+                const bodyToSend = {
+                    nombreUsuario: valorNombre,
+                    apellidoUsuario: valorApellido,
+                    email: valorEmail,
+                    passwordUsuario: valorPassword,
+                    avatar: avatarObjeto 
+                }
+
+                fetch(form.action, {
+                    method: 'post',
+                    headers:{
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(bodyToSend)
+                })
+                .then(respuesta => {
+                    if(respuesta.ok){
+                        window.location.href = "/auth/login"; // no funcionaba el render desde el controller de auth por el fetch para el avatar
+                    } else {
+                        const li = document.createElement("li");
+                        li.innerText = "ERROR DEL SERVIDOR AL REGISTRAR EL USUARIO";
+                        li.style.color = "red";
+                        li.style.fontWeight = "bold";
+                        contenedorErrores.appendChild(li);
+                    }
+                })
+            }
+        });

@@ -1,7 +1,9 @@
 import 'dotenv/config';
 import express from 'express';
+import session from 'express-session'; 
 import perfilRouter from './routes/perfil.js';
 import buscarRouter from './routes/buscar.js';
+import authRouter from './routes/auth.js';
 import publicacionesRouter from './routes/publicaciones.js';
 import chatsRouter from './routes/chat.js';
 import coleccionesRouter from './routes/coleccion.js';
@@ -16,6 +18,17 @@ const app = express();
 
 
 app.use(express.static('public'));
+app.use(session({
+        secret: process.env.SESSION_KEY,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+        secure: false, // produccion cambiar a true
+        maxAge: 24 * 60 * 60 * 1000, // 24h
+        httpOnly: true,
+        sameSite: 'lax', 
+    },
+}));
 app.use(express.json({limit: '15mb'}));
 app.use(express.urlencoded({ limit: '15mb', extended: true }));
 app.set('view engine', 'pug');
@@ -53,21 +66,7 @@ app.use('/colecciones', coleccionesRouter);
 
 app.use('/notificaciones', notificacionesRouter);
 
-
-app.get('/logout', (req, res) => {
-    res.send('Cerrando sesión');
-});
-
-
-
-
-
-
-
-
-
-
-
+app.use('/auth', authRouter);
 
 
 funcionSync().then(() => {

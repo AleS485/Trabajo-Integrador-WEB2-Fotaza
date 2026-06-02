@@ -14,7 +14,12 @@ block content
                     a(href=`/perfil/${usuario.idUsuario}/seguidores`) Seguidores: #{seguidores}
                     a(href=`/perfil/${usuario.idUsuario}/seguidos`) Seguidos: #{seguidos}
                 if currentUser.id != usuario.idUsuario
-                    button Seguir    
+                    if usuarioLoSigue 
+                        form(action=`/perfil/${usuario.idUsuario}/dejarSeguir`, method="POST")
+                            button.boton-dejarSeguir(type="submit") Seguido
+                    else 
+                        form(action=`/perfil/${usuario.idUsuario}/seguir`, method="POST")
+                            button.boton-seguir(type="submit") Seguir
             
             
 

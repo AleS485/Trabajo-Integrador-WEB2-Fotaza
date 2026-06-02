@@ -1,5 +1,81 @@
 import { Seguidor, Usuario } from '../models/index.js';
 
+
+export async function verificarSiLoSigue(idSeguidor, idUsuarioSeguido){
+    try{
+        const verificacionSeguidor = await Seguidor.findOne({
+            where:{
+                idSeguidor: idSeguidor,
+                idUsuarioSeguido: idUsuarioSeguido
+            }
+        })
+
+        if(verificacionSeguidor){
+            return true;
+        } else{
+            return false;
+        }
+
+
+
+    } catch(error){
+        console.error("ERROR VERIFICANDO SI EXISTE SEGUIMIENTO: ", error);
+        return false;
+    }
+}
+
+export async function seguirUsuario(req, res){
+
+    try{
+        const idUsuarioSeguido = req.params.id;
+        const idSeguidor = req.session.user.id;
+
+        if(idSeguidor == idUsuarioSeguido){
+            return res.status(400).send("NO TE PODES SEGUIR A VOS MISMO");
+        }
+
+        await Seguidor.create({
+            idSeguidor: idSeguidor,
+            idUsuarioSeguido: idUsuarioSeguido
+        })
+
+        return res.redirect(`/perfil/${idUsuarioSeguido}`)
+
+    } catch(error){
+        console.error("ERROR SIGUIENDO USUARIO: ", error);
+        return res.status(500).send('ERROR DEL SERVIDOR PROCESANDO EL SEGUIMIENTO');
+    }
+
+
+
+}
+
+
+export async function dejarSeguirUsuario(req, res) {
+    
+    try {
+        const idUsuarioSeguido = req.params.id;
+        const idSeguidor = req.session.user.id;
+
+        await Seguidor.destroy({
+            where: {
+                idSeguidor: idSeguidor,
+                idUsuarioSeguido: idUsuarioSeguido
+            }
+        });
+
+        return res.redirect(`/perfil/${idUsuarioSeguido}`);
+    } catch (error) {
+        console.error('ERROR AL DEJAR DE SEGUIR: ', error);
+        return res.status(500).send("ERROR DEL SERVIDOR AL INTENTAR BORRAR SEGUIMIENTO");
+    
+    }
+
+}
+
+
+
+
 export async function obtenerSeguidores(idUsuario){
 
     try{

@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { obtenerUsuario } from '../controller/usuario.js';
-import { contadorSeguidores, contadorSeguidos, obtenerSeguidores, obtenerSeguidos } from '../controller/seguidor.js';
+import { contadorSeguidores, contadorSeguidos, obtenerSeguidores, obtenerSeguidos, dejarSeguirUsuario, verificarSiLoSigue, seguirUsuario } from '../controller/seguidor.js';
 
 
 // /perfil
@@ -20,7 +20,7 @@ router.get('/:id', async (req, res) => {
     const usuarioBuscado = await obtenerUsuario(idUsuario);
 
     if(!usuarioBuscado){
-        return res.status(404).send('No se encontro ese usuario con el id: ' + idUsuario);
+        return res.status(404).send('NO SE ENCONTRO EL USUARIO CON ESE ID: ' + idUsuario);
     }
 
     const seguidores = await contadorSeguidores(idUsuario);
@@ -28,6 +28,11 @@ router.get('/:id', async (req, res) => {
     let fotoUsuario = '';
     if(usuarioBuscado.avatarUsuario){
         fotoUsuario = usuarioBuscado.avatarUsuario.toString('base64');
+    }
+
+    let usuarioLoSigue = false;
+    if(req.session.user && req.session.user.id != parseInt(idUsuario)){
+        usuarioLoSigue = await verificarSiLoSigue(req.session.user.id, idUsuario);
     }
 
 
@@ -62,6 +67,17 @@ router.get('/:id/seguidos', async (req, res) => {
     });
 
 });
+
+
+router.post('/:id/seguir', seguirUsuario);
+    
+router.post('/:id/dejarSeguir', dejarSeguirUsuario);
+
+
+
+
+
+
 
 
 export default router;

@@ -39,9 +39,9 @@ block content
                                         div.accionesComentarioIndividual
                                             if currentUser.id == publicacion.idUsuario
                                                 form(action="" + comentario.idComentario)
-                                                    button.boton-reportar(type="submit") Reportar
-                                                form(action="" + comentario.idComentario)
-                                                    button.boton-borrar(type="submit") Borrar                       
+                                                    button.boton-borrar(type="submit") Borrar
+                                            form(action="" + comentario.idComentario)
+                                                    button.boton-reportar(type="submit") Reportar                      
                                     div.cuerpoComentario
                                         p= comentario.texto
                                         p.mini= comentario.fecha

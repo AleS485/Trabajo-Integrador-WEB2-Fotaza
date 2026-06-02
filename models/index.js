@@ -27,7 +27,7 @@ Usuario.hasMany(Publicacion, { foreignKey: 'idUsuario'});
 Publicacion.belongsTo(Usuario, { foreignKey: 'idUsuario' });
 
 // publicacion etiqueta y tabla intermedia
-Publicacion.belongsToMany(Etiqueta, {through: PublicacionEtiqueta, foreignKey: 'idPublicacion'});
+Publicacion.belongsToMany(Etiqueta, {through: PublicacionEtiqueta, foreignKey: 'idPublicacion', onDelete: 'CASCADE'});
 Etiqueta.belongsToMany(Publicacion, {through: PublicacionEtiqueta, foreignKey: 'idEtiqueta'});
 
 // favorito (por si solo con usuario y publicacion)
@@ -43,12 +43,12 @@ Publicacion.belongsToMany(Coleccion, { through: ColeccionPublicacion, foreignKey
 
 // publicacion con fotografia
 
-Publicacion.hasMany(Fotografia, { foreignKey: 'idPublicacion'});
+Publicacion.hasMany(Fotografia, { foreignKey: 'idPublicacion', onDelete: 'CASCADE'});
 Fotografia.belongsTo(Publicacion, { foreignKey: 'idPublicacion'})
 
 // fotografia con comentario
 
-Fotografia.hasMany(Comentario, { foreignKey: 'idFotografia'});
+Fotografia.hasMany(Comentario, { foreignKey: 'idFotografia', onDelete: 'CASCADE'});
 Comentario.belongsTo(Fotografia, { foreignKey: 'idFotografia'});
 
 // usuarios con comentarios
@@ -58,8 +58,8 @@ Comentario.belongsTo(Usuario, { foreignKey: 'idUsuario'});
 
 // fotografia con marca de agua (copyright, cada una tiene una sola marca)
 
-Fotografia.hasOne(MarcaDeAgua, { foreignKey: 'idFotografia'});
-MarcaDeAgua.belongsTo(Fotografia, { foreignKey: 'idFotografia' });
+Fotografia.hasOne(MarcaDeAgua, { foreignKey: 'idFotografia', onDelete: 'CASCADE'});
+MarcaDeAgua.belongsTo(Fotografia, { foreignKey: 'idFotografia'});
 
 // motivo con denuncia (base)
 
@@ -71,10 +71,10 @@ Denuncia.belongsTo(Motivo, { foreignKey: 'idMotivo'});
 Usuario.hasMany(Denuncia, { foreignKey: 'idUsuario'});
 Denuncia.belongsTo(Usuario, { foreignKey: 'idUsuario'});
 
-Comentario.hasMany(Denuncia, { foreignKey: 'idComentario'});
+Comentario.hasMany(Denuncia, { foreignKey: 'idComentario', onDelete: 'CASCADE'});
 Denuncia.belongsTo(Comentario, { foreignKey: 'idComentario'});
 
-Fotografia.hasMany(Denuncia, { foreignKey: 'idFotografia'});
+Fotografia.hasMany(Denuncia, { foreignKey: 'idFotografia', onDelete: 'CASCADE'});
 Denuncia.belongsTo(Fotografia, { foreignKey: 'idFotografia'});
 
 // valoracion
@@ -142,7 +142,7 @@ export async function funcionSync(){
         await sequelize.sync({ alter: true})
         console.log('[+] Sincronizado de modelos')
     } catch(err){
-        console.error('[+] Error en la conexion a la bd ' + err);
+        console.error('[-] Error en la conexion a la bd ' + err);
         throw err;
     }
 

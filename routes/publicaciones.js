@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { crearPublicacion, obtenerDatosDePublicacion, obtenerDatosParaEditar, actualizarPublicacion } from "../controller/publicacion.js";
+import { crearPublicacion, obtenerDatosDePublicacion, obtenerDatosParaEditar, actualizarPublicacion, eliminarPublicacion } from "../controller/publicacion.js";
 
 // /publicaciones
 const router = Router()
@@ -24,13 +24,10 @@ router.put('/editar/:id', actualizarPublicacion);
 router.post('/crear', crearPublicacion);
 
 
+router.post('/eliminar/:id', eliminarPublicacion);
 
 
-router.post('/eliminar/:id', (req, res) => {
 
-    res.send('Publicacion eliminada');
-
-})
 
 router.get('/:id', async (req, res) =>{ // mostrar
 

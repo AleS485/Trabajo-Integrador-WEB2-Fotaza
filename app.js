@@ -31,8 +31,8 @@ app.use(session({
         sameSite: 'lax', 
     },
 }));
-app.use(express.json({limit: '15mb'}));
-app.use(express.urlencoded({ limit: '15mb', extended: true }));
+app.use(express.json({limit: '4mb'}));
+app.use(express.urlencoded({ limit: '4mb', extended: true }));
 app.set('view engine', 'pug');
 app.set('views', './views');
 

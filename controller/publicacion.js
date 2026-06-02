@@ -1,6 +1,41 @@
 import { Publicacion, Fotografia, Comentario, Usuario, PublicacionEtiqueta, Etiqueta, Valoracion, MarcaDeAgua } from '../models/index.js'; //index por las relaciones - recordar
 import sharp from 'sharp';
 
+export async function eliminarPublicacion(req, res){
+
+    try{
+
+        const idPublicacionBuscada = req.params.id;
+        const usuarioLogueado = req.session.user.id;
+
+        const publicacion = await Publicacion.findByPk(idPublicacionBuscada);
+
+        if(!publicacion){
+            return res.status(404).send("LA PUBLICACION A ELIMINAR NO SE HA ENCONTRADO");
+        }
+
+        if(usuarioLogueado !== publicacion.idUsuario){
+            return res.status(403).send("NO SOS EL CREADOR DE ESTA PUBLICACION, POR LO TANTO NO PODES BORRARLA");
+        }
+        
+        await publicacion.destroy();
+
+        return res.redirect("/");
+
+
+
+    } catch(error){
+        console.error("[-] ERROR AL BORRAR PUBLICACION: ", error );
+        return res.status(500).send("ERROR INTERNO DEL SERVER AL BORRAR");
+    }
+
+
+
+
+
+}
+
+
 export async function obtenerDatosParaEditar(req, res){
 
     try{

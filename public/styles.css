@@ -514,6 +514,7 @@ li a:hover{
 
 .fotoMostrada:hover{
     background-color: rgb(60, 5, 122);
+    cursor: pointer;
 }
 
 .fotoMostrada {

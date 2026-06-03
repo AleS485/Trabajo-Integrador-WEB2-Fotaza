@@ -40,7 +40,8 @@ router.get('/:id', async (req, res) => {
         usuario: usuarioBuscado,
         fotoUsuario: fotoUsuario,
         seguidores: seguidores,
-        seguidos: seguidos
+        seguidos: seguidos,
+        usuarioLoSigue: usuarioLoSigue
     });
 
 

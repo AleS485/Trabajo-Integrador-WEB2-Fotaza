@@ -3,6 +3,7 @@ include ./mixins/alert
 
 
 
+
 block content 
     div.loginUsuario 
         h1 Iniciar Sesion 
@@ -13,4 +14,5 @@ block content
             input(id="passwordUsuario", type="password", name="password", value= formValues ? formValues.password : '')
             button(type="submit") Login
     +alert(alert)
+
 

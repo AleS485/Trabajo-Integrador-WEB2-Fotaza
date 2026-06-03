@@ -16,8 +16,8 @@ block content
                 form(action="/publicaciones/guardar/" + publicacion.idPublicacion, method="POST") 
                     button.boton-guardarPublicacion(type="submit") Guardar Publicacion
                 if currentUser.id == publicacion.idUsuario
-                    form(action="/publicaciones/comentarios/toggle/" + publicacion.idPublicacion, method="POST") 
-                        button.boton-cerrar-comentarios(type="submit") Cerrar Comentarios
+                    form(action="/publicaciones/comentarios/estado/" + publicacion.idPublicacion, method="POST") 
+                        button.boton-cerrar-comentarios(type="submit") Cerrar/Abrir Comentarios
                     a.boton-editar-publicacion(href="/publicaciones/editar/" + publicacion.idPublicacion) Editar Publicacion
                     form(action="/publicaciones/eliminar/" + publicacion.idPublicacion, method="POST") 
                         button.boton-borrar-publicacion(type="submit") Borrar Publicacion
@@ -38,18 +38,22 @@ block content
                                             a(href="/perfil/" + comentario.idUsuario)= comentario.nombreUsuario
                                         div.accionesComentarioIndividual
                                             if currentUser.id == publicacion.idUsuario
-                                                form(action="" + comentario.idComentario)
+                                                form(action="/publicaciones/comentarios/borrar/" + comentario.idComentario + "/" + publicacion.idPublicacion, method="POST")
                                                     button.boton-borrar(type="submit") Borrar
                                             form(action="" + comentario.idComentario)
                                                     button.boton-reportar(type="submit") Reportar                      
                                     div.cuerpoComentario
                                         p= comentario.texto
                                         p.mini= comentario.fecha
-                        div.seccionComentar
-                            form(action="")
-                                input(type="hidden" name="idFotografia" value=foto.idFotografia)
-                                input(type="text" name="comentario" placeholder="Escribe un comentario")
-                                button(type="submit") Comentar 
+                        
+                        if publicacion.isCerrado
+                            p.comentarios-cerrados COMENTARIOS CERRADOS
+                        else
+                            div.seccionComentar
+                                form(action="/publicaciones/comentarios/agregar/" + publicacion.idPublicacion, method="POST")
+                                    input(type="hidden" name="idFotografia" value=foto.idFotografia)
+                                    input(type="text" name="comentario" placeholder="Escribe un comentario")
+                                    button(type="submit") Comentar 
                 div.seccionInferior
                     div.seccionValorizaciones
                         if currentUser.id != publicacion.idUsuario

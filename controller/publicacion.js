@@ -1,6 +1,116 @@
 import { Publicacion, Fotografia, Comentario, Usuario, PublicacionEtiqueta, Etiqueta, Valoracion, MarcaDeAgua } from '../models/index.js'; //index por las relaciones - recordar
 import sharp from 'sharp';
 
+
+export async function borrarComentario(req, res){
+
+    try{
+
+        const idComentario = req.params.idComentario;
+        const idPublicacion = req.params.idPublicacion;
+
+        const comentarioValidacion = await Comentario.findByPk(idComentario);
+        if(comentarioValidacion){
+            await comentarioValidacion.destroy();
+        }
+
+        return res.redirect("/publicaciones/" + idPublicacion);
+
+
+    } catch(error){
+        console.error("ERROR AL QUERER BORRAR COMENTARIO:", error);
+        return res.status(500).send("ERROR DEL SERVIDOR QUERIENDO BORRAR UN COMENTARIO");
+
+
+    }
+
+
+
+
+}
+
+
+
+export async function cambiarEstadoComentarios(req, res){
+
+    try{
+
+        const idPublicacion = req.params.idPublicacion;
+        const idUsuarioLogueado = req.session.user.id;
+
+        const publicacionValidacion = await Publicacion.findByPk(idPublicacion);
+        if(!publicacionValidacion){
+            return res.status(404).send("ESTA PUBLICACION NO EXISTE");
+        }
+
+        if(publicacionValidacion.idUsuario !== idUsuarioLogueado){
+            return res.status(403).send("NO SOS EL AUTOR DE LA PUBLICACION, POR LO TANTO NO PODES HACER ESTO"); 
+        }
+
+        let cambioEstado
+
+        if(publicacionValidacion.isCerrado == true){
+            cambioEstado = false;
+        } else{
+            cambioEstado = true;
+        }
+
+        await Publicacion.update(
+            {isCerrado: cambioEstado},
+            {where: {idPublicacion: idPublicacion}}
+        )
+
+        return res.redirect("/publicaciones/" + idPublicacion);
+
+    } catch(error){
+        console.error("ERROR CAMBIANDO EL ESTADO DE COMENTARIOS: ", error);
+        return res.status(500).send("ERROR DEL SERVIDOR CAMBIANDO EL ESTADO DE LOS COMENTARIOS");
+
+
+    }
+
+
+}
+
+
+export async function agregarComentario(req, res){
+
+    try{
+
+        const idPublicacion = req.params.idPublicacion;
+        const idFotografia = req.body.idFotografia;
+        const textoComentario = req.body.comentario;
+        const idUsuarioLogueado = req.session.user.id;
+
+        if(!textoComentario || textoComentario.trim() == ""){
+            return res.status(400).send("EL COMENTARIO NO DEBE ESTAR VACIO");
+        }
+
+        if(textoComentario.length > 250){
+            return res.status(400).send("TU COMENTARIO ES MUY LARGO (SOLO HASTA 250 CARACTERES)");
+        }
+
+        await Comentario.create({
+            idFotografia: idFotografia,
+            idUsuario: idUsuarioLogueado,
+            comentario: textoComentario
+        })
+
+        return res.redirect("/publicaciones/" + idPublicacion);
+
+
+
+    } catch(error){
+        console.error("ERROR AGREGANDO COMENTARIO: ", error);
+        return res.status(500).send("ERROR DEL SERVIDOR GUARDANDO EL COMENTARIO");
+
+    }
+
+
+}
+
+
+
 export async function eliminarPublicacion(req, res){
 
     try{
@@ -178,6 +288,7 @@ export async function obtenerDatosDePublicacion(idPublicacion){
                 }
 
                 listaComentariosFoto.push({
+                    idComentario: comentario.idComentario,
                     texto: comentario.comentario,
                     fecha: comentario.fechaComentario.toLocaleDateString(),
                     nombreUsuario: usuarioQueComenta.nombreUsuario,
@@ -236,7 +347,8 @@ export async function obtenerDatosDePublicacion(idPublicacion){
             etiquetas: listaEtiquetas,
             fotos: listaFotos,
             cantidadValoracionesInicio: totalValoracionesInicio,
-            promedioValoracionesInicio: promedioValoracionesInicio
+            promedioValoracionesInicio: promedioValoracionesInicio,
+            isCerrado: publicacion.isCerrado
         }
 
 

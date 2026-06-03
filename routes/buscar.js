@@ -1,13 +1,12 @@
 import { Router } from "express"
+import { buscarPublicaciones } from "../controller/buscar.js"
+
+
 
 // /buscar
 const router = Router()
 
-router.get("/", (req, res) => {
-
-    res.render('buscar');
-
-})
+router.get("/", buscarPublicaciones);
 
 
 

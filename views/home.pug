@@ -10,7 +10,7 @@ block content
         div.panelFotografias
             each publicacion, index in publicaciones
                     div.fotoMostrada
-                        a(href="/")
+                        a(href="/publicaciones/" + publicacion.idPublicacion)
                             if fotosAgregadas[index]
                                 img(src="data:image/png;base64," + fotosAgregadas[index], alt="")
         

@@ -4,15 +4,15 @@ include ./mixins/alert
 block content
     div.contenedorPublicacion
         div.infoPublicacionGeneral
-            h1= publicacion.titulo
+            h1.descripcion-publicacion-titulo= publicacion.titulo
             div.autorPublicacion
                 img(src="data:image/png;base64," + publicacion.avatarAutor, alt="Avatar del Autor")
-                a(href="/perfil/" + publicacion.idUsuario) Autor: #{publicacion.autor}
-            p= publicacion.descripcion 
+                a(href="/perfil/" + publicacion.idUsuario) #{publicacion.autor}
+            p.descripcion-publicacion-texto= publicacion.descripcion 
             div.etiquetasPublicacion
                 each etiqueta in publicacion.etiquetas
                     span= etiqueta
-            p= publicacion.fecha
+            p.descripcion-publicacion-fecha= publicacion.fecha
             div.seccionAccionesGenerales
                 form(action="/publicaciones/guardar/" + publicacion.idPublicacion, method="POST") 
                     button.boton-guardarPublicacion(type="submit") Guardar Publicacion
@@ -22,7 +22,6 @@ block content
                     a.boton-editar-publicacion(href="/publicaciones/editar/" + publicacion.idPublicacion) Editar Publicacion
                     form(action="/publicaciones/eliminar/" + publicacion.idPublicacion, method="POST") 
                         button.boton-borrar-publicacion(type="submit") Borrar Publicacion
-        hr
         each foto in publicacion.fotos 
             div.bloque-tarjeta-foto
                 div.seccionSuperior
@@ -48,7 +47,7 @@ block content
                                         p.mini= comentario.fecha
                         
                         if publicacion.isCerrado
-                            p.comentarios-cerrados COMENTARIOS CERRADOS
+                            h2.comentarios-cerrados COMENTARIOS CERRADOS
                         else
                             div.seccionComentar
                                 form(action="/publicaciones/comentarios/agregar/" + publicacion.idPublicacion, method="POST")
@@ -58,11 +57,11 @@ block content
                 div.seccionInferior
                     div.seccionValorizaciones
                         if currentUser.id != publicacion.idUsuario
-                            p Valora esta imagen 
+                            p.valorar-texto-publicacion Valora esta imagen 
                             form(action="/publicaciones/valorar/" + publicacion.idPublicacion, method="POST")
                                 input(type="hidden" name="idFotografia" value=foto.idFotografia)
                                 each punto in [1, 2, 3, 4, 5]
-                                    label #{punto}
+                                    label.boton-texto-votar #{punto}
                                     input(type="radio" name="valoracionPublicacion" value=punto)
                                 button.boton-votar(type="submit") Votar
                         div.datos-votos

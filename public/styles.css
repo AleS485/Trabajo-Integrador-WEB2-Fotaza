@@ -9,14 +9,14 @@
 /* estilos nav */
 
 .nav-contenedor{
-    background-color: rgb(81, 168, 231);
+    background-color: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
     padding: 20px;
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid rgb(255, 255, 255);
 }
 
 .tituloFotaza{
@@ -45,7 +45,7 @@ li a{
 li a:hover{
     text-decoration: none;
     font-size: 18px;
-    color: rgb(255, 7, 7);
+    color: rgb(236, 183, 47);
     transition: .2s;
     font-size: 20px;
 }
@@ -56,7 +56,7 @@ li a:hover{
 
     width: 100%;
     min-height: 100vh;
-    background-color: rgb(178, 178, 178);
+    background-color: rgb(63, 63, 63);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,7 +68,7 @@ li a:hover{
 .footer{
 
     padding: 25px;
-    background-color: aqua;
+    background-color: rgb(0, 0, 0);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -76,6 +76,9 @@ li a:hover{
 
 }
 
+.footer h2{
+    color: white;
+}
 
 /* estilos perfil */
 
@@ -83,7 +86,7 @@ li a:hover{
 
 .perfil-contenedor{
 
-    background-color: rgb(225, 225, 225);
+    background-color: rgb(0, 0, 0);
     border: 2px solid black;
     height: 45vh;
     width: 65vw;
@@ -94,10 +97,10 @@ li a:hover{
     flex-direction: column;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 
                 0 6px 10px rgba(0, 0, 0, 0.05);
+    border: 2px solid white;
 }
 
 .perfil-info{
-    border: 2px solid blue;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -107,28 +110,26 @@ li a:hover{
     width: 46vw;
 }
 
-.perfil-foto{
-    border: 2px solid rgb(9, 235, 69);
-}
 
 .perfil-foto img{
     border-radius: 45%;
     height: 295px;
     width: 295px;
-    border: 2px solid black;
+    border: 2px solid rgb(255, 255, 255);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 
                 0 4px 10px rgba(0, 0, 0, 0.05);
+    object-fit: cover;
+    
 }
 
 .perfil-datos-usuario {
-    border: 2px solid rgb(9, 235, 69);
     padding: 45px;
 }
 
 .perfil-datos-usuario p{
     font-size: 28px;
     font-weight: bold;
-    color: grey;
+    color: rgb(107, 34, 216);
 }
 
 .estadisticas{
@@ -141,7 +142,7 @@ li a:hover{
 .estadisticas a{
 
     text-decoration: none;
-    color: black;
+    color: rgb(255, 255, 255);
     text-align: center;
 
 }
@@ -149,7 +150,7 @@ li a:hover{
 .estadisticas a:hover{
 
     text-decoration: none;
-    color: rgb(227, 216, 20);
+    color: rgb(226, 166, 35);
     transition: .2s;
 }
 
@@ -164,13 +165,13 @@ li a:hover{
     background-color: black;
     color: white;
     border: 2px solid white;
-
+    transition: .2s;
 }
 
 .perfil-datos-usuario button:hover{
 
-    background-color: rgb(82, 82, 82);
-    transition: .2s;
+    background-color: rgb(128, 126, 126);
+    
 
 }
 
@@ -185,11 +186,11 @@ li a:hover{
 
 
 .contenedorCreador {
-    border: 2px solid black;
+    border: 2px solid rgb(255, 255, 255);
     padding: 45px;
     margin-top: 35px;
     border-radius: 25px;
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     width: 45vw;
     display: flex;
     flex-direction: column;
@@ -200,6 +201,7 @@ li a:hover{
     text-align: center;
     font-size: 42px;
     margin-bottom: 20px;
+    color: rgb(107, 34, 216);
 }
 
 .contenedorCreador form {
@@ -207,12 +209,10 @@ li a:hover{
     flex-direction: column;
     gap: 35px;
     padding: 30px;
-    border: 1px solid black;
     width: 100%;
 }
 
 .titulo {
-    border: 1px solid black;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -223,10 +223,11 @@ li a:hover{
 .titulo label {
     font-size: 25px;
     font-weight: bold;
+    color: white;
 }
 
 .titulo input {
-    border: 1px solid grey;
+    border: 4px solid rgb(195, 11, 11);
     width: 65%;
     font-size: 18px;
     padding: 5px;
@@ -234,7 +235,6 @@ li a:hover{
 }
 
 .descripcion {
-    border: 1px solid black;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -245,10 +245,11 @@ li a:hover{
 .descripcion label {
     font-size: 25px;
     font-weight: bold;
+    color: white;
 }
 
 .descripcion input {
-    border: 1px solid grey;
+    border: 4px solid rgb(195, 11, 11);
     width: 65%;
     font-size: 18px;
     padding: 5px;
@@ -256,7 +257,6 @@ li a:hover{
 }
 
 .imagenes {
-    border: 1px solid black;
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -266,18 +266,19 @@ li a:hover{
 .imagenes label {
     font-size: 20px;
     font-weight: bold;
-    background-color: rgb(160, 160, 160);
+    background-color: rgb(71, 20, 148);
+    color: white;
     padding: 12px;
     text-align: center;
     border-radius: 25px;
     cursor: pointer;
     transition: .2s;
-    border: 1px solid black;
+    border: 3px solid rgb(255, 255, 255);
 }
 
 .imagenes label:hover {
-    background-color: rgb(133, 132, 132);
-    border: 1px solid rgb(57, 57, 57);
+    background-color: rgb(104, 30, 215);
+    border: 1px solid rgb(249, 249, 249);
 }
 
 
@@ -286,6 +287,7 @@ li a:hover{
     flex-direction: column;
     gap: 10px;
     width: 100%;
+    color: white;
 }
 
 .linea-imagen {
@@ -293,11 +295,10 @@ li a:hover{
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid rgb(255, 255, 255);
 }
 
 .etiquetas {
-    border: 1px solid black;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -308,10 +309,11 @@ li a:hover{
 .etiquetas label {
     font-size: 25px;
     font-weight: bold;
+    color: white;
 }
 
 .etiquetas input {
-    border: 1px solid grey;
+    border: 4px solid rgb(195, 11, 11);
     width: 35%;
     font-size: 18px;
     padding: 5px;
@@ -320,16 +322,18 @@ li a:hover{
 
 .etiquetas button {
     width: 20%;
-    font-size: 15px;
+    font-size: 18px;
     border-radius: 10px;
-    border: 2px solid grey;
+    border: 2px solid rgb(252, 252, 252);
+    background-color: rgb(104, 30, 215);
+    color: white;
     cursor: pointer;
     transition: .2s;
     padding: 5px;
 }
 
 .etiquetas button:hover {
-    background-color: grey;
+    background-color: rgb(78, 21, 144);
 }
 
 .etiquetas-mostrar {
@@ -345,16 +349,17 @@ li a:hover{
     display: flex;
     align-items: center;
     gap: 8px;
-    background-color: aquamarine;
+    background-color: rgb(91, 24, 213);
     padding: 8px 12px;
     border-radius: 10px;
-    border: 2px solid black;
+    border: 2px solid rgb(255, 255, 255);
+    color: white;
 }
 
 .linea-etiqueta button {
     cursor: pointer;
     background-color: rgb(235, 60, 60);
-    border: 1px solid black;
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 5px;
     padding: 2px 5px;
     color: white;
@@ -370,7 +375,6 @@ li a:hover{
     display: flex;
     gap: 15px;
     padding: 10px;
-    border: 2px solid black;
     justify-content: flex-start;
     align-items: center;
 }
@@ -378,6 +382,7 @@ li a:hover{
 .copyright-confirmar p {
     font-size: 18px;
     font-weight: bold;
+    color: white;
 }
 
 .marca-agua {
@@ -385,7 +390,6 @@ li a:hover{
     display: flex;
     gap: 15px;
     padding: 10px;
-    border: 2px solid black;
     justify-content: flex-start;
     align-items: center;
 }
@@ -393,10 +397,11 @@ li a:hover{
 .marca-agua label {
     font-size: 18px;
     font-weight: bold;
+    color: white;
 }
 
 .marca-agua input {
-    border: 1px solid grey;
+    border: 4px solid rgb(195, 11, 11);
     width: 38%;
     font-size: 18px;
     padding: 5px;
@@ -408,7 +413,6 @@ li a:hover{
     width: 100%;
     display: flex;
     gap: 10px;
-    border: 2px solid black;
     flex-direction: column;
     justify-content: flex-start;
     padding: 10px;
@@ -417,6 +421,7 @@ li a:hover{
 .elegir-marcas p {
     font-size: 18px;
     font-weight: bold;
+    color: white;
 }
 
 
@@ -426,7 +431,6 @@ li a:hover{
     flex-wrap: wrap;
     gap: 15px;
     padding: 10px;
-    border: 1px solid black;
 }
 
 .linea-copy {
@@ -434,7 +438,7 @@ li a:hover{
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    border: 1px solid black;
+    border: 2px solid rgb(195, 11, 11);
     padding: 8px;
     background-color: #f9f9f9;
 }
@@ -444,6 +448,7 @@ li a:hover{
     margin: 0;
     max-width: 90px;
     word-break: break-all; 
+    color: black;
 }
 
 .boton-enviar {
@@ -451,16 +456,16 @@ li a:hover{
     font-size: 18px;
     font-weight: bold;
     border-radius: 10px;
-    border: 1px solid rgb(61, 61, 61);
-    background-color: rgb(142, 222, 138);
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(65, 23, 148);
     color: white;
     cursor: pointer;
     transition: .2s;
 }
 
 .boton-enviar:hover {
-    border: 1px solid rgb(123, 122, 122);
-    background-color: rgb(110, 170, 107);
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(89, 32, 203);
 }
 
 
@@ -487,14 +492,14 @@ li a:hover{
     width: 100%;
     min-height: 100vh; 
     box-sizing: border-box;
-    border: 2px solid red;
 }
 
 .tituloInicio {
     text-align: center;
     font-size: 6vh;
     margin-top: 25px;    
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
+    color: white;
 }
 
 .panelFotografias {
@@ -504,16 +509,22 @@ li a:hover{
     padding: 25px;      
     width: 90%;         
     max-width: 1600px;  
+    transition: .2s;
+}
+
+.fotoMostrada:hover{
+    background-color: rgb(60, 5, 122);
 }
 
 .fotoMostrada {
-    border: 2px solid green;
-    background-color: white;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
     padding: 25px;
     border-radius: 25px;
     display: flex;      
     justify-content: center;
     align-items: center;
+    transition: .2s;
 }
 
 
@@ -523,6 +534,8 @@ li a:hover{
     border-radius: 10px;
     object-fit: cover;  
 }
+
+
 
 
 .footer {
@@ -542,7 +555,8 @@ li a:hover{
 
 .contenedorCreadorColeccion{
 
-    border: 2px solid black;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: black;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -559,7 +573,6 @@ li a:hover{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid red;
     height: 100%;
     width: 100%;
     gap: 20px;
@@ -570,13 +583,14 @@ li a:hover{
     text-align: center;
     font-size: 38px;
     font-weight: bold;
+    color: white;
 
 
 }
 
 .contenedorCreadorColeccion form input{
 
-    border: 1px solid grey;
+    border: 2px solid rgb(213, 28, 28);
     width: 75%;
     font-size: 22px;
     padding: 15px;
@@ -590,16 +604,17 @@ li a:hover{
     font-size: 22px;
     padding: 25px;
     border-radius: 20px;
-    border: 1px solid black;
+    border: 1px solid rgb(255, 255, 255);
     cursor: pointer;
     transition: .2s;
-    background-color: rgb(50, 123, 219);
+    background-color: rgb(73, 29, 173);
+    color: white;
 
 }
 
 .contenedorCreadorColeccion form button:hover{
 
-    background-color: rgb(115, 171, 245);
+    background-color: rgb(87, 34, 201);
 
 
 
@@ -623,7 +638,7 @@ li a:hover{
 
 .infoPublicacionGeneral {
     margin-bottom: 20px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid rgb(255, 255, 255);
     padding-bottom: 15px;
 }
 
@@ -639,13 +654,30 @@ li a:hover{
 .autorPublicacion img {
     width: 60px;
     height: 60px;
-    border: 2px solid black; 
+    border: 2px solid rgb(88, 22, 212); 
 }
 
 .autorPublicacion a {
-    color: black;
+    color: rgb(255, 255, 255);
     font-weight: bold;
     font-size: 18px;
+    text-decoration: none;
+}
+
+.autorPublicacion a:hover{
+    color: rgb(212, 171, 58);
+}
+
+.descripcion-publicacion-titulo{
+    color: white;
+}
+
+.descripcion-publicacion-texto{
+    color: white;
+}
+
+.descripcion-publicacion-fecha{
+    color: white;
 }
 
 .etiquetasPublicacion {
@@ -658,11 +690,12 @@ li a:hover{
 }
 
 .etiquetasPublicacion span {
-    background-color: lightgrey;
+    background-color: rgb(108, 24, 233);
     padding: 5px 10px;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid rgb(255, 255, 255);
     font-size: 14px;
+    color: white;
 }
 
 .seccionAccionesGenerales {
@@ -676,17 +709,18 @@ li a:hover{
 .seccionAccionesGenerales button {
     padding: 8px 15px;
     cursor: pointer;
-    border: 2px solid black;
-    background-color: white;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
     font-weight: bold;
     transition: .2s;
+    color: white;
 }
 
 .boton-editar-publicacion {
     padding: 8px 15px;
-    border: 2px solid black;
-    background-color: white; 
-    color: black;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0); 
+    color: rgb(255, 255, 255);
     font-weight: bold;
     text-decoration: none; 
     font-size: 12px; 
@@ -721,7 +755,7 @@ li a:hover{
     border: 2px solid black;
     padding: 20px;
     margin-bottom: 35px;
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     border-radius: 5px;
 }
 
@@ -742,7 +776,7 @@ li a:hover{
 
 .divisorImagen img {
     width: 100%;
-    border: 2px solid black;
+    border: 2px solid rgb(255, 255, 255);
 }
 
 
@@ -756,21 +790,22 @@ li a:hover{
 .divisorInfo h3 {
     margin: 0;
     font-size: 24px;
+    color: rgb(255, 255, 255);
 }
 
 
 .seccionComentariosPublicacion {
     height: 450px;
     overflow-y: scroll;
-    border: 2px solid black;
+    border: 2px solid rgb(255, 255, 255);
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color: #1a1a1a;
 }
 
 .comentario {
     margin-bottom: 15px;
     padding-bottom: 5px;
-    border-bottom: 1px black;
+    border-bottom: 1px rgb(250, 250, 250);
 }
 
 .cabeceraComentario {
@@ -790,13 +825,18 @@ li a:hover{
 .autorComentarioIndividual img {
     width: 30px;
     height: 30px;
-    border: 1px solid black;
+    border: 1px solid rgb(252, 252, 252);
 }
 
 .autorComentarioIndividual a {
-    color: black;
+    color: rgb(255, 255, 255);
     font-weight: bold;
     font-size: 14px;
+    transition: .2s;
+}
+
+.autorComentarioIndividual a:hover{
+    color: #dcab25;
 }
 
 .accionesComentarioIndividual {
@@ -809,12 +849,13 @@ li a:hover{
     padding: 2px 5px;
     font-size: 12px;
     cursor: pointer;
-    border: 1px solid grey;
-    background-color: white; 
+    border: 1px solid rgb(251, 251, 251);
+    background-color: rgb(0, 0, 0); 
+    color: white;
 }
 
 .boton-reportar:hover { 
-    background-color: red; color: white; 
+    background-color: rgb(228, 117, 5); color: white; 
 }
 
 .boton-borrar:hover { 
@@ -824,10 +865,11 @@ li a:hover{
 .cuerpoComentario {
     padding-left: 10px;
     margin-top: 5px;
+    color: white;
 }
 
 .cuerpoComentario p.mini {
-    color: grey;
+    color: rgb(234, 233, 233);
     font-size: 12px;
 }
 
@@ -842,16 +884,16 @@ li a:hover{
 .seccionComentar input {
     width: 70%;
     padding: 8px;
-    border: 2px solid black;
+    border: 2px solid rgb(253, 253, 253);
 }
 
 .seccionComentar button {
     width: 25%;
     padding: 8px;
-    background-color: lightblue;
-    color: black;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-weight: bold;
-    border: 2px solid black;
+    border: 2px solid rgb(255, 255, 255);
     cursor: pointer;
 }
 
@@ -859,7 +901,7 @@ li a:hover{
 .seccionInferior {
     margin-top: 20px;
     padding-top: 15px;
-    border-top: 2px solid black;
+    border-top: 2px solid rgb(255, 255, 255);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -882,12 +924,21 @@ li a:hover{
     gap: 5px;
 }
 
+.valorar-texto-publicacion{
+    color: white;
+}
+
 .boton-votar {
     padding: 5px 10px;
     cursor: pointer;
-    border: 2px solid black;
-    background-color: white;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
     font-weight: bold;
+    color: white;
+}
+
+.boton-texto-votar{
+    color: white;
 }
 
 .datos-votos {
@@ -895,6 +946,7 @@ li a:hover{
     flex-direction: row;
     gap: 15px;
     font-weight: bold;
+    color: white;
 }
 
 .seccionReporteFoto {
@@ -906,7 +958,7 @@ li a:hover{
 .botonInteres {
     background-color: rgb(16, 174, 27);
     color: white;
-    border: 2px solid black;
+    border: 2px solid rgb(248, 248, 248);
     padding: 6px 12px;
     cursor: pointer;
     font-weight: bold;
@@ -920,7 +972,7 @@ li a:hover{
 .botonReporte{
     background-color: rgb(206, 19, 19);
     color: white;
-    border: 2px solid black;
+    border: 2px solid rgb(255, 255, 255);
     padding: 6px 12px;
     cursor: pointer;
     font-weight: bold;
@@ -931,7 +983,10 @@ li a:hover{
     background-color: rgb(149, 14, 14);
 }
 
-
+.comentarios-cerrados{
+    color: rgb(232, 0, 0);
+    text-align: center;
+}
 
 
 
@@ -1226,7 +1281,8 @@ li a:hover{
 .contenedorBuscar {
     width: 280px;
     padding: 20px;
-    border: 2px solid #999999;
+    border: 2px solid #f7f7f7;
+    background-color: black;
     border-radius: 10px;
 }
 
@@ -1270,7 +1326,7 @@ li a:hover{
 .contenedorControlesFiltros h2 {
     font-size: 16px;
     margin: 0;
-    color: #333333;
+    color: #ffffff;
 }
 
 
@@ -1285,6 +1341,7 @@ li a:hover{
 .buscarFechas label {
     font-size: 13px;
     margin-top: 2px;
+    color: white;
 }
 
 .contenedorEtiquetasAgregadas {
@@ -1294,14 +1351,7 @@ li a:hover{
     gap: 5px;
 }
 
-.contenedorEtiquetasAgregadas p {
-    padding: 4px 10px;
-    background-color: #25a8bf;
-    color: white;
-    font-size: 12px;
-    border-radius: 4px;
-    margin: 0;
-}
+
 
 .contenedorBuscarFiltros {
     display: flex;
@@ -1317,23 +1367,27 @@ li a:hover{
     font-size: 15px;
     font-weight: bold;
     border-radius: 6px;
-    border: 2px solid #555555;
+    border: 2px solid #ffffff;
     cursor: pointer;
-    background-color: #e0e0e0;
+    background-color: #3d3d3d;
+    color: white;
+    transition: .2s;
 }
 
 .contenedorBuscarFiltros button:hover {
-    background-color: #cccccc;
+    background-color: #2f0853;
 }
 
 .contenedorBuscarFiltros a {
-    font-size: 14px;
-    color: #ff3b30;
+    font-size: 16px;
+    color: #37e926;
     text-decoration: none;
+    transition: .2s;
 }
 
 .contenedorBuscarFiltros a:hover {
     text-decoration: underline;
+    color: #6e1fe3;
 }
 
 
@@ -1346,9 +1400,10 @@ li a:hover{
 }
 
 .contenedorDePublicacionBuscada {
-    border: 2px solid #dddddd;
+    border: 2px solid #ffffff;
     padding: 6px;
     border-radius: 6px;
+    background-color: black;
 }
 
 .contenedorDePublicacionBuscada img {
@@ -1357,6 +1412,7 @@ li a:hover{
     object-fit: cover;
     border-radius: 4px;
     display: block;
+    border: 2px solid white;
 }
 
 
@@ -1580,20 +1636,20 @@ li a:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid red; 
+    border: 2px solid rgb(255, 255, 255); 
     width: 60%;
     margin-top: 80px; 
     margin-bottom: 80px; 
     padding: 25px;
     border-radius: 15px;
-    background-color: #ffffff;
+    background-color: #000000;
 }
 
 .contenedorSeguidoresPerfil h1 {
     text-align: center;
     margin-bottom: 25px;
     font-size: 32px;
-    color: #333;
+    color: #ffffff;
 }
 
 
@@ -1601,8 +1657,7 @@ li a:hover{
     display: flex;
     flex-direction: row;
     justify-content: flex-start; 
-    align-items: center;
-    border: 2px solid blue;      
+    align-items: center;  
     padding: 15px 30px;
     gap: 25px;
     border-radius: 15px;
@@ -1617,14 +1672,19 @@ li a:hover{
     font-size: 24px;
     font-weight: bold;
     text-decoration: none;
-    color: #4b146b;              
+    color: #801ed6;     
+    transition: .2s;         
+}
+
+.seguidorPerfil a:hover{
+    color: #dda127;  
 }
 
 .seguidorPerfil img {
     width: 80px;                 
     height: 80px;
     border-radius: 50%;          
-    border: 2px solid #ddd;
+    border: 2px solid #6d1adb;
     object-fit: cover;           
 }
 
@@ -1644,20 +1704,20 @@ li a:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid red; 
+    border: 2px solid rgb(255, 255, 255); 
     width: 60%;
     margin-top: 80px; 
     margin-bottom: 80px; 
     padding: 25px;
     border-radius: 15px;
-    background-color: #ffffff;
+    background-color: #000000;
 }
 
 .contenedorSeguidosPerfil h1 {
     text-align: center;
     margin-bottom: 25px;
     font-size: 32px;
-    color: #333;
+    color: #fdfdfd;
 }
 
 
@@ -1665,8 +1725,7 @@ li a:hover{
     display: flex;
     flex-direction: row;
     justify-content: flex-start; 
-    align-items: center;
-    border: 2px solid blue;      
+    align-items: center;  
     padding: 15px 30px;
     gap: 25px;
     border-radius: 15px;
@@ -1681,14 +1740,21 @@ li a:hover{
     font-size: 24px;
     font-weight: bold;
     text-decoration: none;
-    color: #4b146b;              
+    color: #7c1ad8;     
+    transition: .2s;         
+}
+
+.seguidoPerfil a:hover{
+
+    color: #d8a61d;   
+
 }
 
 .seguidoPerfil img {
     width: 80px;                 
     height: 80px;
     border-radius: 50%;          
-    border: 2px solid #ddd;
+    border: 2px solid #7514e3;
     object-fit: cover;           
 }
 
@@ -1923,7 +1989,8 @@ li a:hover{
     justify-content: center;
     align-items: center;
     width: 30%;
-    border: 2px solid red;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: black;
     height: 550px;
     border-radius: 20px;
     gap: 15px;
@@ -1933,6 +2000,7 @@ li a:hover{
 .loginUsuario h1{
 
     font-size: 50px;
+    color: white;
 
 }
 
@@ -1943,7 +2011,6 @@ li a:hover{
     justify-content: center;
     align-items: center;
     gap: 25px;
-    border: 2px solid red;
     padding: 25px;
     width: 85%;
 
@@ -1953,6 +2020,7 @@ li a:hover{
 
     font-size: 30px;
     font-weight: bold;
+    color: white;
 
 }
 
@@ -1961,7 +2029,7 @@ li a:hover{
     width: 100%;
     padding: 10px;
     font-size: 18px;
-    border: 1px solid #cbcbcb;
+    border: 2px solid #ee1414;
     border-radius: 5px;
     text-align: center;
 
@@ -1978,17 +2046,18 @@ li a:hover{
     width: 100%;
     padding: 15px;
     font-size: 22px;
-    background-color: #4886dd;
+    background-color: #731de4;
     border-radius: 15px;
     cursor: pointer;
     transition: .2s;
-    border: 2px solid grey;
+    border: 2px solid rgb(255, 255, 255);
+    color: white;
 
 }
 
 .loginUsuario form button:hover{
 
-    background-color: #7e9dca;
+    background-color: #451187;
 
 }
 
@@ -2004,15 +2073,18 @@ li a:hover{
     align-items: center;
     width: 600px; 
     margin: 40px auto;
-    border: 2px solid red;
+    border: 2px solid rgb(255, 255, 255);
     border-radius: 15px;
     padding: 25px 30px; 
+    background-color: black;
+
 }
 
 
 .registro-usuario h1 {
     font-size: 32px; 
     margin-bottom: 20px;
+    color: white;
 }
 
 
@@ -2021,7 +2093,6 @@ li a:hover{
     flex-direction: column;
     gap: 15px; 
     width: 100%; 
-    border: 2px solid red;
     padding: 25px;
     border-radius: 10px;
 }
@@ -2039,6 +2110,7 @@ li a:hover{
     font-size: 16px;
     font-weight: bold;
     text-align: center;
+    color: white;
 }
 
 
@@ -2046,7 +2118,7 @@ li a:hover{
     width: 100%;
     padding: 10px; 
     font-size: 16px;
-    border: 1px solid #cbcbcb;
+    border: 2px solid #ff0000;
     border-radius: 5px;
     text-align: center;
 }
@@ -2059,17 +2131,18 @@ li a:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #e1e1e1;
-    border: 1px solid grey;
+    background-color: #000000;
+    border: 1px solid rgb(255, 255, 255);
     padding: 10px; 
     font-size: 15px;
     cursor: pointer;
     border-radius: 5px;
     font-weight: bold;
+    transition: .2s;
 }
 
 .registro-boton-avatar:hover {
-    background-color: #d1d1d1;
+    background-color: #383838;
 }
 
 
@@ -2077,19 +2150,23 @@ li a:hover{
     width: 100%;
     padding: 14px; 
     font-size: 20px;
-    background-color: #4886dd;
+    background-color: #631ee4;
     border-radius: 10px;
     cursor: pointer;
-    border: 2px solid grey;
+    border: 2px solid rgb(255, 255, 255);
     color: white;
     font-weight: bold;
     margin-top: 5px;
+    transition: .2s;
 }
 
 .registro-usuario form button:hover {
-    background-color: red;
+    background-color: rgb(60, 12, 118);
 }
 
+#avatar-nombre{
+    color: white;
+}
 
 
 /* Alertas del profe, revisar por si rompe algo */

@@ -2095,7 +2095,7 @@ li a:hover{
 /* Alertas del profe, revisar por si rompe algo */
 
 .alert{
-    position: absolute;
+    position: fixed;
     z-index: 1;
     bottom: 20px;
     right: 10px;

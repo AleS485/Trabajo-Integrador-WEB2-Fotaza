@@ -16,7 +16,7 @@ Valoracion.init(
         idFotografia:{
             type: DataTypes.INTEGER,
         },
-        valoracionPublicacion:{
+        valoracionFotografia:{
             type: DataTypes.INTEGER,
             allowNull: false,
             validate:{

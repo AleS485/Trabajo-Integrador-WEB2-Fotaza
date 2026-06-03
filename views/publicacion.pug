@@ -1,4 +1,5 @@
 extends layout 
+include ./mixins/alert
 
 block content
     div.contenedorPublicacion
@@ -58,7 +59,7 @@ block content
                     div.seccionValorizaciones
                         if currentUser.id != publicacion.idUsuario
                             p Valora esta imagen 
-                            form(action="")
+                            form(action="/publicaciones/valorar/" + publicacion.idPublicacion, method="POST")
                                 input(type="hidden" name="idFotografia" value=foto.idFotografia)
                                 each punto in [1, 2, 3, 4, 5]
                                     label #{punto}
@@ -74,3 +75,4 @@ block content
 
                             form(action="" + foto.idFotografia)
                                 button.botonReporte(type="submit") Reportar imagen
+    +alert(alert)

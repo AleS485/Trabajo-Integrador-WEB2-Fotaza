@@ -2,6 +2,81 @@ import { Publicacion, Fotografia, Comentario, Usuario, PublicacionEtiqueta, Etiq
 import sharp from 'sharp';
 
 
+export async function valorarFoto(req, res){
+
+    try{
+        const idPublicacion = req.params.idPublicacion;
+        const idUsuarioLogueado = req.session.user.id;
+        const idFotografia = req.body.idFotografia;
+        const puntuacionEnviada = req.body.valoracionPublicacion;
+
+        // mando alerta del profe si llega a estar vacia
+        if(!puntuacionEnviada){ 
+            const publicacionReenviada = await obtenerDatosDePublicacion(idPublicacion);
+            return res.status(400).render('publicacion', {
+                publicacion: publicacionReenviada,
+                alert:{
+                    status: "error",
+                    text: "NO PODES VOTAR SIN ELEGIR UN PUNTAJE"
+                }
+            });
+        }
+
+        
+        // mando alerta del profe si autor quiere votar
+        const publicacionValidacionAutor = await Publicacion.findByPk(idPublicacion); 
+        if(publicacionValidacionAutor.idUsuario == idUsuarioLogueado){
+            const publicacionReenviada = await obtenerDatosDePublicacion(idPublicacion);
+            return res.status(400).render('publicacion', {
+                publicacion: publicacionReenviada,
+                alert:{
+                    status: "error",
+                    text: "SOS EL AUTOR, NO PODES VALORIZAR TU PROPIA IMAGEN"
+                }
+            });
+        }
+
+        
+        const unicoVoto = await Valoracion.findOne({
+            where: {
+                idUsuario: idUsuarioLogueado,
+                idFotografia: idFotografia
+            }
+        });
+
+        // mando alerta del profe si usuario ya voto
+        if (unicoVoto) {
+            const publicacionReenviada = await obtenerDatosDePublicacion(idPublicacion);
+            return res.status(400).render('publicacion', {
+                publicacion: publicacionReenviada,
+                alert: {
+                    status: "error",
+                    text: "NO PODES VALORIZAR UNA IMAGEN MAS DE UNA VEZ"
+                }
+            });
+        }
+
+        await Valoracion.create({
+            idUsuario: idUsuarioLogueado,
+            idFotografia: idFotografia,
+            valoracionFotografia: parseInt(puntuacionEnviada)
+        });
+
+        return res.redirect("/publicaciones/" + idPublicacion);
+
+    } catch(error){
+        console.error("ERROR AL GUARDAR LA VALORACION: ", error);
+        return res.status(500).send("ERROR INTERNO AL VALORIZAR LA FOTO");
+
+
+    }
+
+
+
+
+}
+
+
 export async function borrarComentario(req, res){
 
     try{
@@ -309,7 +384,7 @@ export async function obtenerDatosDePublicacion(idPublicacion){
             if(cantidadValoraciones > 0){
                 let sumaValoraciones = 0;
                 for(let valoracion of valoracionesDeFoto){
-                    sumaValoraciones += valoracion.valoracionPublicacion;
+                    sumaValoraciones += valoracion.valoracionFotografia;
                 }
                 promedioTotalValoraciones = (sumaValoraciones/cantidadValoraciones).toFixed(1);
             }

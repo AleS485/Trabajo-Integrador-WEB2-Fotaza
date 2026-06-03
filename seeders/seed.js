@@ -87,12 +87,12 @@ async function seed() {
 
         await Valoracion.bulkCreate([
         { 
-            valoracionPublicacion: 5, 
+            valoracionFotografia: 5, 
             idUsuario: usuarios[1].idUsuario, 
             idFotografia: fotos[0].idFotografia 
         },
         { 
-            valoracionPublicacion: 4, 
+            valoracionFotografia: 4, 
             idUsuario: usuarios[0].idUsuario, 
             idFotografia: fotos[1].idFotografia 
         }

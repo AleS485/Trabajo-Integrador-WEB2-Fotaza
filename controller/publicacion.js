@@ -1,4 +1,5 @@
 import { Publicacion, Fotografia, Comentario, Usuario, PublicacionEtiqueta, Etiqueta, Valoracion, MarcaDeAgua } from '../models/index.js'; //index por las relaciones - recordar
+import { Op } from 'sequelize';
 import sharp from 'sharp';
 
 
@@ -255,9 +256,36 @@ export async function actualizarPublicacion(req, res){
         { where: {idPublicacion: idPublicacion}}
         )
 
+
+        // guardo datos para que no se borre en bd
+        const fotosAntes = await Fotografia.findAll({
+            where: {idPublicacion: idPublicacion}
+        })
+
+        const idFotosAntes = [];
+        for(let foto of fotosAntes){
+            idFotosAntes.push(foto.idFotografia);
+        }
+
+        const marcasAguaAntes = await MarcaDeAgua.findAll({
+            where: {idFotografia: {[Op.in]: idFotosAntes}}
+        })
+
+        let textoMarcaGuardado = null;
+
+        if(marcasAguaAntes.length > 0){
+            textoMarcaGuardado = marcasAguaAntes[0].contenidoMarca;
+        } 
+
+
+
         await PublicacionEtiqueta.destroy({
             where: { idPublicacion: idPublicacion }
         })
+
+        await Fotografia.destroy({
+            where: { idPublicacion: idPublicacion }
+        });
 
         if (etiquetas && etiquetas.length > 0) {
             for (let etiquetaReagregada of etiquetas) {
@@ -272,9 +300,7 @@ export async function actualizarPublicacion(req, res){
             }
         }
 
-        await Fotografia.destroy({
-            where: { idPublicacion: idPublicacion }
-        });
+        
 
         if (imgs && imgs.length > 0) {
             for (let img of imgs) {
@@ -289,19 +315,23 @@ export async function actualizarPublicacion(req, res){
 
                 let imgBuffer = Buffer.from(codigoBase64, 'base64');
 
-                await Fotografia.create({
+                const fotoRecreada = await Fotografia.create({
                     idPublicacion: idPublicacion,
                     urlArchivo: imgBuffer,
-                    isCopyright: false 
+                    isCopyright: img.isCopyright ? true : false
                 });
+
+                if(textoMarcaGuardado && img.isCopyright){
+                    await MarcaDeAgua.create({
+                        idFotografia: fotoRecreada.idFotografia,
+                        contenidoMarca: textoMarcaGuardado
+                    })
+                }
+
             }
         }
 
         return res.status(200).send('SE MODIFICO LA PUBLICACION CORRECTAMENTE');
-
-
-
-
 
 
 
@@ -395,7 +425,8 @@ export async function obtenerDatosDePublicacion(idPublicacion){
                 urlArchivo: fotoPreparada,
                 comentarios: listaComentariosFoto,
                 cantidadValoraciones: cantidadValoraciones,
-                promedioValoraciones: promedioTotalValoraciones
+                promedioValoraciones: promedioTotalValoraciones,
+                isCopyright: foto.isCopyright
             })
         }
 
@@ -486,6 +517,7 @@ export async function crearPublicacion(req, res){
                 const codigoBase64 = textBase64[1];
             
                 let imgBuffer = Buffer.from(codigoBase64, 'base64');
+                let flagMarcaDeAguaBD = false;
 
                 if(confirmacionCopyright && img.isCopyright){
                     
@@ -498,18 +530,25 @@ export async function crearPublicacion(req, res){
                     .composite([{ input: textoImagen, top: 150, left: 150 }])
                     .toBuffer();
 
-
+                    flagMarcaDeAguaBD = true;
 
 
 
 
                 }
 
-                await Fotografia.create({
+                const fotoCreada = await Fotografia.create({
                     idPublicacion: idPublicacionCreada,
                     urlArchivo: imgBuffer,
                     isCopyright: img.isCopyright ? true : false
                 })
+
+                if(flagMarcaDeAguaBD && marcaAgua){
+                    await MarcaDeAgua.create({
+                        idFotografia: fotoCreada.idFotografia,
+                        contenidoMarca: marcaAgua
+                    })
+                }
 
             
             }

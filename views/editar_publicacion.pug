@@ -35,6 +35,8 @@ block content
             each foto in publicacion.fotos 
                 input(name="fotosViejasSubidas", type="hidden", value="data:image/png;base64," + foto.urlArchivo)
 
+                input(name="copysViejosCargados", type="hidden", value=foto.isCopyright ? "true" : "false")
+
             button.boton-enviar(type="submit") Guardar cambios
 
     
@@ -67,13 +69,20 @@ block content
         }
 
         const inputsImagenesTraidas = document.getElementsByName('fotosViejasSubidas');
+        const inputsCopyrightTraidos = document.getElementsByName('copysViejosCargados');
 
 
         for(let i = 0; i < inputsImagenesTraidas.length; i++){
         
+            let valorBooleano = false;
+            if (inputsCopyrightTraidos[i].value === "true") {
+                valorBooleano = true;
+            }   
+
             arregloImgs.push({
                 src: inputsImagenesTraidas[i].value,
                 name: "Foto_Guardada_" + (i + 1) + ".png",
+                isCopyright: valorBooleano
             });      
 
         }

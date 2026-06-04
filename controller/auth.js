@@ -81,6 +81,12 @@ export async function signup(req, res) {
         const mail = email.trim();
         const pass = passwordUsuario.trim();
 
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!emailRegex.test(mail)) {
+            return res.status(400).send("EL FORMATO DEL EMAIL NO ES VALIDO");
+        }
+
         const usuarioExiste = await Usuario.findOne({
             where: { nombreUsuario: name}
         })

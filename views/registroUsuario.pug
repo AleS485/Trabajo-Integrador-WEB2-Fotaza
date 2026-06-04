@@ -45,6 +45,7 @@ block content
         const fileInput = document.getElementById('avatar');
         const contenedorNombreAvatar = document.getElementById('avatar-nombre');
         const contenedorErrores = document.getElementById("listaErroresRegistro");
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
         let avatarObjeto = null;
 
@@ -92,16 +93,53 @@ block content
             const valorPassword = inputPassword.value.trim();
             const valorConfirmar = inputConfirmar.value.trim();
 
-            if (valorNombre === "" || valorApellido === "" || valorEmail === "" || valorPassword === "") {
+            if (valorNombre === "") {
                 const li = document.createElement("li");
-                li.innerText = "LOS CAMPOS TIENEN QUE TENER UN VALOR";
+                li.innerText = "EL NOMBRE ES OBLIGATORIO";
                 li.style.color = "red";
                 li.style.fontWeight = "bold";
                 contenedorErrores.appendChild(li);
                 validador = false;
             }
 
-            if (valorPassword.length < 4) {
+            else if (valorApellido === "") {
+                const li = document.createElement("li");
+                li.innerText = "EL APELLIDO ES OBLIGATORIO";
+                li.style.color = "red";
+                li.style.fontWeight = "bold";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+
+            else if (valorEmail === "") {
+                const li = document.createElement("li");
+                li.innerText = "EL EMAIL ES OBLIGATORIO";
+                li.style.color = "red";
+                li.style.fontWeight = "bold";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+
+            else if (valorPassword === "") {
+                const li = document.createElement("li");
+                li.innerText = "LA CONTRASENA ES OBLIGATORIA";
+                li.style.color = "red";
+                li.style.fontWeight = "bold";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+
+            else if (!emailRegex.test(valorEmail)) {
+                const li = document.createElement("li");
+                li.innerText = "EL FORMATO DE MAIL NO ES VALIDO";
+                li.style.color = "red";
+                li.style.fontWeight = "bold";
+                contenedorErrores.appendChild(li);
+                validador = false;
+            }
+
+
+            else if (valorPassword.length < 4) {
                 const li = document.createElement("li");
                 li.innerText = "LA CONTRASENA TIENE QUE TENER MAS DE 4 CARACTERES";
                 li.style.color = "red";
@@ -110,7 +148,7 @@ block content
                 validador = false;
             }
 
-            if (valorPassword !== valorConfirmar) {
+            else if (valorPassword !== valorConfirmar) {
                 const li = document.createElement("li");
                 li.innerText = "LAS CONTRASENAS NO COINCIDEN";
                 li.style.color = "red";
@@ -119,7 +157,8 @@ block content
                 validador = false;
             }
 
-            if(!avatarObjeto){
+
+            else if(!avatarObjeto){
                 const li = document.createElement("li");
                 li.innerText = "TENES QUE ELEGIR UN AVATAR PARA EL PERFIL";
                 li.style.color = "red";

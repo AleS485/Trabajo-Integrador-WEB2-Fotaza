@@ -1417,6 +1417,14 @@ li a:hover{
     border: 2px solid white;
 }
 
+.buscador-resultado-nada{
+
+    color: rgb(240, 22, 22);
+    text-align: center;
+    font-size: 35px;
+    
+}
+
 
 /* estilos para la plantilla de chats */
 

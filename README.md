@@ -91,5 +91,12 @@ Una vez que hayas realizado todos los pasos anteriores, para levantar la aplicac
 npm start
 ```
 
+---
+
+##  Problemas Encontrados y Solucion
+
+Durante el desarrollo de esta version del proyecto el principal problema con el que me encontre fue la colocacion de una marca de agua en las imagenes a la hora de crear una publicacion, probe usar jimp para lograr esta funcionalidad, pero luego de bastante tiempo consultando la documentacion y que esta no me ayudara a procesar el texto de mi marca de agua, opte por utilizar sharp la cual no me dio casi nada de problemas y me ofrecio lo que buscaba.
+
+
 
 

@@ -1318,12 +1318,6 @@ li a:hover{
     gap: 6px;
 }
 
-.buscarFechas {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
 
 .contenedorControlesFiltros h2 {
     font-size: 16px;
@@ -1340,11 +1334,6 @@ li a:hover{
     border-radius: 4px;
 }
 
-.buscarFechas label {
-    font-size: 13px;
-    margin-top: 2px;
-    color: white;
-}
 
 .contenedorEtiquetasAgregadas {
     display: flex;

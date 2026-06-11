@@ -8,8 +8,7 @@ export async function buscarPublicaciones(req, res){
         const titulo = req.query.titulo;
         const autor = req.query.autor;
         const etiqueta = req.query.etiqueta;
-        const fechaDesde = req.query.DesdeFecha;
-        const fechaHasta = req.query.HastaFecha;
+        
 
 
         let filtroPublicacion = {};
@@ -22,10 +21,6 @@ export async function buscarPublicaciones(req, res){
 
         if(titulo){
             filtroPublicacion.tituloPublicacion = { [Op.iLike]: `%${titulo}%`};
-        }
-
-        if(fechaDesde && fechaHasta){
-            filtroPublicacion.createdAt = { [Op.between]: [new Date(fechaDesde), new Date(fechaHasta)]};
         }
 
         if(etiqueta){
@@ -63,7 +58,7 @@ export async function buscarPublicaciones(req, res){
         }
         
         
-        if (titulo || autor || etiqueta || fechaDesde || fechaHasta) {
+        if (titulo || autor || etiqueta ) {
             tieneFiltros = true;
         }
 

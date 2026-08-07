@@ -39,11 +39,6 @@ Usuario.init(
             type: DataTypes.BLOB('long'),
             allowNull: false
         },
-        isValidador:{
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: false
-        },
         estadoUsuario:{
             type: DataTypes.BOOLEAN,
             allowNull: false,

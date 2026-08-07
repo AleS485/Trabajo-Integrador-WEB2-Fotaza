@@ -1,4 +1,4 @@
-import { Usuario } from "../models/index.js";
+import { Usuario, Rol, RolUsuario } from "../models/index.js";
 
 export async function loginForm(req, res) {
     res.render('login')
@@ -20,7 +20,9 @@ export async function login(req, res) {
         const pass = password.trim();
 
         const user = await Usuario.findOne({
-            where: { nombreUsuario: nombre}
+            where: { nombreUsuario: nombre},
+
+            include: [{model: Rol, as: 'roles'}]
         })
 
         if (!user) {
@@ -46,7 +48,10 @@ export async function login(req, res) {
 
         req.session.user = {
             id: user.idUsuario,
+            rol: user.roles[0].nombreRol
         };
+
+        console.log("prueba sesion: ", req.session.user);
 
     } catch (error) {
         console.log('[!] Error en login: ', error);
@@ -110,15 +115,19 @@ export async function signup(req, res) {
         const imgBuffer = Buffer.from(codigoBase64, 'base64');
 
 
-        await Usuario.create({
+        const usuarioCreado = await Usuario.create({
             nombreUsuario: name,
             apellidoUsuario: lastname,
             email: mail,
             passwordUsuario: pass,
             avatarUsuario: imgBuffer,
-            isValidador: false,
             estadoUsuario: true
         });
+
+        await RolUsuario.create({
+            idUsuario: usuarioCreado.idUsuario,
+            idRol: 1
+        })
 
         return res.status(201).send("SE CREO EL USUARIO");
 

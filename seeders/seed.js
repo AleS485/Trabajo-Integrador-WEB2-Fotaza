@@ -3,6 +3,8 @@ import path from "path";
 import sequelize from "../models/config.js";
 //modelos
 import { Usuario } from "../models/Usuario.js";
+import { Rol } from '../models/Rol.js';
+import { RolUsuario } from '../models/RolUsuario.js';
 import { Publicacion } from "../models/Publicacion.js";
 import { Fotografia } from "../models/Fotografia.js";
 import { Comentario } from "../models/Comentario.js";
@@ -40,6 +42,12 @@ async function seed() {
         const bufferImagenPrueba8 = Buffer.from(avatarbase648, 'base64');
 
 
+        const roles = await Rol.bulkCreate([
+            { nombreRol: "Usuario" },
+            { nombreRol: "Validador"}
+        ]);
+
+
         const usuarios = await Usuario.bulkCreate([
             { nombreUsuario: "kiryu", apellidoUsuario: "kazuma", passwordUsuario: "12345", email: "kiryu@gmail.com", avatarUsuario: bufferImagenPrueba1 },
             { nombreUsuario: "albert", apellidoUsuario: "wesker", passwordUsuario: "12345", email: "wesker@gmail.com", avatarUsuario: bufferImagenPrueba2 },
@@ -49,6 +57,16 @@ async function seed() {
             { nombreUsuario: "cliff", apellidoUsuario: "unger", passwordUsuario: "12345", email: "cliff@gmail.com", avatarUsuario: bufferImagenPrueba6 },
             { nombreUsuario: "sam", apellidoUsuario: "bridges", passwordUsuario: "12345", email: "sam@gmail.com", avatarUsuario: bufferImagenPrueba7 }
         ], {individualHooks: true});
+
+        await RolUsuario.bulkCreate([
+            { idUsuario: usuarios[0].idUsuario, idRol: roles[0].idRol },
+            { idUsuario: usuarios[1].idUsuario, idRol: roles[1].idRol },
+            { idUsuario: usuarios[2].idUsuario, idRol: roles[0].idRol },
+            { idUsuario: usuarios[3].idUsuario, idRol: roles[0].idRol },
+            { idUsuario: usuarios[4].idUsuario, idRol: roles[0].idRol },
+            { idUsuario: usuarios[5].idUsuario, idRol: roles[0].idRol },
+            { idUsuario: usuarios[6].idUsuario, idRol: roles[0].idRol }
+        ])
 
 
         const etiquetas = await Etiqueta.bulkCreate([
@@ -65,14 +83,14 @@ async function seed() {
 
         const publicaciones = await Publicacion.bulkCreate([
             { tituloPublicacion: "prueba 1", descripcionPublicacion: "test de post", idUsuario: usuarios[0].idUsuario },
-            { tituloPublicacion: "prueba 2", descripcionPublicacion: "test de post", idUsuario: usuarios[1].idUsuario },
+            { tituloPublicacion: "prueba 2", descripcionPublicacion: "test de post", idUsuario: usuarios[0].idUsuario },
             { tituloPublicacion: "prueba 3", descripcionPublicacion: "test de post", idUsuario: usuarios[2].idUsuario },
             { tituloPublicacion: "prueba 4", descripcionPublicacion: "test de post", idUsuario: usuarios[3].idUsuario },
             { tituloPublicacion: "prueba 5", descripcionPublicacion: "test de post", idUsuario: usuarios[4].idUsuario },
             { tituloPublicacion: "prueba 6", descripcionPublicacion: "test de post", idUsuario: usuarios[5].idUsuario },
             { tituloPublicacion: "prueba 7", descripcionPublicacion: "test de post", idUsuario: usuarios[6].idUsuario },
             { tituloPublicacion: "prueba 8", descripcionPublicacion: "test de post", idUsuario: usuarios[0].idUsuario },
-            { tituloPublicacion: "prueba 9", descripcionPublicacion: "test de post", idUsuario: usuarios[1].idUsuario }
+            { tituloPublicacion: "prueba 9", descripcionPublicacion: "test de post", idUsuario: usuarios[0].idUsuario }
         ]);
 
         const fotos = await Fotografia.bulkCreate([
@@ -108,7 +126,7 @@ async function seed() {
 
         
         await Comentario.bulkCreate([
-            { comentario: "buena foto", idUsuario: usuarios[1].idUsuario, idFotografia: fotos[0].idFotografia },
+            { comentario: "buena foto", idUsuario: usuarios[2].idUsuario, idFotografia: fotos[0].idFotografia },
             { comentario: "buen test", idUsuario: usuarios[2].idUsuario, idFotografia: fotos[0].idFotografia },
             { comentario: "me gusto", idUsuario: usuarios[0].idUsuario, idFotografia: fotos[3].idFotografia },
             { comentario: "ok", idUsuario: usuarios[3].idUsuario, idFotografia: fotos[5].idFotografia }
@@ -116,7 +134,7 @@ async function seed() {
 
         
         await Valoracion.bulkCreate([
-            { valoracionFotografia: 5, idUsuario: usuarios[1].idUsuario, idFotografia: fotos[0].idFotografia },
+            { valoracionFotografia: 5, idUsuario: usuarios[0].idUsuario, idFotografia: fotos[0].idFotografia },
             { valoracionFotografia: 5, idUsuario: usuarios[2].idUsuario, idFotografia: fotos[0].idFotografia },
             { valoracionFotografia: 2, idUsuario: usuarios[3].idUsuario, idFotografia: fotos[0].idFotografia },
             { valoracionFotografia: 4, idUsuario: usuarios[4].idUsuario, idFotografia: fotos[0].idFotografia },
@@ -127,9 +145,9 @@ async function seed() {
 
         
         await Seguidor.bulkCreate([
-            { idUsuarioSeguido: usuarios[0].idUsuario, idSeguidor: usuarios[1].idUsuario },
-            { idUsuarioSeguido: usuarios[1].idUsuario, idSeguidor: usuarios[0].idUsuario },
+            { idUsuarioSeguido: usuarios[0].idUsuario, idSeguidor: usuarios[2].idUsuario },
             { idUsuarioSeguido: usuarios[2].idUsuario, idSeguidor: usuarios[0].idUsuario },
+            { idUsuarioSeguido: usuarios[4].idUsuario, idSeguidor: usuarios[0].idUsuario },
             { idUsuarioSeguido: usuarios[3].idUsuario, idSeguidor: usuarios[4].idUsuario }
         ]);
 

@@ -17,6 +17,8 @@ import { Mensaje } from "./Mensaje.js";
 import { Seguidor } from "./Seguidor.js";
 import { Notificacion } from "./Notificacion.js";
 import { Evento } from "./Evento.js";
+import { Rol } from "./Rol.js";
+import { RolUsuario } from "./RolUsuario.js";
 import sequelize from "./config.js";
 
 // relaciones entre modelos y defino las foreign key
@@ -131,6 +133,11 @@ Evento.hasMany(Notificacion, { foreignKey: 'idEvento'});
 Notificacion.belongsTo(Evento, { foreignKey: 'idEvento'});
 
 
+// modificacion: roles de usuario
+
+Usuario.belongsToMany(Rol, { through: RolUsuario, as: 'roles', foreignKey: 'idUsuario'});
+Rol.belongsToMany(Usuario, { through: RolUsuario, as: 'usuarios', foreignKey: 'idRol'});
+
 // funcion que exporto para hacer el sync
 
 export async function funcionSync(){
@@ -168,7 +175,9 @@ export {
     Mensaje,
     Seguidor,
     Notificacion,
-    Evento
+    Evento,
+    Rol,
+    RolUsuario
 };
 
 // force no recomienda tenerlo activado

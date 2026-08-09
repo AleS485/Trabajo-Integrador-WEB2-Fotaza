@@ -1,12 +1,13 @@
 extends layout 
+include ./mixins/alert
 
 block content 
 
     div.contenedorCreadorColeccion
-        form(action="")
+        form(action="/colecciones/crear" method="POST")
             label(for="") Defina el nombre de su coleccion 
-            input(type="text")
+            input(type="text" name="nombreColeccion")
             button(type="submit") Crear Coleccion
-
+    +alert(alert)
     
 

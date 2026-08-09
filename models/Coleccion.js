@@ -10,6 +10,9 @@ Coleccion.init(
             autoIncrement: true,
             primaryKey: true,
         },
+        idUsuario:{
+            type: DataTypes.INTEGER,
+        },
         nombreColeccion:{
             type: DataTypes.STRING(50),
             allowNull: false,

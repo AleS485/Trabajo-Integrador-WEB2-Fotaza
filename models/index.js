@@ -138,6 +138,11 @@ Notificacion.belongsTo(Evento, { foreignKey: 'idEvento'});
 Usuario.belongsToMany(Rol, { through: RolUsuario, as: 'roles', foreignKey: 'idUsuario'});
 Rol.belongsToMany(Usuario, { through: RolUsuario, as: 'usuarios', foreignKey: 'idRol'});
 
+// arreglo: usuario con coleccion(faltaba)
+
+Usuario.hasMany(Coleccion, {foreignKey: 'idUsuario'});
+Coleccion.belongsTo(Usuario, {foreignKey: 'idUsuario'});
+
 // funcion que exporto para hacer el sync
 
 export async function funcionSync(){

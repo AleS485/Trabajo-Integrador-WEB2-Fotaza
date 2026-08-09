@@ -1,4 +1,5 @@
-import { Router } from "express"
+import { Router } from "express";
+import { crearColeccion } from "../controller/coleccion.js";
 
 // coleccion
 const router = Router()
@@ -13,11 +14,7 @@ router.get('/crear', (req, res) => {
 
 })
 
-router.post('/crear', (req, res) => {
-
-    res.redirect('colecciones_mostrar');
-
-})
+router.post('/crear', crearColeccion);
 
 router.get('/:id', (req, res) => {
 

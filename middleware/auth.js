@@ -1,4 +1,4 @@
-import { Usuario } from "../models/index.js";
+import { Rol, Usuario } from "../models/index.js";
 
 export async function authMiddleware(req, res, next) {
     const user = req.session.user; // usuario de la sesion solo contiene id
@@ -11,7 +11,7 @@ export async function authMiddleware(req, res, next) {
 
     try {
         const usuarioLogeado = await Usuario.findByPk(userId, {
-            attributes: ['idUsuario', 'nombreUsuario', 'apellidoUsuario', 'isValidador'],
+            attributes: ['idUsuario', 'nombreUsuario', 'apellidoUsuario']
         });
 
         if (!usuarioLogeado) {
@@ -23,7 +23,7 @@ export async function authMiddleware(req, res, next) {
             id: user.id,
             firstName: usuarioLogeado.nombreUsuario,
             lastName: usuarioLogeado.apellidoUsuario,
-            isValidador: usuarioLogeado.isValidador
+            rol: user.rol
         };
     } catch (error) {
         console.error('[!] Error al autenticar usuario:', error);

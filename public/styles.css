@@ -623,6 +623,104 @@ li a:hover{
 }
 
 
+
+/* Estilos para la parte de guardar colecciones */
+
+.contenedorGuardarColeccion{
+    border: 2px solid rgb(255, 255, 255);
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    width: 40%;
+    margin: 30px auto;
+    border-radius: 25px;
+}
+
+.contenedorGuardarColeccion h1{
+    color: white;
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contenedorGuardarColeccion form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.opcionesColecciones{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.opcionColeccion{
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(20, 20, 20);
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    padding: 15px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.opcionColeccion:hover{
+    border: 2px solid rgb(108, 24, 233);
+    background-color: rgb(35, 35, 35);
+}
+
+.opcionColeccion input{
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.btnGuardarColeccion{
+    width: 60%;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid rgb(255, 255, 255);
+    cursor: pointer;
+    transition: .2s;
+    background-color: rgb(73, 29, 173);
+    color: white;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.btnGuardarColeccion:hover{
+    background-color: rgb(87, 34, 201);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* Seccion para plantilla de publicacion  */
 
 
@@ -719,6 +817,17 @@ li a:hover{
 }
 
 .boton-editar-publicacion {
+    padding: 8px 15px;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0); 
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-decoration: none; 
+    font-size: 12px; 
+    transition: .2s;
+}
+
+.boton-guardarPublicacion{
     padding: 8px 15px;
     border: 2px solid rgb(255, 255, 255);
     background-color: rgb(0, 0, 0); 
@@ -1781,75 +1890,64 @@ li a:hover{
 
 /* estilos plantilla mostrar colecciones  */
 
-
 .contenedorMostrarColecciones{
-
     display: flex;
-    border: 2px solid red;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 85%;
-    margin-top: 2vh;
-
+    width: 60%;
+    margin: 30px auto;
 }
 
 .contenedorMostrarColecciones h1{
-
-    font-size: 40px;
-    margin-top: 2vh;
-
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    margin-bottom: 25px;
 }
-
-
 
 .coleccionesCreadas{
-    border: 2px solid blue;
-    padding: 20px; 
-    width: 90%; 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 25px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
 }
 
-
-
-
-.cuadroColeccion {
-    border: 1px solid black; 
-    padding: 10px;
-    background-color: white;
-    border-radius: 10px;
+.cuadroColeccion{
+    border: 2px solid rgb(255, 255, 255);
+    background-color: black;
+    color: white;
     display: flex;
-    flex-direction: column; 
+    flex-direction: row;
     align-items: center;
+    width: 80%;
+    padding: 15px;
+    border-radius: 15px;
     text-decoration: none;
     cursor: pointer;
+    gap: 20px;
     transition: .2s;
 }
 
 .cuadroColeccion:hover{
-
-    background-color: rgb(155, 153, 153);
-    scale: 1.1;
-
+    border: 2px solid rgb(108, 24, 233);
+    background-color: rgb(25, 25, 25);
 }
 
-
-.cuadroColeccion img {
-    width: 100%;
-    height: 250px; 
-    object-fit: cover; 
-    border-radius: 8px;
+.cuadroColeccion img{
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-
-.cuadroColeccion h1 {
-    font-size: 25px;
+.cuadroColeccion h1{
+    font-size: 22px;
     font-weight: bold;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    text-align: center;
+    color: white;
+    margin: 0;
 }
 
 
@@ -1861,7 +1959,9 @@ li a:hover{
 .contenedorColeccionSeleccionada{
 
     display: flex;
-    border: 2px solid red;
+    border: 2px solid rgb(248, 246, 246);
+    border-radius: 15px;
+    background-color: black;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -1872,15 +1972,15 @@ li a:hover{
 
 .contenedorColeccionSeleccionada h1{
 
-    font-size: 40px;
+    font-size: 45px;
     margin-top: 2vh;
+    color: white;
 
 }
 
 
 
 .contenedorImagenesDeColeccion{
-    border: 2px solid blue;
     padding: 20px; 
     width: 90%; 
     display: grid;
@@ -1892,9 +1992,9 @@ li a:hover{
 
 
 .cuadroColeccionMostrada {
-    border: 1px solid black; 
+    border: 2px solid rgb(255, 255, 255); 
     padding: 10px;
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     border-radius: 10px;
     display: flex;
     flex-direction: column; 
@@ -1906,8 +2006,8 @@ li a:hover{
 
 .cuadroColeccionMostrada:hover{
 
-    background-color: rgb(155, 153, 153);
-    scale: 1.1;
+    background-color: rgb(48, 10, 139);
+    scale: 1.02;
 
 }
 

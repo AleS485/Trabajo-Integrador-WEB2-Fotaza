@@ -13,9 +13,9 @@ block content
                 each etiqueta in publicacion.etiquetas
                     span= etiqueta
             p.descripcion-publicacion-fecha= publicacion.fecha
-            div.seccionAccionesGenerales
-                form(action="/publicaciones/guardar/" + publicacion.idPublicacion, method="POST") 
-                    button.boton-guardarPublicacion(type="submit") Guardar Publicacion
+            div.seccionAccionesGenerales <!-- cambie por un a, recordar-->
+                if currentUser.id != publicacion.idUsuario
+                    a.boton-guardarPublicacion(href="/colecciones/guardar/" + publicacion.idPublicacion) Guardar Publicacion
                 if currentUser.id == publicacion.idUsuario
                     form(action="/publicaciones/comentarios/estado/" + publicacion.idPublicacion, method="POST") 
                         button.boton-cerrar-comentarios(type="submit") Cerrar/Abrir Comentarios

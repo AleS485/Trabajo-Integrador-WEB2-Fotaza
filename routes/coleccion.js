@@ -1,12 +1,12 @@
 import { Router } from "express";
-import { crearColeccion } from "../controller/coleccion.js";
+import { crearColeccion, cargadoVistaColeccion, guardarEnColeccion, mostrarColecciones, cargarPublicacionesColeccion } from "../controller/coleccion.js";
 
 // coleccion
 const router = Router()
 
-router.get('/', (req, res) => { // vista base
-    res.render('colecciones_mostrar');
-})
+router.get('/', mostrarColecciones) 
+
+// crear
 
 router.get('/crear', (req, res) => {
 
@@ -16,11 +16,23 @@ router.get('/crear', (req, res) => {
 
 router.post('/crear', crearColeccion);
 
-router.get('/:id', (req, res) => {
 
-    res.render('coleccionSeleccionada');
+// guardar
 
-})
+
+router.get('/guardar/:idPublicacion', cargadoVistaColeccion);
+
+router.post('/guardar', guardarEnColeccion);
+
+
+// seleccionada
+
+
+router.get('/:idSeleccionada', cargarPublicacionesColeccion);
+
+
+
+
 
 export default router;
 

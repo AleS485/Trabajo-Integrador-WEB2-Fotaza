@@ -1,0 +1,18 @@
+extends layout
+
+include ./mixins/alert
+
+
+block content
+
+    div.contenedorGuardarColeccion
+        h1 Elegi la coleccion para guardar la imagen
+        
+        form(action="/colecciones/guardar" method="POST")
+            input(type="hidden" name="idPublicacion", value=idPublicacion)
+            div.opcionesColecciones
+                each coleccion in colecciones
+                    label.opcionColeccion #{coleccion.nombreColeccion}
+                        input(type="radio" name="idColeccion", value= coleccion.idColeccion, required)
+            button(type="submit").btnGuardarColeccion Guardar
+    +alert(alert)

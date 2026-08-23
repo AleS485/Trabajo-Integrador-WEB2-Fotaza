@@ -1,10 +1,9 @@
-import { Publicacion, Fotografia, Comentario, Usuario, PublicacionEtiqueta, Etiqueta, Valoracion, MarcaDeAgua } from '../models/index.js'; //index por las relaciones - recordar
+import { Denuncia, Publicacion, Fotografia, Comentario, Usuario, PublicacionEtiqueta, Etiqueta, Valoracion, MarcaDeAgua } from '../models/index.js'; //index por las relaciones - recordar
 import { Op } from 'sequelize';
 import sharp from 'sharp';
 
 
 export async function valorarFoto(req, res){
-
     try{
         const idPublicacion = req.params.idPublicacion;
         const idUsuarioLogueado = req.session.user.id;
@@ -22,8 +21,6 @@ export async function valorarFoto(req, res){
                 }
             });
         }
-
-        
         // mando alerta del profe si autor quiere votar
         const publicacionValidacionAutor = await Publicacion.findByPk(idPublicacion); 
         if(publicacionValidacionAutor.idUsuario == idUsuarioLogueado){
@@ -36,7 +33,6 @@ export async function valorarFoto(req, res){
                 }
             });
         }
-
         
         const unicoVoto = await Valoracion.findOne({
             where: {
@@ -68,53 +64,33 @@ export async function valorarFoto(req, res){
     } catch(error){
         console.error("ERROR AL GUARDAR LA VALORACION: ", error);
         return res.status(500).send("ERROR INTERNO AL VALORIZAR LA FOTO");
-
-
     }
-
-
-
-
 }
 
-
 export async function borrarComentario(req, res){
-
     try{
-
         const idComentario = req.params.idComentario;
         const idPublicacion = req.params.idPublicacion;
-
         const comentarioValidacion = await Comentario.findByPk(idComentario);
+
         if(comentarioValidacion){
             await comentarioValidacion.destroy();
         }
 
         return res.redirect("/publicaciones/" + idPublicacion);
 
-
     } catch(error){
         console.error("ERROR AL QUERER BORRAR COMENTARIO:", error);
         return res.status(500).send("ERROR DEL SERVIDOR QUERIENDO BORRAR UN COMENTARIO");
-
-
     }
-
-
-
-
 }
 
-
-
 export async function cambiarEstadoComentarios(req, res){
-
     try{
-
         const idPublicacion = req.params.idPublicacion;
         const idUsuarioLogueado = req.session.user.id;
-
         const publicacionValidacion = await Publicacion.findByPk(idPublicacion);
+
         if(!publicacionValidacion){
             return res.status(404).send("ESTA PUBLICACION NO EXISTE");
         }
@@ -141,18 +117,11 @@ export async function cambiarEstadoComentarios(req, res){
     } catch(error){
         console.error("ERROR CAMBIANDO EL ESTADO DE COMENTARIOS: ", error);
         return res.status(500).send("ERROR DEL SERVIDOR CAMBIANDO EL ESTADO DE LOS COMENTARIOS");
-
-
     }
-
-
 }
 
-
 export async function agregarComentario(req, res){
-
     try{
-
         const idPublicacion = req.params.idPublicacion;
         const idFotografia = req.body.idFotografia;
         const textoComentario = req.body.comentario;
@@ -174,26 +143,16 @@ export async function agregarComentario(req, res){
 
         return res.redirect("/publicaciones/" + idPublicacion);
 
-
-
     } catch(error){
         console.error("ERROR AGREGANDO COMENTARIO: ", error);
         return res.status(500).send("ERROR DEL SERVIDOR GUARDANDO EL COMENTARIO");
-
     }
-
-
 }
 
-
-
 export async function eliminarPublicacion(req, res){
-
     try{
-
         const idPublicacionBuscada = req.params.id;
         const usuarioLogueado = req.session.user.id;
-
         const publicacion = await Publicacion.findByPk(idPublicacionBuscada);
 
         if(!publicacion){
@@ -208,25 +167,15 @@ export async function eliminarPublicacion(req, res){
 
         return res.redirect("/");
 
-
-
     } catch(error){
         console.error("[-] ERROR AL BORRAR PUBLICACION: ", error );
         return res.status(500).send("ERROR INTERNO DEL SERVER AL BORRAR");
     }
-
-
-
-
-
 }
 
-
 export async function obtenerDatosParaEditar(req, res){
-
     try{
         const idPublicacion = req.params.id;
-
         const publicacionBuscada = await obtenerDatosDePublicacion(idPublicacion);
 
         if(!publicacionBuscada){
@@ -239,9 +188,6 @@ export async function obtenerDatosParaEditar(req, res){
         console.error("Error al cargar la vista de editar publicacion ", error);
         return res.status(500).send('Error del servidor');
     }
-
-
-
 }
 
 export async function actualizarPublicacion(req, res){
@@ -255,7 +201,6 @@ export async function actualizarPublicacion(req, res){
         },
         { where: {idPublicacion: idPublicacion}}
         )
-
 
         // guardo datos para que no se borre en bd
         const fotosAntes = await Fotografia.findAll({
@@ -277,8 +222,6 @@ export async function actualizarPublicacion(req, res){
             textoMarcaGuardado = marcasAguaAntes[0].contenidoMarca;
         } 
 
-
-
         await PublicacionEtiqueta.destroy({
             where: { idPublicacion: idPublicacion }
         })
@@ -299,9 +242,6 @@ export async function actualizarPublicacion(req, res){
                 });
             }
         }
-
-        
-
         if (imgs && imgs.length > 0) {
             for (let img of imgs) {
                 let codigoBase64 = '';
@@ -320,36 +260,22 @@ export async function actualizarPublicacion(req, res){
                     urlArchivo: imgBuffer,
                     isCopyright: img.isCopyright ? true : false
                 });
-
                 if(textoMarcaGuardado && img.isCopyright){
                     await MarcaDeAgua.create({
                         idFotografia: fotoRecreada.idFotografia,
                         contenidoMarca: textoMarcaGuardado
                     })
                 }
-
             }
         }
-
         return res.status(200).send('SE MODIFICO LA PUBLICACION CORRECTAMENTE');
-
-
-
-
     } catch(error){
         console.error('ERROR EN LA MODIFICACION DE LA PUBLICACION: ', error);
-
-
     }
-
-
-
-
 }
 
 
 export async function obtenerDatosDePublicacion(idPublicacion){
-
     try{
         const publicacion = await Publicacion.findByPk(idPublicacion);
         if(!publicacion){
@@ -377,11 +303,12 @@ export async function obtenerDatosDePublicacion(idPublicacion){
         });
 
         const listaFotos = []; 
+        const idFotos = [];
         for(let foto of fotosBuscadas){ 
-
+            idFotos.push(foto.idFotografia);
             let fotoPreparada = foto.urlArchivo.toString('base64');
             const comentariosBuscados = await Comentario.findAll({
-                where: {idFotografia: foto.idFotografia}
+                where: {idFotografia: foto.idFotografia, isBaja: false}
             });
 
             const listaComentariosFoto = [];
@@ -419,7 +346,6 @@ export async function obtenerDatosDePublicacion(idPublicacion){
                 promedioTotalValoraciones = (sumaValoraciones/cantidadValoraciones).toFixed(1);
             }
 
-
             listaFotos.push({
                 idFotografia: foto.idFotografia,
                 urlArchivo: fotoPreparada,
@@ -441,6 +367,24 @@ export async function obtenerDatosDePublicacion(idPublicacion){
             promedioValoracionesInicio = 0;
         }
 
+        //agregado para las denuncias
+
+        let denunciasDeFoto = 0;
+        if(idFotos.length > 0){
+            denunciasDeFoto = await Denuncia.count({
+                where:{
+                    idFotografia: idFotos,
+                    estadoDenuncia: 0
+                }
+            });
+        }
+        let puedeEditar;
+
+        if(denunciasDeFoto == 0){
+            puedeEditar = true;
+        } else{
+            puedeEditar = false;
+        }
 
         return{
             idPublicacion: idPublicacion,
@@ -454,27 +398,19 @@ export async function obtenerDatosDePublicacion(idPublicacion){
             fotos: listaFotos,
             cantidadValoracionesInicio: totalValoracionesInicio,
             promedioValoracionesInicio: promedioValoracionesInicio,
-            isCerrado: publicacion.isCerrado
+            isCerrado: publicacion.isCerrado,
+            puedeEditar: puedeEditar
         }
-
-
 
     }catch(error){
         console.error('Error consiguiendo los datos de esta publicacion: ', error);
         return null;
     }
 
-
-
-
-
-
 }
-
 
 export async function crearPublicacion(req, res){
     try{
-
         if (!req.session || !req.session.user) {
             return res.status(401).send("TENES QUE INICIAR SESION");
         }
@@ -505,36 +441,22 @@ export async function crearPublicacion(req, res){
                     idPublicacion: idPublicacionCreada,
                     idEtiqueta: etiqueta.idEtiqueta
                 })
-
-
             }
         }
 
         if(imgs && imgs.length > 0){
             for(let img of imgs){
-
                 const textBase64 = img.src.split(',');
                 const codigoBase64 = textBase64[1];
-            
                 let imgBuffer = Buffer.from(codigoBase64, 'base64');
                 let flagMarcaDeAguaBD = false;
 
                 if(confirmacionCopyright && img.isCopyright){
-                    
-                    
-
                     const textoImagen = await sharp({ text: { text: `<span foreground="white" weight="bold">${marcaAgua}</span>`, rgba: true, dpi: 450, font: 'Arial Black' } }).png().toBuffer();
-
-                    
                     imgBuffer = await sharp(imgBuffer)
                     .composite([{ input: textoImagen, top: 150, left: 150 }])
                     .toBuffer();
-
                     flagMarcaDeAguaBD = true;
-
-
-
-
                 }
 
                 const fotoCreada = await Fotografia.create({
@@ -549,29 +471,20 @@ export async function crearPublicacion(req, res){
                         contenidoMarca: marcaAgua
                     })
                 }
-
-            
             }
         }
-
-
         return res.status(201).send("PUBLICACION CREADA CORRECTAMENTE");
 
     } catch(error){
         console.error('ERROR CREANDO PUBLICACION: ', error);
         
     }
-
 }
-
-
-
-
-
 
 export async function obtenerPublicaciones(){
     try{
         const publicacionesTraidas = await Publicacion.findAll({
+            where:{isBaja: false},
             include: Fotografia
         });
 
@@ -581,22 +494,4 @@ export async function obtenerPublicaciones(){
         console.error('Error al traer las publicaciones: ' + error);
         return [];
     }
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

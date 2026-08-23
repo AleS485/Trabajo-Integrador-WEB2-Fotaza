@@ -6,24 +6,26 @@ block content
 
         div.vistaDenunciaSuperior
             div.vistaDenunciaFoto
-                img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
+                if datosVista.tipo == 'FOTO'
+                    img(src='data:image/jpeg;base64,' + datosVista.previaFoto)
 
             div.vistaDetallesDenuncia  
-                p Denuncia de: nombreusuario 
-                p Comentario(si hay)
-                p motivo: aca va el motivo
+                p Denuncia de: #{datosVista.denunciante}
+                if datosVista.tipo == 'COMENTARIO'
+                    p Comentario: #{datosVista.textoComentario}
+                p motivo: #{datosVista.motivo}
                 p justificacion: 
                 div.justificacionUsuarioDenuncia
-                    p aca va la justificacion
+                    p #{datosVista.justificacion}
 
 
 
         div.vistaDenunciaInferior
-            form
-                input(type="text", placeholder="aca observacion")
+            form(action=`/denuncias/resolver/${datosVista.idDenuncia}` method="POST")
+                input(type="text", name="observacionValidador" placeholder="aca observacion")
                 div.accionesObservador
-                    button(type="submit") aceptar denuncia
-                    button(type="submit") rechazar denuncia
+                    button(type="submit", name="decision", value="aceptar") aceptar denuncia
+                    button(type="submit", name="decision", value="rechazar") rechazar denuncia
 
 
 

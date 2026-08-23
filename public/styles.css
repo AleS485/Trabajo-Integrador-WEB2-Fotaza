@@ -956,13 +956,42 @@ li a:hover{
     gap: 5px;
 }
 
-.boton-reportar, .boton-borrar {
-    padding: 2px 5px;
-    font-size: 12px;
+.boton-reportar{
+    padding: 6px 5px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid rgb(251, 251, 251);
+    background-color: rgb(255, 2, 2); 
+    color: white;
+    text-decoration: none;
+}
+
+.boton-borrar {
+    padding: 6px 5px;
+    font-size: 13px;
+    font-weight: bold;
     cursor: pointer;
     border: 1px solid rgb(251, 251, 251);
     background-color: rgb(0, 0, 0); 
     color: white;
+    text-decoration: none;
+}
+
+.boton-reportar-com{
+    padding: 6px 5px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid rgb(251, 251, 251);
+    background-color: rgb(5, 5, 5); 
+    color: white;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.boton-reportar-com:hover{
+    background-color: rgb(205, 97, 10); color: white; 
 }
 
 .boton-reportar:hover { 

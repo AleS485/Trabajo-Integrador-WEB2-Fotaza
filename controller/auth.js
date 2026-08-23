@@ -46,12 +46,27 @@ export async function login(req, res) {
             return;
         }
 
+        if(!user.estadoUsuario){
+            res.status(400).render('login', {
+                alert: {
+                    status: "error",
+                    text: "TU CUENTA ESTA DADA DE BAJA, NO PODES ENTRAR"
+                },
+                formValues: req.body
+            })
+            return;
+        }
+
         req.session.user = {
             id: user.idUsuario,
             rol: user.roles[0].nombreRol
         };
 
         console.log("prueba sesion: ", req.session.user);
+
+        if(req.session.user.rol == 'Validador'){
+            return res.redirect('/denuncias/reportes');
+        }
 
     } catch (error) {
         console.log('[!] Error en login: ', error);
@@ -66,7 +81,7 @@ export async function login(req, res) {
     }
 
     // si esta todo ok => luego de redirecciona al home
-    res.redirect('/')
+    return res.redirect('/')
 }
 
 export async function signupForm(req, res) {

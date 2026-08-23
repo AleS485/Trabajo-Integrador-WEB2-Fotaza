@@ -2,7 +2,6 @@ import { Usuario } from "./Usuario.js";
 import { Publicacion } from "./Publicacion.js";
 import { Etiqueta } from "./Etiqueta.js";
 import { PublicacionEtiqueta } from "./PublicacionEtiqueta.js";
-import { Favorito } from "./Favorito.js";
 import { Coleccion } from "./Coleccion.js";
 import { ColeccionPublicacion } from "./ColeccionPublicacion.js";
 import { Comentario } from "./Comentario.js";
@@ -31,11 +30,6 @@ Publicacion.belongsTo(Usuario, { foreignKey: 'idUsuario' });
 // publicacion etiqueta y tabla intermedia
 Publicacion.belongsToMany(Etiqueta, {through: PublicacionEtiqueta, foreignKey: 'idPublicacion', onDelete: 'CASCADE'});
 Etiqueta.belongsToMany(Publicacion, {through: PublicacionEtiqueta, foreignKey: 'idEtiqueta'});
-
-// favorito (por si solo con usuario y publicacion)
-
-Usuario.belongsToMany(Publicacion, { through: Favorito, foreignKey: 'idUsuario'});
-Publicacion.belongsToMany(Usuario, { through: Favorito, foreignKey: 'idPublicacion'});
 
 // coleccion publicacion con publicacion
 
@@ -166,7 +160,6 @@ export {
     Publicacion,
     Etiqueta,
     PublicacionEtiqueta,
-    Favorito,
     Coleccion,
     ColeccionPublicacion,
     Comentario,

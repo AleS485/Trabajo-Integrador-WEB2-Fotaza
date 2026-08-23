@@ -1,20 +1,19 @@
 extends layout 
+include ./mixins/alert
 
 block content 
 
     div.contenedorPanelDenuncia
         h1 Panel de denuncia 
-        form(action="") 
+        form(action=urlAccion method="POST")  
             p Elija el motivo de su denuncia: 
-            select(name="motivo")
-                option(value="1") motivo1
-                option(value="2") motivo2   
-                option(value="3") motivo3
-                option(value="4") motivo4
-                option(value="5") motivo5
+            select(name="idMotivo")
+                each motivo in motivos 
+                    option(value=motivo.idMotivo) #{motivo.nombreMotivo}
             p Comentarios Adicionales: 
             textarea(name="justificacionUsuario", placeholder="Agregue aqui su justificacion para su denuncia")
             button(type="submit") Realizar Denuncia
+    +alert(alert)
 
 
 

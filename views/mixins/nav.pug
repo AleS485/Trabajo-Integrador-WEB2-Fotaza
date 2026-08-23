@@ -5,17 +5,21 @@ mixin item(path, name)
 mixin nav
     nav
         ul
-            if currentUser
-                +item('/', 'Home')
-                +item('/buscar', 'Buscar')
-                +item('/perfil', 'Perfil')
-                //+item('/publicaciones/seguidas', 'Publicaciones de usuarios que sigo')
-                +item('/publicaciones/crear', 'Crear publicacion')
-                //+item('/chats', 'Chats')
-                +item('/colecciones/crear', 'Crear Coleccion')
-                +item('/colecciones', 'Mis Colecciones')
-                //+item('/notificaciones', 'Notificaciones')
-                +item('/auth/logout', 'Cerrar Sesion')
+            if currentUser 
+                if currentUser.rol == 'Validador'
+                    +item('/denuncias/reportes', 'Reportes')
+                    +item('/auth/logout', 'Cerrar Sesion')
+                else  
+                    +item('/', 'Home')
+                    +item('/buscar', 'Buscar')
+                    +item('/perfil', 'Perfil')
+                    //+item('/publicaciones/seguidas', 'Publicaciones de usuarios que sigo')
+                    +item('/publicaciones/crear', 'Crear publicacion')
+                    //+item('/chats', 'Chats')
+                    +item('/colecciones/crear', 'Crear Coleccion')
+                    +item('/colecciones', 'Mis Colecciones')
+                    //+item('/notificaciones', 'Notificaciones')
+                    +item('/auth/logout', 'Cerrar Sesion')
             else
                 +item('/', 'Home')
                 +item('/auth/login', 'Iniciar Sesion')

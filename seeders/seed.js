@@ -12,6 +12,7 @@ import { Valoracion } from "../models/Valoracion.js";
 import { Seguidor } from "../models/Seguidor.js";
 import { Etiqueta } from "../models/Etiqueta.js";
 import { PublicacionEtiqueta} from "../models/PublicacionEtiqueta.js";
+import { Motivo } from "../models/Motivo.js";
 
 async function seed() {
     try {
@@ -150,6 +151,14 @@ async function seed() {
             { idUsuarioSeguido: usuarios[4].idUsuario, idSeguidor: usuarios[0].idUsuario },
             { idUsuarioSeguido: usuarios[3].idUsuario, idSeguidor: usuarios[4].idUsuario }
         ]);
+
+        const motivos = await Motivo.bulkCreate([
+            { nombreMotivo: "spam" },
+            { nombreMotivo: "incitacion al odio" },
+            { nombreMotivo: "Violencia" },
+            { nombreMotivo: "Violacion copyright" },
+            { nombreMotivo: "Fake news" }
+        ])
 
         console.log("[+] seed cargado correctamente");
 

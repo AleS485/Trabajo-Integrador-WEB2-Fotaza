@@ -40,8 +40,7 @@ block content
                                             if currentUser.id == publicacion.idUsuario
                                                 form(action="/publicaciones/comentarios/borrar/" + comentario.idComentario + "/" + publicacion.idPublicacion, method="POST")
                                                     button.boton-borrar(type="submit") Borrar
-                                            form(action="" + comentario.idComentario)
-                                                    button.boton-reportar(type="submit") Reportar                      
+                                            a.boton-reportar-com(href="/denuncias/comentario/" + comentario.idComentario) Reportar                    
                                     div.cuerpoComentario
                                         p= comentario.texto
                                         p.mini= comentario.fecha
@@ -72,6 +71,5 @@ block content
                             form(action="/fotografias/interes/" + foto.idFotografia, method="POST") 
                                 button.botonInteres(type="submit") Me interesa
 
-                            form(action="" + foto.idFotografia)
-                                button.botonReporte(type="submit") Reportar imagen
+                            a.boton-reportar(href="/denuncias/foto/" + foto.idFotografia) Reportar Imagen
     +alert(alert)

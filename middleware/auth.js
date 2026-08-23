@@ -1,4 +1,4 @@
-import { Rol, Usuario } from "../models/index.js";
+import { Usuario } from "../models/index.js";
 
 export async function authMiddleware(req, res, next) {
     const user = req.session.user; // usuario de la sesion solo contiene id
@@ -11,12 +11,12 @@ export async function authMiddleware(req, res, next) {
 
     try {
         const usuarioLogeado = await Usuario.findByPk(userId, {
-            attributes: ['idUsuario', 'nombreUsuario', 'apellidoUsuario']
+            attributes: ['idUsuario', 'nombreUsuario', 'apellidoUsuario', 'estadoUsuario']
         });
 
-        if (!usuarioLogeado) {
-            res.redirect('/auth/login');
-            return;
+        if (!usuarioLogeado || !usuarioLogeado.estadoUsuario) {
+            req.session.destroy();
+            return res.redirect('/auth/login');
         }
 
         res.locals.currentUser = {

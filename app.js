@@ -8,6 +8,7 @@ import publicacionesRouter from './routes/publicaciones.js';
 import chatsRouter from './routes/chat.js';
 import coleccionesRouter from './routes/coleccion.js';
 import notificacionesRouter from './routes/notificacion.js';
+import denunciasRouter from './routes/denuncia.js';
 import { funcionSync } from './models/index.js';
 import { obtenerPublicaciones } from './controller/publicacion.js';
 import { authMiddleware } from './middleware/auth.js';
@@ -67,6 +68,8 @@ app.use('/chats', authMiddleware ,chatsRouter);
 app.use('/colecciones', authMiddleware, coleccionesRouter);
 
 app.use('/notificaciones', authMiddleware, notificacionesRouter);
+
+app.use('/denuncias', authMiddleware, denunciasRouter);
 
 app.use('/auth', authRouter);
 

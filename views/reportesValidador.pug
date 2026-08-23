@@ -2,13 +2,14 @@ extends layout
 
 block content 
     div.contenedorReportes 
-        h1 Reportes Recibidos 
-        each reporte in [1, 2, 3, 4, 5, 6, 7]
-            a(href="") 
-                div.reporte 
-                    p @Alejandro
-                    p PENDIENTE 
-                    p 2024/12/05
+        h1 Reportes Recibidos
+        if denunciasVista.length > 0
+            each reporte in denunciasVista
+                a(href=`/denuncias/revisar/${reporte.idDenuncia}`) 
+                    div.reporte 
+                        p #{reporte.denunciante}
+                        p #{reporte.motivo}
+                        p #{reporte.fecha}
 
 
 

@@ -24,6 +24,10 @@ Comentario.init(
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW,
+        },
+        isBaja:{
+            type:DataTypes.BOOLEAN,
+            defaultValue: false
         }
     },
     {

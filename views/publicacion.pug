@@ -6,7 +6,6 @@ block content
         div.infoPublicacionGeneral
             h1.descripcion-publicacion-titulo= publicacion.titulo
             div.autorPublicacion
-                img(src="data:image/png;base64," + publicacion.avatarAutor, alt="Avatar del Autor")
                 a(href="/perfil/" + publicacion.idUsuario) #{publicacion.autor}
             p.descripcion-publicacion-texto= publicacion.descripcion 
             div.etiquetasPublicacion
@@ -34,7 +33,6 @@ block content
                                 div.comentario
                                     div.cabeceraComentario
                                         div.autorComentarioIndividual
-                                            img(src="data:image/png;base64," + comentario.avatarUsuario, alt="Avatar")
                                             a(href="/perfil/" + comentario.idUsuario)= comentario.nombreUsuario
                                         div.accionesComentarioIndividual
                                             if currentUser.id == publicacion.idUsuario
@@ -68,7 +66,7 @@ block content
                             p Valoraciones totales: #{foto.cantidadValoraciones}
                     div.seccionReporteFoto
                         if currentUser.id != publicacion.idUsuario
-                            form(action="/fotografias/interes/" + foto.idFotografia, method="POST") 
+                            form(action="/chats/interes/" + foto.idFotografia, method="POST") 
                                 button.botonInteres(type="submit") Me interesa
 
                             a.boton-reportar(href="/denuncias/foto/" + foto.idFotografia) Reportar Imagen

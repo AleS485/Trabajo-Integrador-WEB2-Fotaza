@@ -283,10 +283,6 @@ export async function obtenerDatosDePublicacion(idPublicacion){
         }
 
         const autor = await Usuario.findByPk(publicacion.idUsuario);
-        let avatarAutor = '';
-        if(autor.avatarUsuario){
-            avatarAutor = autor.avatarUsuario.toString('base64');
-        }
 
         const etiquetasAsociadas = await PublicacionEtiqueta.findAll({
             where: {idPublicacion: idPublicacion}
@@ -314,20 +310,13 @@ export async function obtenerDatosDePublicacion(idPublicacion){
             const listaComentariosFoto = [];
             for(let comentario of comentariosBuscados){
                 const usuarioQueComenta = await Usuario.findByPk(comentario.idUsuario);
-                let avatarComentador = '';
-                if(usuarioQueComenta.avatarUsuario){
-                    avatarComentador = usuarioQueComenta.avatarUsuario.toString('base64');
-                }
-
                 listaComentariosFoto.push({
                     idComentario: comentario.idComentario,
                     texto: comentario.comentario,
                     fecha: comentario.fechaComentario.toLocaleDateString(),
                     nombreUsuario: usuarioQueComenta.nombreUsuario,
-                    avatarUsuario: avatarComentador,
                     idUsuario: usuarioQueComenta.idUsuario
                 });
-
             }
 
             const valoracionesDeFoto = await Valoracion.findAll({
@@ -393,7 +382,6 @@ export async function obtenerDatosDePublicacion(idPublicacion){
             descripcion: publicacion.descripcionPublicacion,
             fecha: publicacion.fechaPublicacion.toLocaleDateString(),
             autor: autor.nombreUsuario,
-            avatarAutor: avatarAutor,
             etiquetas: listaEtiquetas,
             fotos: listaFotos,
             cantidadValoracionesInicio: totalValoracionesInicio,

@@ -1,53 +1,36 @@
 extends layout 
+include ./mixins/alert
 
 block content 
     div.contenedorChats 
         div.contenedorChatsCargados 
-            each chat in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+            each chat in chats
                 div.contenedorChatExistente
-                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
-                    a(href="") Usuario  
+                    if chat.idAutorFoto == currentUser.id 
+                        a(href="/chats/" + chat.idChat)= chat.interesado.nombreUsuario
+                    else 
+                        a(href="/chats/" + chat.idChat)= chat.vendedor.nombreUsuario
 
+        div.contenedorMensajesChats
+            if idChat 
+                div.contenedorSuperiorMensajes 
+                    each mensaje in mensajes
+                        if mensaje.idUsuarioEmisor == currentUser.id 
+                            div.mensajeChat.enviado 
+                                p= mensaje.contenido 
+                        else 
+                            div.mensajeChat.recibido
+                                p= mensaje.contenido
+                
 
-
-        div.contenedorMensajesChats 
-
-
-            div.contenedorSuperiorMensajes 
-                div.mensajeChat.recibido
-                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
-                    p hola si, estoy interesado en esto
-                div.mensajeChat.enviado
-                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
-                    p dale nos ponemos en contacto
-                div.mensajeChat.recibido
-                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
-                    p dale nos ponemos en contacto    
-                div.mensajeChat.recibido
-                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
-                    p dale nos ponemos en contacto
-                div.mensajeChat.enviado
-                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
-                    p dale nos ponemos en contacto
-                div.mensajeChat.recibido
-                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
-                    p dale nos ponemos en contacto
-                div.mensajeChat.enviado
-                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
-                    p dale nos ponemos en contacto
-                div.mensajeChat.recibido
-                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
-                    p dale nos ponemos en contacto
-                div.mensajeChat.recibido
-                    img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
-                    p dale nos ponemos en contacto
-
-            div.campoEscribirChat
-                form(action="")
-                    input(type="text", name="", placeholder="Escriba un mensaje")
-                    button(type="submit") Enviar
-
-
+                div.campoEscribirChat
+                    form(action="/chats/" + idChat + "/mensaje", method="POST")
+                        input(type="text", name="contenido", placeholder="Escriba un mensaje")
+                        button(type="submit") Enviar
+            else 
+                div.contenedorSuperiorMensajes
+                    p SELECCIONA UN CHAT PARA CARGAR MENSAJES
+    +alert(alert)
 
 
 

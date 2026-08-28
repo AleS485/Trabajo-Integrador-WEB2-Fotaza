@@ -1,21 +1,12 @@
 import { Router } from "express"
+import { listarNotificaciones, marcarLeidaNotificacion } from "../controller/notificacion.js";
 
 // notificacion
 const router = Router()
 
-router.get('/', (req, res) => {
+router.get('/', listarNotificaciones);
 
-    res.render('notificaciones');
-
-})
-
-router.post('/leer/:id', (req, res) => {
-
-    res.redirect('notificaciones');
-
-})
-
-
+router.post('/leer/:idNotificacion', marcarLeidaNotificacion);
 
 
 export default router;

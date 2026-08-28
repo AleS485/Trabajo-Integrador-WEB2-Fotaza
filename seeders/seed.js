@@ -13,6 +13,7 @@ import { Seguidor } from "../models/Seguidor.js";
 import { Etiqueta } from "../models/Etiqueta.js";
 import { PublicacionEtiqueta} from "../models/PublicacionEtiqueta.js";
 import { Motivo } from "../models/Motivo.js";
+import { Evento } from "../models/Evento.js";
 
 async function seed() {
     try {
@@ -158,6 +159,15 @@ async function seed() {
             { nombreMotivo: "Violencia" },
             { nombreMotivo: "Violacion copyright" },
             { nombreMotivo: "Fake news" }
+        ])
+
+        // eventos notificacion
+
+        await Evento.bulkCreate([
+            {idEvento: 1, nombreEvento: 'Comentario'},
+            {idEvento: 2, nombreEvento: 'Valoracion'},
+            {idEvento: 3, nombreEvento: 'Interes'},
+            {idEvento: 4, nombreEvento: 'Seguidor'}
         ])
 
         console.log("[+] seed cargado correctamente");

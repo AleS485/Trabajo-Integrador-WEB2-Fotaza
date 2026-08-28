@@ -1,4 +1,5 @@
 import { Denuncia, Publicacion, Fotografia, Comentario, Usuario, PublicacionEtiqueta, Etiqueta, Valoracion, MarcaDeAgua } from '../models/index.js'; //index por las relaciones - recordar
+import { crearNotificacion } from '../helpers/notificacion.js';
 import { Op } from 'sequelize';
 import sharp from 'sharp';
 
@@ -58,6 +59,9 @@ export async function valorarFoto(req, res){
             idFotografia: idFotografia,
             valoracionFotografia: parseInt(puntuacionEnviada)
         });
+
+        // agrego helper de notificaacion
+        await crearNotificacion(publicacionValidacionAutor.idUsuario, idUsuarioLogueado, 2, " te valoro tu fotografia");
 
         return res.redirect("/publicaciones/" + idPublicacion);
 
@@ -140,6 +144,11 @@ export async function agregarComentario(req, res){
             idUsuario: idUsuarioLogueado,
             comentario: textoComentario
         })
+
+        // meto el helper de notificacion
+
+        const publicacion = await Publicacion.findByPk(idPublicacion);
+        await crearNotificacion(publicacion.idUsuario, idUsuarioLogueado, 1, " te comento en tu publicacion");
 
         return res.redirect("/publicaciones/" + idPublicacion);
 

@@ -1,5 +1,5 @@
 import { Seguidor, Usuario } from '../models/index.js';
-
+import { crearNotificacion } from '../helpers/notificacion.js';
 
 export async function verificarSiLoSigue(idSeguidor, idUsuarioSeguido){
     try{
@@ -25,7 +25,6 @@ export async function verificarSiLoSigue(idSeguidor, idUsuarioSeguido){
 }
 
 export async function seguirUsuario(req, res){
-
     try{
         const idUsuarioSeguido = req.params.id;
         const idSeguidor = req.session.user.id;
@@ -39,20 +38,18 @@ export async function seguirUsuario(req, res){
             idUsuarioSeguido: idUsuarioSeguido
         })
 
+        //agrego helper notificacion
+        await crearNotificacion(idUsuarioSeguido, idSeguidor, 4, " te empezo a seguir");
+
         return res.redirect(`/perfil/${idUsuarioSeguido}`)
 
     } catch(error){
         console.error("ERROR SIGUIENDO USUARIO: ", error);
         return res.status(500).send('ERROR DEL SERVIDOR PROCESANDO EL SEGUIMIENTO');
     }
-
-
-
 }
 
-
 export async function dejarSeguirUsuario(req, res) {
-    
     try {
         const idUsuarioSeguido = req.params.id;
         const idSeguidor = req.session.user.id;
@@ -73,11 +70,7 @@ export async function dejarSeguirUsuario(req, res) {
 
 }
 
-
-
-
 export async function obtenerSeguidores(idUsuario){
-
     try{
         const seguidoresEncontrados = await Seguidor.findAll({
             where: { idUsuarioSeguido: idUsuario}
@@ -91,29 +84,21 @@ export async function obtenerSeguidores(idUsuario){
                 if(usuario.avatarUsuario){
                     fotoUsuario = usuario.avatarUsuario.toString('base64');
                 }
-                
                 usuariosSeguidores.push({
                     idUsuario: usuario.idUsuario,
                     nombreUsuario: usuario.nombreUsuario,
                     fotoUsuario: fotoUsuario
                 })
-
             }
         }
-
         return usuariosSeguidores;
-
-
     } catch(error){
         console.error('Error al traer los seguidores del usuario: ', error);
         return [];
     }
-
-
 }
 
 export async function obtenerSeguidos(idUsuario){
-
     try{
         const seguidosEncontrados = await Seguidor.findAll({
             where: { idSeguidor: idUsuario}
@@ -133,25 +118,16 @@ export async function obtenerSeguidos(idUsuario){
                     nombreUsuario: usuario.nombreUsuario,
                     fotoUsuario: fotoUsuario
                 })
-
             }
         }
-
         return usuariosSeguidos;
-
-
     } catch(error){
         console.error('Error al traer los seguidos del usuario: ', error);
         return [];
     }
-
-
 }
 
-
-
 export async function contadorSeguidores(idUsuario){
-
     try{
         const seguidoresContados = await Seguidor.count({
             where: { idUsuarioSeguido: idUsuario }
@@ -162,10 +138,7 @@ export async function contadorSeguidores(idUsuario){
         console.error('Error contando los seguidores del usuario: ', error);
         return 0;
     }
-
-
 }
-
 
 export async function contadorSeguidos(idUsuario){
 
@@ -179,8 +152,6 @@ export async function contadorSeguidos(idUsuario){
         console.error('Error contando los seguidos del usuario: ', error);
         return 0;
     }
-
-
 }
 
 

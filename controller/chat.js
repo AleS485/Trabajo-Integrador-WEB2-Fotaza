@@ -1,4 +1,5 @@
 import { Fotografia, Publicacion, Interes, Chat, Usuario, Mensaje } from '../models/index.js';
+import { crearNotificacion } from '../helpers/notificacion.js';
 import { Op } from 'sequelize';
 
 export async function crearInteres(req, res){
@@ -28,6 +29,12 @@ export async function crearInteres(req, res){
                 idInteresado: idInteresado
             }
         });
+
+        // agrego el helper de notificacion
+
+        if(interesCreado){
+            await crearNotificacion(idAutorFoto, idInteresado, 3, " se intereso por tu fotografia");
+        }
 
         res.redirect("/chats/" + chat.idChat);
     }catch(error){

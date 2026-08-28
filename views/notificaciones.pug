@@ -3,13 +3,20 @@ extends layout
 block content 
     div.contenedorNotificaciones
         h1 Notificaciones
-        each notificacion in [1, 2, 3, 4, 5, 6, 7, 8]
-            div.notificacion 
-                img(src="https://imgs.search.brave.com/Q1nEakmJDqPIcORmqy_leaEHvNoB3xxHNFrWARbdYvA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EazBNVGt5/TWpndFlqQTVZaTAw/TVRrekxXRTVNall0/TVRRM1lqWTFZVFJt/TVRZeVhrRXlYa0Zx/Y0djQC5qcGc", alt="")
-                p El usuario te nombre de evento
-                form(action="")
-                    button(type="submit") Marcar Leida 
-                
+        if notificaciones.length == 0
+            h2 No hay notificaciones 
+        else 
+            each notificacion in notificaciones
+                div.notificacion 
+                    p El usuario #{notificacion.usuarioEnvia.nombreUsuario} #{notificacion.contenidoNotificacion}
+                    
+                    if !notificacion.estadoLectura
+                        form(action="/notificaciones/leer/" + notificacion.idNotificacion, method="POST")
+                            button(type="submit") Marcar Leida 
+                    else 
+                        p Leida 
+                    p= notificacion.fechaNotificacion.toLocaleDateString()
+                    
 
 
 

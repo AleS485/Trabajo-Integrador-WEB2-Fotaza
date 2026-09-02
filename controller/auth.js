@@ -1,4 +1,4 @@
-import { Usuario, Rol, RolUsuario } from "../models/index.js";
+import { Usuario, Rol, RolUsuario, Coleccion } from "../models/index.js";
 
 export async function loginForm(req, res) {
     res.render('login')
@@ -129,7 +129,6 @@ export async function signup(req, res) {
         const codigoBase64 = textBase64[1];
         const imgBuffer = Buffer.from(codigoBase64, 'base64');
 
-
         const usuarioCreado = await Usuario.create({
             nombreUsuario: name,
             apellidoUsuario: lastname,
@@ -142,6 +141,11 @@ export async function signup(req, res) {
         await RolUsuario.create({
             idUsuario: usuarioCreado.idUsuario,
             idRol: 1
+        })
+
+        await Coleccion.create({
+            nombreColeccion: "Favoritos",
+            idUsuario: usuarioCreado.idUsuario
         })
 
         return res.status(201).send("SE CREO EL USUARIO");

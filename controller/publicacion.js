@@ -376,13 +376,8 @@ export async function obtenerDatosDePublicacion(idPublicacion){
                 }
             });
         }
-        let puedeEditar;
 
-        if(denunciasDeFoto == 0){
-            puedeEditar = true;
-        } else{
-            puedeEditar = false;
-        }
+        const puedeEditar = denunciasDeFoto == 0 ? true : false;
 
         return{
             idPublicacion: idPublicacion,
@@ -398,12 +393,10 @@ export async function obtenerDatosDePublicacion(idPublicacion){
             isCerrado: publicacion.isCerrado,
             puedeEditar: puedeEditar
         }
-
     }catch(error){
         console.error('Error consiguiendo los datos de esta publicacion: ', error);
         return null;
     }
-
 }
 
 export async function crearPublicacion(req, res){
@@ -412,12 +405,7 @@ export async function crearPublicacion(req, res){
             return res.status(401).send("TENES QUE INICIAR SESION");
         }
 
-        const titulo = req.body.titulo;
-        const descripcion = req.body.descripcion;
-        const etiquetas = req.body.etiquetas;
-        const imgs = req.body.imgs;
-        const marcaAgua = req.body.marcaAgua;
-        const confirmacionCopyright = req.body.confirmacionCopyright;
+        const { titulo, descripcion, etiquetas, imgs, marcaAgua, confirmacionCopyright } = req.body;
 
         const nuevaPublicacion = await Publicacion.create({
             idUsuario: req.session.user.id, 
@@ -480,15 +468,43 @@ export async function crearPublicacion(req, res){
 
 export async function obtenerPublicaciones(){
     try{
-        const publicacionesTraidas = await Publicacion.findAll({
-            where:{isBaja: false},
-            include: Fotografia
+        const publicacionesCreadas = await Publicacion.findAll({
+            where:{isBaja: false}
         });
 
-        return publicacionesTraidas;
+        const masLikes = [];
+        const menosLikes = [];
+
+        for(let pub of publicacionesCreadas){
+            const datosPb = await obtenerDatosDePublicacion(pub.idPublicacion);
+            
+            if(datosPb){
+                if(datosPb.promedioValoracionesInicio >= 4 && datosPb.cantidadValoracionesInicio >= 2){
+                    masLikes.push(datosPb);
+                } else{
+                    menosLikes.push(datosPb);
+                }
+            }
+        }
+        
+        const pubFinales = masLikes.concat(menosLikes);
+
+        const fotosFeed = [];
+        for(let pub of pubFinales){
+            if(pub.fotos && pub.fotos.length > 0){
+                fotosFeed.push(pub.fotos[0].urlArchivo);
+            } else{
+                fotosFeed.push("");
+            }
+        }
+
+        return{
+            publicaciones: pubFinales,
+            fotosAgregadas: fotosFeed
+        }
 
     } catch(error){
-        console.error('Error al traer las publicaciones: ' + error);
-        return [];
+        console.error('ERROR TRAYENDO LAS PUBLICACIONES: ' + error);
+        return { publicaciones: [], fotosAgregadas: [] };
     }
 }

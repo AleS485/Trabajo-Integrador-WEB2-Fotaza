@@ -40,19 +40,10 @@ app.set('views', './views');
 // endpoints
 
 app.get('/', navMiddleware, async (req, res) => {
-    const publicacionesObtenidas = await obtenerPublicaciones() || [];
-
-    const fotosAgregadas = [];
-    for (let publicacion of publicacionesObtenidas) {
-        if (publicacion.Fotografia && publicacion.Fotografia.length > 0) {
-            fotosAgregadas.push(publicacion.Fotografia[0].urlArchivo.toString('base64'));
-        } else {
-            fotosAgregadas.push(''); 
-        }
-    }
+    const { publicaciones, fotosAgregadas } = await obtenerPublicaciones();
 
     res.render('home', {
-        publicaciones: publicacionesObtenidas,
+        publicaciones: publicaciones,
         fotosAgregadas: fotosAgregadas
     });
 })

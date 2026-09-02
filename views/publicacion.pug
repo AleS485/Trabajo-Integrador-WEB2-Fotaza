@@ -13,9 +13,9 @@ block content
                     span= etiqueta
             p.descripcion-publicacion-fecha= publicacion.fecha
             div.seccionAccionesGenerales <!-- cambie por un a, recordar-->
-                if currentUser.id != publicacion.idUsuario
+                if currentUser && currentUser.id != publicacion.idUsuario
                     a.boton-guardarPublicacion(href="/colecciones/guardar/" + publicacion.idPublicacion) Guardar Publicacion
-                if currentUser.id == publicacion.idUsuario
+                if currentUser && currentUser.id == publicacion.idUsuario
                     form(action="/publicaciones/comentarios/estado/" + publicacion.idPublicacion, method="POST") 
                         button.boton-cerrar-comentarios(type="submit") Cerrar/Abrir Comentarios
                     a.boton-editar-publicacion(href="/publicaciones/editar/" + publicacion.idPublicacion) Editar Publicacion
@@ -35,17 +35,18 @@ block content
                                         div.autorComentarioIndividual
                                             a(href="/perfil/" + comentario.idUsuario)= comentario.nombreUsuario
                                         div.accionesComentarioIndividual
-                                            if currentUser.id == publicacion.idUsuario
+                                            if currentUser && currentUser.id == publicacion.idUsuario
                                                 form(action="/publicaciones/comentarios/borrar/" + comentario.idComentario + "/" + publicacion.idPublicacion, method="POST")
                                                     button.boton-borrar(type="submit") Borrar
-                                            a.boton-reportar-com(href="/denuncias/comentario/" + comentario.idComentario) Reportar                    
+                                            if currentUser
+                                                a.boton-reportar-com(href="/denuncias/comentario/" + comentario.idComentario) Reportar                    
                                     div.cuerpoComentario
                                         p= comentario.texto
                                         p.mini= comentario.fecha
                         
                         if publicacion.isCerrado
                             h2.comentarios-cerrados COMENTARIOS CERRADOS
-                        else
+                        else if currentUser
                             div.seccionComentar
                                 form(action="/publicaciones/comentarios/agregar/" + publicacion.idPublicacion, method="POST")
                                     input(type="hidden" name="idFotografia" value=foto.idFotografia)
@@ -53,7 +54,7 @@ block content
                                     button(type="submit") Comentar 
                 div.seccionInferior
                     div.seccionValorizaciones
-                        if currentUser.id != publicacion.idUsuario
+                        if currentUser && currentUser.id != publicacion.idUsuario
                             p.valorar-texto-publicacion Valora esta imagen 
                             form(action="/publicaciones/valorar/" + publicacion.idPublicacion, method="POST")
                                 input(type="hidden" name="idFotografia" value=foto.idFotografia)
@@ -65,7 +66,7 @@ block content
                             p Valoracion promedio: #{foto.promedioValoraciones}
                             p Valoraciones totales: #{foto.cantidadValoraciones}
                     div.seccionReporteFoto
-                        if currentUser.id != publicacion.idUsuario
+                        if currentUser && currentUser.id != publicacion.idUsuario
                             form(action="/chats/interes/" + foto.idFotografia, method="POST") 
                                 button.botonInteres(type="submit") Me interesa
 

@@ -61,7 +61,7 @@ app.use('/buscar', authMiddleware, buscarRouter);
 
 app.use('/perfil', authMiddleware, perfilRouter);
 
-app.use('/publicaciones', authMiddleware, publicacionesRouter);
+app.use('/publicaciones', publicacionesRouter);
 
 app.use('/chats', authMiddleware ,chatsRouter);
 

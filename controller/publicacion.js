@@ -516,7 +516,7 @@ export async function traerPublicacionesSeguidos(req, res){
 }
 
 
-export async function obtenerPublicaciones(){
+export async function obtenerPublicaciones(pagina = 1, limite = 6){
     try{
         const publicacionesCreadas = await Publicacion.findAll({
             where:{isBaja: false}
@@ -537,24 +537,26 @@ export async function obtenerPublicaciones(){
             }
         }
         
-        const pubFinales = masLikes.concat(menosLikes);
+        const todas = masLikes.concat(menosLikes);
 
-        const fotosFeed = [];
-        for(let pub of pubFinales){
-            if(pub.fotos && pub.fotos.length > 0){
-                fotosFeed.push(pub.fotos[0].urlArchivo);
-            } else{
-                fotosFeed.push("");
-            }
-        }
+        let paginasTotales = parseInt(todas.length / limite);
+        if(todas.length == 0){
+            paginasTotales = 1;
+        } else if(todas.length % limite != 0){
+            paginasTotales++;
+        }    
+    
+        const inicio =(pagina - 1) * limite;
+        const publicacionesPaginadas = todas.slice(inicio, inicio + limite);
 
         return{
-            publicaciones: pubFinales,
-            fotosAgregadas: fotosFeed
+            publicaciones: publicacionesPaginadas,
+            totalPaginas: paginasTotales,
+            paginaActual: pagina
         }
 
     } catch(error){
         console.error('ERROR TRAYENDO LAS PUBLICACIONES: ' + error);
-        return { publicaciones: [], fotosAgregadas: [] };
+        return { publicaciones: [], totalPaginas: 1, paginaActual: 1};
     }
 }

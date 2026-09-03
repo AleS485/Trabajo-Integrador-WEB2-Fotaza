@@ -9,12 +9,21 @@ block content
     div.home
         h1.tituloInicio Inicio
         div.panelFotografias
-            each publicacion, index in publicaciones
+            each publicacion in publicaciones 
                     div.fotoMostrada
                         a(href="/publicaciones/" + publicacion.idPublicacion)
-                            if fotosAgregadas[index]
-                                img(src="data:image/png;base64," + fotosAgregadas[index], alt="")
+                            if publicacion.fotos && publicacion.fotos.length > 0
+                                img(src="data:image/png;base64," + publicacion.fotos[0].urlArchivo, alt="foto")
         
+        div.contenedorPaginado
+            if paginaActual > 1
+                a(href="/?pagina=" + (paginaActual -1)) <
+
+            span Pagina #{paginaActual} de #{totalPaginas}
+
+            if paginaActual < totalPaginas 
+                a(href="/?pagina=" + (paginaActual + 1)) >
+    
     +footer
     
 

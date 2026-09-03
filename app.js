@@ -40,12 +40,19 @@ app.set('views', './views');
 // endpoints
 
 app.get('/', navMiddleware, async (req, res) => {
-    const { publicaciones, fotosAgregadas } = await obtenerPublicaciones();
+    try{
+        const pagina = parseInt(req.query.pagina) || 1;
+        const {publicaciones, totalPaginas, paginaActual} = await obtenerPublicaciones(pagina, 6);
 
-    res.render('home', {
-        publicaciones: publicaciones,
-        fotosAgregadas: fotosAgregadas
-    });
+        res.render('home', {
+            publicaciones: publicaciones,
+            totalPaginas: totalPaginas,
+            paginaActual: paginaActual
+        });
+    }catch (error) {
+        console.error('ERROR TRAYENDO PUBLICACIONES AL FEED: ', error);
+        res.render('home', { publicaciones: [], totalPaginas: 1, paginaActual: 1 });
+    } 
 })
 
 app.use('/buscar', authMiddleware, buscarRouter);

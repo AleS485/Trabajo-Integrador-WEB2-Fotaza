@@ -1,4 +1,4 @@
-import { Denuncia, Publicacion, Fotografia, Comentario, Usuario, PublicacionEtiqueta, Etiqueta, Valoracion, MarcaDeAgua } from '../models/index.js'; //index por las relaciones - recordar
+import { Denuncia, Publicacion, Fotografia, Comentario, Usuario, PublicacionEtiqueta, Etiqueta, Valoracion, MarcaDeAgua, Seguidor } from '../models/index.js'; //index por las relaciones - recordar
 import { crearNotificacion } from '../helpers/notificacion.js';
 import { Op } from 'sequelize';
 import sharp from 'sharp';
@@ -465,6 +465,56 @@ export async function crearPublicacion(req, res){
         
     }
 }
+
+export async function traerPublicacionesSeguidos(req, res){
+    try{
+        const idUsuarioLogueado = req.session.user.id;
+
+        const seguidos = await Seguidor.findAll({
+            where:{idSeguidor: idUsuarioLogueado}
+        });
+
+        const idSeguidos = [];
+        for (let seguido of seguidos){
+            idSeguidos.push(seguido.idUsuarioSeguido);
+        }
+
+        if(idSeguidos.length == 0){
+            return { publicaciones: [], fotosAgregadas: []};
+        }
+
+        const publicacionesDB = await Publicacion.findAll({
+            where:{idUsuario: idSeguidos, isBaja: false}
+        });
+
+        const listaFinal = [];
+        for(let pub of publicacionesDB){
+            const datosPb = await obtenerDatosDePublicacion(pub.idPublicacion);
+            if(datosPb){
+                listaFinal.push(datosPb);
+            }
+        }
+
+        const fotosFeed = [];
+        for(let pub of listaFinal){
+            if(pub.fotos && pub.fotos.length > 0){
+                fotosFeed.push(pub.fotos[0].urlArchivo);
+            } else{
+                fotosFeed.push('');
+            }
+        }
+
+        return{
+            publicaciones: listaFinal,
+            fotosAgregadas: fotosFeed
+        };
+
+    } catch(error){
+        console.error('ERROR PIDIENDO LAS PUBLICACIONES DE SEGUIDOS: ' + error);
+        return {publicaciones: [], fotosAgregadas: []};
+    }
+}
+
 
 export async function obtenerPublicaciones(){
     try{

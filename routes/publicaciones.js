@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { crearPublicacion, obtenerDatosDePublicacion, obtenerDatosParaEditar, actualizarPublicacion, eliminarPublicacion, agregarComentario, cambiarEstadoComentarios, borrarComentario, valorarFoto } from "../controller/publicacion.js";
+import { crearPublicacion, obtenerDatosDePublicacion, obtenerDatosParaEditar, actualizarPublicacion, eliminarPublicacion, agregarComentario, cambiarEstadoComentarios, borrarComentario, valorarFoto, traerPublicacionesSeguidos } from "../controller/publicacion.js";
 import { authMiddleware } from "../middleware/auth.js";
 
 // /publicaciones
@@ -11,11 +11,19 @@ router.get("/crear", authMiddleware, (req, res) => {
 
 })
 
-router.get('/seguidas', authMiddleware, (req, res) => {
+router.get('/seguidas', authMiddleware, async (req, res) => {
 
-    res.render('publicaciones_seguidas');
+    try{
+        const { publicaciones, fotosAgregadas } = await traerPublicacionesSeguidos(req);
 
-})
+        res.render('publicaciones_seguidas', {
+            publicaciones, fotosAgregadas
+        })
+    } catch(error){
+        console.error('ERROR CARGANDO PUBLICACIONES DE SEGUIDOS: ', error);
+        res.redirect('/');
+    }
+});
 
 router.get('/editar/:id', authMiddleware, obtenerDatosParaEditar);
 router.put('/editar/:id', authMiddleware, actualizarPublicacion);

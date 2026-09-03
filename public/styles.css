@@ -6,6 +6,7 @@
     scroll-behavior: smooth;
 }
 
+
 /* estilos nav */
 
 .nav-contenedor{
@@ -50,18 +51,20 @@ li a:hover{
     font-size: 20px;
 }
 
+
 /* estilos contenedor general */
 
 .contenedor{
 
     width: 100%;
     min-height: 100vh;
-    background-color: rgb(63, 63, 63);
+    background-color: #272727;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+
 
 /* estilos generales footer */
 
@@ -81,9 +84,8 @@ li a:hover{
     color: white;
 }
 
+
 /* estilos perfil */
-
-
 
 .perfil-contenedor{
 
@@ -178,13 +180,6 @@ li a:hover{
 
 
 /* estilos para crear publicacion */
-
-
-
-
-
-
-
 
 .contenedorCreador {
     border: 2px solid rgb(255, 255, 255);
@@ -470,20 +465,7 @@ li a:hover{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 /* Seccion inicio  */
-
-
 
 .home {
     display: flex;
@@ -529,7 +511,6 @@ li a:hover{
     transition: .2s;
 }
 
-
 .fotoMostrada img {
     width: 100%;        
     height: 420px;      
@@ -537,26 +518,14 @@ li a:hover{
     object-fit: cover;  
 }
 
-
-
-
 .footer {
     width: 100%;
 }
 
 
-
-
-
-
-
-
-
-
 /* seccion crear coleccion  */
 
 .contenedorCreadorColeccion{
-
     border: 2px solid rgb(255, 255, 255);
     background-color: black;
     display: flex;
@@ -570,7 +539,6 @@ li a:hover{
 }
 
 .contenedorCreadorColeccion form{
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -581,27 +549,21 @@ li a:hover{
 }
 
 .contenedorCreadorColeccion form label{
-
     text-align: center;
     font-size: 38px;
     font-weight: bold;
     color: white;
-
-
 }
 
 .contenedorCreadorColeccion form input{
-
     border: 2px solid rgb(213, 28, 28);
     width: 75%;
     font-size: 22px;
     padding: 15px;
     border-radius: 25px;
-
 }
 
 .contenedorCreadorColeccion form button{
-
     width: 65%;
     font-size: 22px;
     padding: 25px;
@@ -615,13 +577,8 @@ li a:hover{
 }
 
 .contenedorCreadorColeccion form button:hover{
-
     background-color: rgb(87, 34, 201);
-
-
-
 }
-
 
 
 /* Estilos para la parte de guardar colecciones */
@@ -711,23 +668,7 @@ li a:hover{
 }
 
 
-
-
-
-
-
-
-
-
-
-
 /* Seccion para plantilla de publicacion  */
-
-
-
-
-
-
 
 .contenedorPublicacion {
     max-width: 1000px;
@@ -870,7 +811,6 @@ li a:hover{
     border-radius: 5px;
 }
 
-
 .seccionSuperior {
     display: flex;
     flex-direction: row;
@@ -878,7 +818,6 @@ li a:hover{
     gap: 20px;
     width: 100%;
 }
-
 
 .divisorImagen {
     width: 45%;
@@ -889,7 +828,6 @@ li a:hover{
     width: 100%;
     border: 2px solid rgb(255, 255, 255);
 }
-
 
 .divisorInfo {
     width: 50%;
@@ -903,7 +841,6 @@ li a:hover{
     font-size: 24px;
     color: rgb(255, 255, 255);
 }
-
 
 .seccionComentariosPublicacion {
     height: 450px;
@@ -1037,7 +974,6 @@ li a:hover{
     cursor: pointer;
 }
 
-
 .seccionInferior {
     margin-top: 20px;
     padding-top: 15px;
@@ -1129,43 +1065,21 @@ li a:hover{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* estilos para panel de validador en denuncia  */
-
-
-
 
 .contenedorVistaDenuncia {
     width: 55vw;
     display: flex;
     flex-direction: column;
-    border: 3px solid red; 
+    border: 3px solid rgb(248, 248, 248); 
     padding: 20px;
     border-radius: 12px;
+    background-color: black;
 }
-
 
 .vistaDenunciaSuperior {
     display: flex;
     flex-direction: row;
-    border-bottom: 2px solid red;
     padding-bottom: 20px;
     margin-bottom: 20px;
 }
@@ -1197,9 +1111,8 @@ li a:hover{
 
 .vistaDetallesDenuncia p{
     gap: 25px;
+    color: rgb(254, 4, 4);
 }
-
-
 
 .justificacionUsuarioDenuncia {
     border: 1px solid gray;
@@ -1215,11 +1128,9 @@ li a:hover{
     font-size: 18px;
 }
 
-
 .vistaDenunciaInferior {
-    border: 2px solid purple; 
     padding: 15px;
-    background-color: white;
+    background-color: rgb(3, 3, 3);
 }
 
 .vistaDenunciaInferior form {
@@ -1228,7 +1139,6 @@ li a:hover{
     gap: 15px;
 }
 
-
 .vistaDenunciaInferior input{
     width: 100%;
     padding: 10px;
@@ -1236,7 +1146,6 @@ li a:hover{
     border: 1px solid #cbcbcb;
     border-radius: 5px;
 }
-
 
 .accionesObservador {
     display: flex;
@@ -1250,12 +1159,19 @@ li a:hover{
     cursor: pointer;
     border-radius: 5px;
     border: none;
+    transition: .2s;
 }
-
 
 .accionesObservador button:nth-child(1) {
     background-color: rgb(31, 160, 31); 
     border: 1px solid green;
+    
+}
+
+.accionesObservador button:nth-child(1):hover{
+    border: 1px solid white;
+    background-color: rgb(19, 103, 19); 
+    color: white;
 }
 
 .accionesObservador button:nth-child(2){
@@ -1263,12 +1179,18 @@ li a:hover{
     border: 1px solid darkred;
 }
 
+.accionesObservador button:nth-child(2):hover{
+    border: 1px solid white;
+    background-color: rgb(116, 28, 28); 
+    color: white;
+}
+
 
 /* estilos para vista de realizar denuncia */
 
 .contenedorPanelDenuncia{
 
-    border: 2px solid black;
+    border: 2px solid rgb(254, 254, 254);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1278,12 +1200,14 @@ li a:hover{
     width: 500px;
     height: 540px;
     border-radius: 25px;
+    background-color: black;
 }
 
 .contenedorPanelDenuncia h1{
 
     font-size: 35px;
     font-weight: bold;
+    color: white;
 
 }
 
@@ -1300,6 +1224,7 @@ li a:hover{
 
     font-size: 25px;
     text-align: center;
+    color: white;
 }
 
 .contenedorPanelDenuncia form select{
@@ -1341,20 +1266,20 @@ li a:hover{
 }
 
 
-
-
 /* estilos para publicaciones de gente que sigo */
 
 .contenedorPublicacionesSeguidas{
 
-    border: 2px solid red;
+    border: 2px solid rgb(253, 253, 253);
+    background-color: black;
+    border-radius: 15px;
     width: 85vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
-
+    margin-top: 25px;
 }
 
 .contenedorPublicacionesSeguidas h1{
@@ -1362,12 +1287,16 @@ li a:hover{
     text-align: center;
     font-size: 32px;
     margin-bottom: 20px;
+    color: white;
 
+}
+
+.contenedorPublicacionesSeguidas h2{
+    color: white;
 }
 
 .contenedorParaDistintasFotos{
 
-    /* revisar en estilos finales */
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
@@ -1401,13 +1330,7 @@ li a:hover{
 }
 
 
-
-
-
 /* estilos para la plantilla de buscar o filtrar */
-
-
-
 
 .contenedorPlantillaBuscar {
     width: 95%;
@@ -1571,7 +1494,8 @@ li a:hover{
 
     display: flex;
     flex-direction: row;
-    border: 2px solid red;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: black;
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -1585,7 +1509,6 @@ li a:hover{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    border: 2px solid blue;
     padding: 10px;
     gap: 15px;
     overflow-y: scroll;
@@ -1600,13 +1523,24 @@ li a:hover{
     gap: 5px;
     justify-content: center;
     align-items: center;
-    background-color: rgb(127, 171, 227);
+    background-color: rgb(247, 247, 247);
     padding: 10px;
     width: 95%;
     border-radius: 20px;
 
 }
 
+.contenedorChatExistente a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    transition: .2s;
+    font-size: 18px;
+}
+
+.contenedorChatExistente a:hover{
+    color: goldenrod;
+}
 
 .contenedorChatsCargados img{
 
@@ -1617,17 +1551,18 @@ li a:hover{
 
 .contenedorMensajesChats{
 
-    border: 2px solid green;
+    border: 2px solid rgb(251, 251, 251);
+    border-radius: 10px;
     padding: 10px;
     width: 90%;
     max-height: 65vh;
+    margin-left: 5px;
 
 }
 
 .contenedorSuperiorMensajes{
 
-    border: 2px solid pink;
-    padding: 5px;
+    padding: 10px;
     overflow-y: scroll;
     max-height: 57vh;
     
@@ -1637,28 +1572,32 @@ li a:hover{
 
 }
 
+.contenedorSuperiorMensajes p{
+    color: white;
+    text-align: center;
+}
 
 .mensajeChat {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 10px;
-    border: 1px solid gray; 
+    border: 1px solid rgb(248, 248, 248); 
     border-radius: 12px;
     max-width: 75%; 
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    min-width: 0;
 }
-
-
 
 .mensajeChat.recibido {
     align-self: flex-start;
-    background-color: white; 
+    background-color: rgb(164, 19, 79); 
 }
-
 
 .mensajeChat.enviado {
     align-self: flex-end;
-    background-color: #e1f0ff; 
+    background-color: #0a863e; 
 }
 
 
@@ -1667,7 +1606,8 @@ li a:hover{
 
 .campoEscribirChat{
 
-    border: 2px solid purple;
+    margin-top: 2px;
+    border-top: 2px solid rgb(249, 249, 249);
     padding: 10px;
     
 
@@ -1716,69 +1656,62 @@ li a:hover{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid red;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    padding: 5px;
     width: 70%;
     margin-top: 5vh;
     gap: 20px;
     border-radius: 15px;
+    padding: 10px;
 
+}
+
+.contenedorNotificaciones h1{
+    color: white;
 }
 
 .notificacion{
 
-    border: 2px solid blue;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 15px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 10px;
     gap: 15px;
     border-radius: 15px;
-    width: 50%;
-}
-
-.notificacion img{
-
-    width: 120px;
-    height: 100px;
-    border-radius: 50%;
-    border: 1px solid white;
-
+    width: 60%;
+    background-color: #311066;
 }
 
 .notificacion p{
-
-    font-size: 25px;
+    font-size: 22px;
     font-weight: bold;
-
+    color: white;
 }
 
 .notificacion form{
-
     width: 40%;
-
-
 }
 
 .notificacion button{
-
     width: 85%;
     padding: 15px;
     font-size: 15px; 
     border-radius: 10px;
-    border: 1px solid gray;
-
-
+    border: 2px solid rgb(255, 255, 255);
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    transition: .2s;
 }
 
-
-
+.notificacion button:hover{
+    background-color: rgb(14, 73, 183);
+}
 
 /* estilos para seguidores */
-
-
-
-
 
 .contenedorSeguidoresPerfil {
     display: flex;
@@ -1837,16 +1770,7 @@ li a:hover{
 }
 
 
-
-
-
-
-
-
 /* vistas para plantilla seguidos perfil */
-
-
-
 
 .contenedorSeguidosPerfil {
     display: flex;
@@ -1867,7 +1791,6 @@ li a:hover{
     font-size: 32px;
     color: #fdfdfd;
 }
-
 
 .seguidoPerfil {
     display: flex;
@@ -1905,16 +1828,6 @@ li a:hover{
     border: 2px solid #7514e3;
     object-fit: cover;           
 }
-
-
-
-
-
-
-
-
-
-
 
 
 /* estilos plantilla mostrar colecciones  */
@@ -1982,9 +1895,6 @@ li a:hover{
 
 /* estilos para coleccion seleccionada */
 
-
-
-
 .contenedorColeccionSeleccionada{
 
     display: flex;
@@ -2049,14 +1959,10 @@ li a:hover{
 }
 
 
-
-
 /* estilos para reportes enviados */
 
-
 .contenedorReportes{
-
-    border: 2px solid red;
+    border: 2px solid rgb(254, 254, 254);
     width: 75%;
     display: flex;
     flex-direction: column;
@@ -2065,13 +1971,12 @@ li a:hover{
     padding: 20px;
     border-radius: 10px;
     gap: 20px;
-
+    background-color: black;
 }
 
 .contenedorReportes h1{
-
     font-size: 40px;
-
+    color: white;
 }
 
 .contenedorReportes a{
@@ -2079,44 +1984,33 @@ li a:hover{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 2px solid blue;
+    border: 2px solid rgb(251, 251, 253);
     padding: 20px;
     width: 65%;
     border-radius: 20px;
     gap: 5vw;
-    background-color: rgb(59, 110, 221);
+    background-color: rgb(81, 17, 186);
     color: white;
     text-decoration: none;
     transition: .2s;
 }
 
 .contenedorReportes a:hover{
-
-    background-color: rgb(136, 168, 232);
-
+    background-color: rgb(126, 11, 146);
 }
 
 .reporte{
-
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 20px;
     gap: 5vw;
-
-
 }
 
 .reporte p{
-
     font-size: 25px;
-
-
-
 }
-
-
 
 
 /* estilos para vistar logear usuario */
@@ -2201,10 +2095,6 @@ li a:hover{
 }
 
 /* Estilos para vista registrar usuario   */
-
-
-
-
 
 .registro-usuario {
     display: flex;

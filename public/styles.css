@@ -2198,6 +2198,39 @@ li a:hover{
 }
 
 
+/* estilos para el paginado del feed */
+
+.contenedorPaginado {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.contenedorPaginado a,
+.contenedorPaginado span {
+    display: inline-block;
+    padding: 5px 12px;
+    margin: 0 4px;
+    border: 2px solid #3c0faf;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+}
+
+.contenedorPaginado a {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.contenedorPaginado a:hover{
+    background-color: #caa211;
+}
+
+.contenedorPaginado span {
+    background-color: #fff;
+}
+
 /* Alertas del profe, revisar por si rompe algo */
 
 .alert{

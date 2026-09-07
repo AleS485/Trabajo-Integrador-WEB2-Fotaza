@@ -15,6 +15,7 @@ export async function authMiddleware(req, res, next) {
         });
 
         if (!usuarioLogeado || !usuarioLogeado.estadoUsuario) {
+            req.session.user = null;
             req.session.destroy();
             return res.redirect('/auth/login');
         }

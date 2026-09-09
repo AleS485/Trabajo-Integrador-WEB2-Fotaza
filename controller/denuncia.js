@@ -265,7 +265,7 @@ export async function crearDenunciarComentario(req, res){
             const motivos = await Motivo.findAll();
             return res.status(201).render('denuncia', {
                 motivos,
-                urlAccion: `/denuncias/foto/${idComentario}`,
+                urlAccion: `/denuncias/comentario/${idComentario}`,
                 alert: { 
                     status: "error", 
                     text: "ya hiciste una denuncia en este mismo comentario" 

@@ -26,7 +26,7 @@ Interes.init(
         sequelize, 
         modelName: 'Interes', 
         tableName: 'interes', 
-        createdAt: true, 
+        createdAt: false, 
         deletedAt: true, 
     },
 );

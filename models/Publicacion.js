@@ -45,7 +45,7 @@ Publicacion.init(
         sequelize, // necesario para conectarse a la bd
         modelName: 'Publicacion', 
         tableName: 'publicacion', 
-        createdAt: true, 
+        createdAt: false, 
         deletedAt: true, 
     },
 );

@@ -34,7 +34,7 @@ Valoracion.init(
         sequelize, 
         modelName: 'Valoracion', 
         tableName: 'valoracion', 
-        createdAt: true, 
+        createdAt: false, 
         deletedAt: true, 
     },
 );

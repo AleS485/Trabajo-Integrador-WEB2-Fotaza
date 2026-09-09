@@ -30,7 +30,7 @@ Mensaje.init(
         sequelize, 
         modelName: 'Mensaje', 
         tableName: 'mensaje', 
-        createdAt: true, 
+        createdAt: false, 
         deletedAt: true, 
     },
 );

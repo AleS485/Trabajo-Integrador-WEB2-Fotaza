@@ -18,18 +18,14 @@ Chat.init(
         },
         idInteresado:{
             type: DataTypes.INTEGER,
-        },
-        fechaCreacionChat:{
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: DataTypes.NOW,
         }
     },
     {
         sequelize, 
         modelName: 'Chat', 
         tableName: 'chat', 
-        createdAt: true, 
+        createdAt: 'fechaCreacionChat',
+        updatedAt: false, 
         deletedAt: true, 
     },
 );

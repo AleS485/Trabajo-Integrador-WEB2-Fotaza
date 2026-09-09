@@ -53,8 +53,9 @@ Denuncia.init(
         sequelize, 
         modelName: 'Denuncia', 
         tableName: 'denuncia', 
-        createdAt: true, 
-        deletedAt: true, 
+        createdAt: false, 
+        updatedAt: false, 
+        deletedAt: true,
     },
 );
 

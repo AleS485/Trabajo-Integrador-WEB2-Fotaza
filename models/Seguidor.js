@@ -26,7 +26,7 @@ Seguidor.init(
         sequelize, 
         modelName: 'Seguidor', 
         tableName: 'seguidor', 
-        createdAt: true, 
+        createdAt: false, 
         deletedAt: true, 
     },
 );

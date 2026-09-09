@@ -5,12 +5,17 @@ export class PublicacionEtiqueta extends Model {}
 
 PublicacionEtiqueta.init(
     {
+        idPublicacionEtiqueta: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
+        },
         idPublicacion: {
             type: DataTypes.INTEGER,
         },
         idEtiqueta:{
             type: DataTypes.INTEGER,
-        }
+        },
     },
     {
         sequelize, 

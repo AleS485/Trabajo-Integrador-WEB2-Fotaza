@@ -25,7 +25,9 @@ export async function buscarPublicaciones(req, res){
         }
 
         if(fechaDesde && fechaHasta){
-            filtroPublicacion.createdAt = { [Op.between]: [new Date(fechaDesde), new Date(fechaHasta)]};
+            filtroPublicacion.fechaPublicacion = { 
+                [Op.between]: [fechaDesde + ' 00:00:00', fechaHasta + ' 23:59:59']
+            };
         }
 
         if(etiqueta){
@@ -53,14 +55,15 @@ export async function buscarPublicaciones(req, res){
                     required: autorFlag
                 }
             ],
-            order: [['createdAt', 'DESC']]
+            order: [['fechaPublicacion', 'DESC']]
         });
 
-        for(let publicacion of publicacionesFiltradas){
-            if(publicacion.Fotografia && publicacion.Fotografia[0]){
-                publicacion.Fotografia[0].urlArchivo = publicacion.Fotografia[0].urlArchivo.toString('base64');
+        publicacionesFiltradas.map(pub => {
+            if (pub.Fotografia && pub.Fotografia[0]) {
+                pub.Fotografia[0].urlArchivo = pub.Fotografia[0].urlArchivo.toString('base64');
             }
-        }
+            return pub;
+        });
         
         
         if (titulo || autor || etiqueta || fechaDesde || fechaHasta) {

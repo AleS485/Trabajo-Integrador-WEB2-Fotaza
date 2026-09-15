@@ -154,10 +154,10 @@ async function seed() {
         ]);
 
         const motivos = await Motivo.bulkCreate([
-            { nombreMotivo: "spam" },
-            { nombreMotivo: "incitacion al odio" },
-            { nombreMotivo: "Violencia" },
             { nombreMotivo: "Violacion copyright" },
+            { nombreMotivo: "Incitacion al odio" },
+            { nombreMotivo: "Spam" },
+            { nombreMotivo: "Contenido Prohibido" },
             { nombreMotivo: "Fake news" }
         ])
 

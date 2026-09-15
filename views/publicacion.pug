@@ -18,7 +18,8 @@ block content
                 if currentUser && currentUser.id == publicacion.idUsuario
                     form(action="/publicaciones/comentarios/estado/" + publicacion.idPublicacion, method="POST") 
                         button.boton-cerrar-comentarios(type="submit") Cerrar/Abrir Comentarios
-                    a.boton-editar-publicacion(href="/publicaciones/editar/" + publicacion.idPublicacion) Editar Publicacion
+                    if publicacion.puedeEditar    
+                        a.boton-editar-publicacion(href="/publicaciones/editar/" + publicacion.idPublicacion) Editar Publicacion
                     form(action="/publicaciones/eliminar/" + publicacion.idPublicacion, method="POST") 
                         button.boton-borrar-publicacion(type="submit") Borrar Publicacion
         each foto in publicacion.fotos 

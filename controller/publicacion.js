@@ -191,6 +191,16 @@ export async function obtenerDatosParaEditar(req, res){
             return res.status(404).send('No se encontro la publicacion para editar');
         }
 
+        if(!publicacionBuscada.puedeEditar){
+            return res.render('publicacion', {
+                publicacion: publicacionBuscada,
+                alert: { 
+                    status: "error", 
+                    text: "NO PODES EDITAR UNA PUBLICACION QUE TIENE DENUNCIAS" 
+                }
+            });
+        }
+
         return res.render('editar_publicacion', {publicacion: publicacionBuscada});
 
     }catch(error){

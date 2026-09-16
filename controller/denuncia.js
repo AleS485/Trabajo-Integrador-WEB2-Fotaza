@@ -308,7 +308,7 @@ export async function crearDenunciarComentario(req, res){
 
         if(!creada){
             const motivos = await Motivo.findAll();
-            return res.status(201).render('denuncia', {
+            return res.status(400).render('denuncia', {
                 motivos,
                 urlAccion: `/denuncias/comentario/${idComentario}`,
                 alert: { 

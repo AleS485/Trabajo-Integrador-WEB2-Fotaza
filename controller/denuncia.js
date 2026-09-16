@@ -200,6 +200,30 @@ export async function crearDenunciarFoto(req, res){
         const idUsuario = req.session.user.id;
         const {idFotografia} = req.params;
         const {idMotivo, justificacionUsuario} = req.body;
+
+        const foto = await Fotografia.findByPk(idFotografia, {
+            include: [{ model: Publicacion }]
+        });
+
+        if (!foto) {
+            return res.status(404).send("LA FOTO NO EXISTE");
+        }
+
+        const motivos = await Motivo.findAll();
+
+        if (foto.Publicacion.idUsuario === idUsuario) {
+            return res.status(400).render('denuncia', {
+                motivos,
+                idFotografia,
+                urlAccion: `/denuncias/foto/${idFotografia}`,
+                alert: { 
+                    status: "error", 
+                    text: "NO PODES DENUNCIAR TU PROPIA FOTOGRAFIA" 
+                }
+            });
+        }
+
+
         const [denuncia, creada] = await Denuncia.findOrCreate({
             where: {idFotografia, idUsuario},
             defaults:{
@@ -212,7 +236,7 @@ export async function crearDenunciarFoto(req, res){
 
         if(!creada){
             const motivos = await Motivo.findAll();
-            return res.status(201).render('denuncia', {
+            return res.status(400).render('denuncia', {
                 motivos,
                 urlAccion: `/denuncias/foto/${idFotografia}`,
                 alert: { 
@@ -251,6 +275,26 @@ export async function crearDenunciarComentario(req, res){
         const idUsuario = req.session.user.id 
         const {idComentario} = req.params;
         const {idMotivo, justificacionUsuario} = req.body;
+
+        const comentario = await Comentario.findByPk(idComentario);
+        if(!comentario){
+            return res.status(404).send("EL COMENTARIO NO EXISTE");
+        }
+
+        if(comentario.idUsuario === idUsuario){
+            const motivos = await Motivo.findAll();
+            return res.status(400).render('denuncia', {
+                motivos, 
+                idComentario,
+                urlAccion: `/denuncias/comentario/${idComentario}`,
+                alert: { 
+                    status: "error", 
+                    text: "NO PODES DENUNCIAR UN COMENTARIO QUE ES TUYO" 
+                }
+            });
+        }
+
+
         const [denuncia, creada] = await Denuncia.findOrCreate({
             where: {idComentario, idUsuario},
             defaults:{

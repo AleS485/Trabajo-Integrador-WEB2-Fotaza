@@ -133,7 +133,8 @@ export async function denunciasPendientes(req, res){
         const comentariosYaDenunciados = [];
         const denunciasPendientes = await Denuncia.findAll({
             where: {estadoDenuncia : 0},
-            include: [Usuario, Motivo]
+            include: [Usuario, Motivo],
+            order: [['fechaDenuncia', 'DESC']]
         });
 
         for(let d of denunciasPendientes){

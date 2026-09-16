@@ -17,6 +17,10 @@ export async function crearInteres(req, res){
         
         const idAutorFoto = foto.Publicacion.idUsuario;
 
+        if (idAutorFoto === idInteresado) {
+            return res.status(400).send("NO PODES MOSTRAR INTERES EN TU PROPIA FOTOGRAFIA");
+        }
+
         const [interes, interesCreado] = await Interes.findOrCreate({
             where:{idFotografia: idFotografia, idInteresado: idInteresado}
         });

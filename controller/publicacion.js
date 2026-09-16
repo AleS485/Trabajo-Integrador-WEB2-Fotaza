@@ -76,10 +76,17 @@ export async function borrarComentario(req, res){
         const idComentario = req.params.idComentario;
         const idPublicacion = req.params.idPublicacion;
         const comentarioValidacion = await Comentario.findByPk(idComentario);
+        const usuarioLogueado = req.session.user.id;
 
-        if(comentarioValidacion){
-            await comentarioValidacion.destroy();
+        if (!comentarioValidacion) {
+            return res.status(404).send("EL COMENTARIO NO EXISTE");
         }
+
+        if (comentarioValidacion.idUsuario !== usuarioLogueado) {
+            return res.status(403).send("NO SOS EL AUTOR DE ESTE COMENTARIO");
+        }
+
+        await comentarioValidacion.destroy();
 
         return res.redirect("/publicaciones/" + idPublicacion);
 

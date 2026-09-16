@@ -20,8 +20,8 @@ block content
                         button.boton-cerrar-comentarios(type="submit") Cerrar/Abrir Comentarios
                     if publicacion.puedeEditar    
                         a.boton-editar-publicacion(href="/publicaciones/editar/" + publicacion.idPublicacion) Editar Publicacion
-                    form(action="/publicaciones/eliminar/" + publicacion.idPublicacion, method="POST") 
-                        button.boton-borrar-publicacion(type="submit") Borrar Publicacion
+                        form(action="/publicaciones/eliminar/" + publicacion.idPublicacion, method="POST") 
+                            button.boton-borrar-publicacion(type="submit") Borrar Publicacion
         each foto in publicacion.fotos 
             div.bloque-tarjeta-foto
                 div.seccionSuperior

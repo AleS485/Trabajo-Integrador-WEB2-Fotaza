@@ -28,8 +28,8 @@ router.get('/seguidas', authMiddleware, async (req, res) => {
 router.get('/editar/:id', authMiddleware, obtenerDatosParaEditar);
 router.put('/editar/:id', authMiddleware, actualizarPublicacion);
 
-router.post('/crear', crearPublicacion);
-router.post('/eliminar/:id', eliminarPublicacion);
+router.post('/crear', authMiddleware, crearPublicacion);
+router.post('/eliminar/:id', authMiddleware, eliminarPublicacion);
 
 router.post("/comentarios/agregar/:idPublicacion", authMiddleware, agregarComentario);
 router.post("/comentarios/estado/:idPublicacion", authMiddleware, cambiarEstadoComentarios);
